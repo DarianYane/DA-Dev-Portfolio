@@ -1,0 +1,53 @@
+{% extends 'blog\base.html' %}
+
+{% load static %}
+
+{% block content %}
+<head>
+    {% include 'blog\main_title.html' %}
+</head>
+
+<body>
+    <div class="col-md-6 p-lg-6 mx-auto m-4" style="color:#cbf706;">
+        <hr>
+        <br>
+        <div class="col">
+            <li><h1>{{ post.title }}</h1></li>
+            <li>&nbsp;&nbsp; 🏷<a href="{% url 'CategoryView' post.category %}" style="text-decoration:none; color:#ffffff;">{{ post.category }}</a></li>
+        </div>
+        By: {{ post.author }}
+        <div class="col">
+        <li><small class="text-muted">Posted on {{ post.created }}, Updated on {{ post.updated }}</small></li>
+        </div>
+        <br>
+        <div class="">  
+            <div class="card border-warning mx-auto my-4 shadow " style="width: 58rem;">
+                <div class="card-body" style="color:#000000; text-decoration:none">
+                    <p class="card-text m-1">{{ post.story|safe }}
+                </div>
+
+                {% if post.image %}
+                <div class="card-body mb-4" style="text-align:center;">
+                    <img class="border border-warning shadow-lg p-2  bg-body rounded" height="450" src="{{ post.image.url }}" />
+                </div>
+                {% endif %}
+
+                {% include 'blog\likes.html' %}
+
+                {% if user.id == post.author.id %}
+                    <div class="card-footer text-end">
+                        <br>
+                        <p>
+                            <a href="{% url 'UpdatePostView' post.pk %}" class="btn btn-sm btn-block btn-info">Edit</a>
+                            <a href="{% url 'DeletePostView' post.pk %}" class="btn btn-sm btn-block btn-danger">Delete</a>
+                        </p>
+                    </div>
+                {% endif %}
+
+            </div>
+            {% include 'blog\back_to_blog_home.html' %}
+        </div>
+    </div> 
+</body>
+
+{% endblock %}

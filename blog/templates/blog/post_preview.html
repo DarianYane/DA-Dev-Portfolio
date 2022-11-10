@@ -1,0 +1,37 @@
+<div class="card border-warning mx-auto my-4 shadow" style="width: 58rem;">
+
+    {% if post.image %}
+        <a href="{% url 'PostDetailView' post.pk %}" style="color:#000000; text-decoration:none"><img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}"></a>
+    {% endif %}
+
+    <div class="card-body" style="color:#000000; text-decoration:none">
+        <div class="col align-content-center align-text-center align-items-center">
+            <li><h4 class="card-title"><a href="{% url 'PostDetailView' post.pk %}" style="color:#000000; text-decoration:none">{{ post.title }}</a></h4></li>
+            <li>&nbsp;&nbsp; 🏷<a href="{% url 'CategoryView' post.category %}" style="text-decoration:none">{{ post.category }}</a></li>
+        </div>
+        <h6 class="card-subtitle">{{ post.subtitle }}</h6>
+        <p class="card-text m-1">{{ post.story|slice:":260"|safe }}
+
+        {% if post.story|slice:"260:" %}
+            ...</p>
+        {% endif %}
+
+        <p><a href="{% url 'PostDetailView' post.pk %}" class="btn btn-sm btn-block btn-primary">Read the complete post</a></p>
+
+        {% if user.id == post.author.id %}
+            <br>
+            <p>
+                <a href="{% url 'UpdatePostView' post.pk %}" class="btn btn-sm btn-block btn-info">Edit</a>
+                <a href="{% url 'DeletePostView' post.pk %}" class="btn btn-sm btn-block btn-danger">Delete</a>
+            </p>
+        {% endif %}
+
+    </div>
+    <div class="card-footer text-end">
+        <div class="row align-content-center align-text-center align-items-center">
+            <li><h5 class="text-muted">Created by {{ post.author }}</h5></li>
+            <li><small class="text-muted">Posted on {{ post.created }}</small></li>
+            <li><small class="text-muted">Updated on {{ post.updated }}</small></li>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+{% if user.is_authenticated %}
+    <div class="mx-4 mb-3" style="color:#0a06f7;" id="Likes">
+        <form action="{% url 'LikePost' post.pk %}" method="POST">
+        {% csrf_token %}
+
+        {% if liked %}
+            <button type="submit", name="post_id", value="{{ post.id }}", class="btn btn-danger btn-sm">Unlike</button>&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;<big><span class="badge badge-l rounded-pill text-bg-primary">{{sum_likes}} 👍</span></big>
+        {% else %}
+            <button type="submit", name="post_id", value="{{ post.id }}", class="btn btn-primary btn-sm">Like</button>&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;<big><span class="badge badge-l rounded-pill text-bg-primary">{{sum_likes}} 👍</span></big>
+        {% endif %}
+        </form>
+    </div>
+{% else %}
+    <div class="mx-4" style="color:#0a06f7;">
+        <p>
+            <big><span class="badge badge-l rounded-pill text-bg-primary">{{sum_likes}} 👍</span></big>
+        </p>
+        <p>You must <a href="{% url 'login' %}">login</a> to like</p>
+        <br>
+    </div>
+{% endif %}

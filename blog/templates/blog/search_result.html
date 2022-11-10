@@ -1,0 +1,51 @@
+{% extends 'blog\base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<body>
+    {% include 'blog\main_title.html' %}
+
+    <div class="position-relative overflow-hidden text-center mb-5">
+        <div class="col-md-6 p-lg-6 mx-auto my-1">
+            <h3 class="fw-normal" style="color:#ffd000;">{{ continents }}</h3>
+        </div>
+    </div>
+    <div class="col-md-6 p-lg-6 mx-auto my-1">
+
+        {% if search == "(No search performed)" %}
+            <div>
+                <br>
+                <h3 style="color:#ffd000;">To perform a search you must enter some data.</h3>
+                <br>
+                <h3 style="color:#ffd000;">Please try again.</h3>
+            </div>
+
+        {% else %}
+
+            {% if posts %}
+                <div>
+                    <h3 class="fw-normal mx-4" style="color:#ffd000;">The posts matching the search criteria were the following:</h3>
+                </div>
+                <br>
+                {% for post in posts %}
+                    {% include 'blog\post_preview.html' %}
+                {% endfor %}
+
+            {% else %}
+                <div>
+                    <br>
+                    <h3 style="color:#ffd000;">No matches were found.</h3>
+                    <br>
+                    <h3 style="color:#ffd000;">Please try again.</h3>
+                </div>
+            {% endif %}
+
+        {% endif %}
+
+        {% include 'blog\back_to_blog_home.html' %}
+
+    </div>
+
+{% endblock %}

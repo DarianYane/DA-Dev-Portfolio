@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'landing',
     'fastReading',
     'aboutme',
+    'blog',
+    'blogusers',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [

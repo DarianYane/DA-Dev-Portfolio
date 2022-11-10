@@ -1,0 +1,29 @@
+<header class="site-header sticky-top" style="background-color: #1500ce;">
+    <div class="d-flex p-2 justify-content-around align-content-center align-text-center align-items-center">
+        <div class="col text-center align-content-center align-text-center align-items-center">
+            <li><h5><strong><a class="nav-link active mx-2" aria-current="page" href="{% url 'home' %}" style="color:#f3f2f0;">Main Page</a></strong></h5></li>
+            <li><h5><strong><a class="nav-link active mx-2" aria-current="page" href="{% url 'BlogListView' %}" style="color:#ffd000;">Travel Blog Home</a></strong></h5></li>
+            {% if user.is_authenticated %}
+                <li><h5><strong><a class="nav-link active" href="{% url 'CreatePostView' %}" style="color:#ffd000;">🞤 Add new Post</a></strong></h5></li>
+            {% endif %}
+        </div>
+        <div class="col text-center align-content-center align-text-center align-items-center">
+            <form class="d-flex " style="width: 25vw; margin-left: 70px;" action="/blog/search/" method="GET">
+                <input class="form-control me-2" type="text" placeholder="Search by title..." name="title_search">
+                <button class="btn btn-warning" type="submit">Search</button>
+            </form>
+        </div>
+        <div class="col text-center align-content-center align-text-center align-items-center">
+            {% if user.is_authenticated %}
+            <li><h5 class="align-text-center" style="color:#f3f2f0;">Hi {{ user.username }}!&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+            <li><h5 class="align-text-center" style="color:#ffd000;">|</h5></li>
+            <li><h5 class="align-text-center">&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'logout' %}" style="color: #cbf706; text-decoration:none;">🧳 Logout</a></h5></li>
+            {% else %}
+            <div class="text-center">
+                    <a href="{% url 'login' %}" class="btn btn-light me-2" style="background-color: #2AFFF5;">Login</a>
+                    <a href="{% url 'UserRegistrationView' %}" class="btn btn-light me-2" style="background-color: #E9ED00;">Register</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</header>

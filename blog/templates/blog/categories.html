@@ -1,0 +1,31 @@
+{% extends 'blog\base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<body>
+    {% include 'blog\main_title.html' %}
+
+    <div class="position-relative overflow-hidden text-center mb-5">
+        <div class="col-md-6 p-lg-6 mx-auto my-1">
+            <h3 class="fw-normal" style="color:#ffd000;">{{ continents }}</h3>
+        </div>
+    </div>
+    <div class="col-md-6 p-lg-6 mx-auto my-1">
+        {% if category_posts %}
+        
+            {% for post in category_posts %}
+                {% include 'blog\post_preview.html' %}
+            {% endfor %}
+
+        {% else %}
+            <p><h4 class="text-secondary mb-1">Sorry, there are no posts from that continent.</h4></p>
+            <br>
+        {% endif %}
+
+        {% include 'blog\back_to_blog_home.html' %}
+        
+    </div>
+
+{% endblock %}
