@@ -1,0 +1,81 @@
+25. Set the final Coder project
+
+    99. Fix a post every day
+
+30. Upload this project to a server
+
+42. Make an application to generate a personalized nutritional plan.
+43. Make the exercise routine
+44. Login to nutrition and exercise projects
+
+100. Doing Machine Learning / Artificial Intelligence project
+
+101. Under each project, put a button to see the code, and another one to see the live version.
+
+102. update my resume in static files (in english)
+
+103. In Programming skills - What I Know put the PYTHON, DJANGO and BOOTSTRAP logos
+
+990. Review and update my resume if necessary.
+    Description
+        I am happy solving problems, helping others, and learning new things.
+
+    How can I help you?
+        You will be adding to your company a person willing to help the team in any task needed.
+        Through my analytical skills I will solve any kind of problems that may arise on a daily basis.
+        You will be hiring an enthusiastic person, who can work alone or in a team, and who is constantly looking for ways to generate new solutions, or optimize existing processes.
+        My knowledge of Python, Django, Bootstrap, Economics, Finance and Statistics, added to my extensive work experience in all types of companies and teams, make my incorporation extremely fluid and effective.
+    
+    What am I looking for?
+        Two years ago I discovered that I want to work as a developer for the rest of my life. I like to be useful solving problems and automating processes.
+        I am looking for a company that gives me an opportunity to demonstrate my skills and knowledge, and I offer my absolute commitment to be able to collaborate with whatever the company and the team needs.
+        In the medium term, I want to continue learning about machine learning, artificial intelligence and blockchain programming.
+
+(Buscar curriculums o readmes de personas que sepan python y django)
+
+    Education
+        Python at Coderhouse
+        MBA at UADE
+        Degree in Economics at UBA
+
+    Languajes
+        Advanced English
+        Advanced Portuguese
+        Native Spanish
+
+    Programming skills - What I Know
+        Programming skills
+        PYTHON, DJANGO, BOOTSTRAP, PANDAS, NUMPY, MATHPLOTLIB, HTML/CSS, SQL, APIs, VBA, GIT, EXCEL (Macros included), POWER QUERY and POWER BI.
+        PS: In 2023 I will be taking the Data Sciense course at Coderhouse. In addition, I am still learning Machine Learning, AI and SOLIDITY on my own.
+
+        What I Know
+        Reverse Engineer: I can learn fast having a final product to tear apart piece by piece. I break the code where I need to figure out why things work the way they do. Documentation is just a reference.
+
+    My work experience
+        I am looking for my first experience working as a developer.
+        In addition to the Python course done at Coderhouse, I am permanently training myself through applications and Youtube videos that I replicate to analyze the effects of each programming line.
+        In the past, I have worked for national and multinational companies, generally in administrative or finance areas.
+        I have experience working in Accounts Payable, Risk Management, and Treasury; in Power Generators, Banks, and Laboratories.
+
+        Estoy buscando mi primera experiencia trabajando como desarrollador.
+        Además del curso de Python realizado en Coderhouse, me capacito permanentemente a través de aplicaciones y videos de Youtube que replico para analizar los efectos de cada linea de programación.
+        En el pasado, he trabajado para empresas nacionales y multinacionales, generalmente en áreas administrativas o de finanzas.
+        Tengo experiencia trabajando en Cuentas a Pagar, Tesorería, y Gerencia de Riesgo; en Laboratorios, Bancos, y Generadoras de Energía.
+
+    My projects
+        As a final assignment for the Python course at Coderhouse, I made this Travel Blog with a teammate.
+        At the same time, for this portfolio, I created Fast-Reading, a project that formats texts to facilitate a more efficient reading.
+        Soon I will be developing a project to generate personalized food diets, from an Excel that I created myself.
+        Then I want to develop a project that uses an API and is linked to finance and investments; and a project that generates personalized physical exercise routines for the gym.
+        Additionally, I intend to continue improving my English level, and learning about Machine Learning, Solidity and Artificial Intelligence.
+
+    Roadmap
+        I will soon develop a project to generate personalized food diets, based on an Excel file I have created.
+        Then I want to develop a project that uses an API and is linked to finance and investments; and a project that generates personalized physical exercise routines for the gym.
+        Additionally, I intend to continue improving my English level, and learning about Machine Learning, Solidity and Artificial Intelligence.
+
+998. Make a video explaining how every project works, and showing and explaining a little the code
+
+999. Make a Github-Page
+
+1000 Comments in the blog
