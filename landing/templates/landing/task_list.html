@@ -278,10 +278,51 @@
         </section>
 
         <!-- Contact -->
-        {% include 'landing\contact_method_2.html' %}
+    <body id="page-top">
+        <!-- Navigation-->
+        <div class="container">
+            <header class="d-flex justify-content-center py-3">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="{% url 'home' %}" class="nav-link" aria-current="page" style="color:#f3f2f0;"><h5>Home</h5></a></li>
+                <li class="nav-item"><a href="/#Reasons for hiring me" class="nav-link" style="color:#ffd000;"><h5>Reasons for hiring me</h5> </a></li>
+                <li class="nav-item"><a href="/#My projects" class="nav-link" style="color:#ffd000;"> <h5>My projects</h5> </a></li>
+                <li class="nav-item"><a href="/#About Me" class="nav-link" style="color:#ffd000;"> <h5>About Me</h5> </a></li>
+                <li class="nav-item"><a href="/#Roadmap" class="nav-link" style="color:#ffd000;"> <h5>Roadmap</h5> </a></li>
+                <li class="nav-item"><a href="/#Contact" class="nav-link" style="color:#ffd000;"> <h5>Contact</h5> </a></li>
+            </ul>
+            </header>
+        </div>
+    </body>
 
         <!-- Footer-->
-        {% include 'landing\footer.html' %}  
+    <div class="d-flex justify-content-evenly align-items-center">
+        <div class="col-4 p-2 text-center">
+        </div>
+            <footer class="footer col-4 text-center">
+                <div class="container px-4 px-lg-5">
+                    <ul class="list-inline mb-5">
+                        <li class="list-inline-item">
+                            <a class="social-link rounded-circle text-white" href="https://www.linkedin.com/in/darian-yane/" target="_blank"><i class="icon-social-linkedin"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="social-link rounded-circle text-white" href="https://github.com/DarianYane" target="_blank"><i class="icon-social-github"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="social-link rounded-circle text-white" href="https://www.youtube.com/c/DarianInvierte" target="_blank"><i class="icon-social-youtube"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="social-link rounded-circle text-white" href="https://twitter.com/DarianInvierte" target="_blank"><i class="icon-social-twitter"></i></a>
+                        </li>
+                    </ul>
+                    <p class="text-muted small mb-0">Copyright &copy; Darian Yane 2022</p>
+                </div>
+            </footer>
+        <div class="col-4 text-center align-items-center">
+            <a href="#page-top" style="text-decoration:none"><img class="p-1 bg-body mb-1" src="{% static 'assets/img/back-to-top.png' %}" style="  height: 5rem; width: 5rem;" alt="Back-to-top"/><p class="text-muted small mb-0">Back to Top</p></a>
+            <br>
+            <br>
+        </div>        
+    </div> 
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
         <!-- Core theme JS-->
