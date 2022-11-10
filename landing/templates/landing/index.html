@@ -1,0 +1,257 @@
+{% extends 'landing\base.html' %}
+
+{% load static %}
+
+{% block content %}
+        <!-- Header-->
+        <header class="masthead d-flex align-items-center">
+            <div class="container mt-3 px-4 px-lg-5 text-center">
+                <!-- Masthead Avatar Image-->
+                <img class="rounded-circle shadow p-1 bg-body mb-4" width="250" height="250" src="{% static 'assets/img/profile-pic.png' %}" alt="Profile_picture"/>
+                <!-- Masthead Heading-->
+                <h1 class="mb-3">Darian Yane</h1>
+                <!-- Masthead Subheading-->
+                <h2 class="mb-3"><em>Junior Python Developer</em></h2>
+                <h5 class="mb-5"><em>Degree in Economics and MBA</em></h5>
+                    <div class="row gx-0 align-items-center">
+                        <div class="col-lg-2 "></div>
+                        <div class="col-lg-2 ">
+                            <div class="logo-python p-1 mb-4">
+                                <img class="p-1 bg-body mb-4" width="120" height="120" src="{% static 'assets/img/python-logo.png' %}" alt="Python_logo" />
+                            </div>
+                        </div>
+                        <div class="col-lg-1 "></div>
+                        <div class="col-lg-2">
+                            <div class="logo-django p-1 mb-4">
+                                <img class="p-1 bg-body mb-4" width="140" height="130" src="{% static 'assets/img/django-logo.png' %}" alt="Django_logo" />
+                            </div>
+                        </div>
+                        <div class="col-lg-1 "></div>
+                        <div class="col-lg-2">
+                            <div class="logo-bootstrap p-1 mb-4">
+                                <img class="p-1 bg-body mb-4" width="150" height="150" src="{% static 'assets/img/bootstrap-logo.png' %}" alt="Bootstrap_logo" />
+                            </div>
+                        </div>
+                        <div class="col-lg-2 "></div>
+                    </div>
+                <p><a class="btn btn-success btn-xl active fs-5" href="#Reasons for hiring me">Reasons for hiring me</a></p>
+                
+            </div>
+        </header>
+        <!-- Reasons for hiring me-->
+        <section class="content-section bg-primary " id="Reasons for hiring me">
+            <div class="container px-4 px-lg-5 text-center">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="content-section-heading text-center">
+                            <h3 class="text-secondary mb-0">Why you should</h3>
+                            <h2 class="mb-5">Hire Me</h2>
+                        </div>
+                        <p class="lead mb-2 text-white">
+                            You will be adding to your company a person willing to help the team in any task needed.                          
+                        </p>
+                        <p class="lead mb-2 text-white">
+                            Through my logical and analytical skills I will solve any kind of problems that may arise on a daily basis.
+                        </p>
+                        <p class="lead mb-4 text-white">
+                            You will be hiring an enthusiastic person, who can work alone or in a team, 
+                            and who is constantly looking for ways to generate new solutions, or optimize existing processes.
+                        </p>
+                        <p class="lead mb-5 text-white">
+                            My knowledge of Python, Django, Bootstrap, Economics, Finance and Statistics, added to my extensive work experience in all types of companies and teams, make my incorporation extremely fluid and effective.
+                        </p>
+                        <br>
+                        <div class="content-section-heading text-center">
+                            <h2>I will be productive from day one!</h2>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <a class="btn btn-light btn-xl fs-5" href="#My projects">My projects</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Portfolio-->
+        <section class="content-section" id="My projects">
+            <div class="container px-4 px-lg-5">
+                <div class="content-section-heading text-center">
+                    <h3 class="text-secondary mb-0">Portfolio</h3>
+                    <h2 class="mb-5">Recent Projects</h2>
+                </div>
+                <div class="row gx-0">
+                    <div class="col-lg-6">
+                        <a class="portfolio-item" href="{% url 'fastReading/upload' %}">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <div class="h3">Fast-Reading</div>
+                                    <p class="mb-0">This application allows you to format a text to make it faster to read.</p>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="{% static 'assets/img/words.jpg' %}" alt="..." />
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a class="portfolio-item" href="{% url 'BlogListView' %}">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <div class="h3">Travel Blog</div>
+                                    <p class="mb-0">Final project of the Python course at Coderhouse. It includes a CRUD and a user management system.</p>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="{% static 'assets/img/travel-blog.jpg' %}" alt="..." />
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a class="portfolio-item" href="#!">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <div class="h3">Exercise Routine (Coming soon)</div>
+                                    <p class="mb-0">Let artificial intelligence generate the best personalized exercise routine for you!</p>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="{% static 'assets/img/portfolio-3.jpg' %}" alt="..." />
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a class="portfolio-item" href="#!">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <div class="h3">Nutri Worksheet (Coming soon)</div>
+                                    <p class="mb-0">With this application you will be able to generate a diet according to your characteristics and objectives.</p>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="{% static 'assets/img/portfolio-2.jpg' %}" alt="..." />
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a class="portfolio-item" href="#!">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <div class="h3">Exercise Routine (Coming soon)</div>
+                                    <p class="mb-0">Let artificial intelligence generate the best personalized exercise routine for you!</p>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="{% static 'assets/img/portfolio-3.jpg' %}" alt="..." />
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a class="portfolio-item" href="#!">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <div class="h3">Any application related to Finance and the use of APIs (Coming soon)</div>
+                                    <!--
+                                    <p class="mb-0">A yellow workspace with some scissors, pencils, and other objects.</p>
+                                    -->
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="{% static 'assets/img/portfolio-4.jpg' %}" alt="..." />
+                        </a>
+                    </div>
+                    <div class="col-lg-12 text-center">
+                        <a class="btn btn-success btn-xl m-5 active fs-5" href="#About Me">About Me</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Services-->
+        <section class="content-section bg-primary text-center" id="About Me">
+            <div class="container px-4 px-lg-5">
+                <div class="content-section-heading">
+                    <h3 class="text-secondary mb-0">Knowledge and Experience</h3>
+                    <h2 class="mb-5">About Me</h2>
+                </div>
+                <div class="row gx-4 gx-lg-5 m-3 mb-5">
+                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        <img class="service-icon rounded-circle mx-auto mb-3" src="{% static 'assets/img/Collaborative.png' %}" style="object-position: 2px -2px; " alt="Profile_picture"/>
+                        <h4><strong>Collaborative</strong></h4>
+                        <p class="text-faded mb-0">Always ready to help the team and the company</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        <img class="service-icon rounded-circle mx-auto mb-3" src="{% static 'assets/img/Professional.png' %}" alt="Profile_picture"/>
+                        <h4><strong>Professional</strong></h4>
+                        <p class="text-faded mb-0">Professional attitude in any situation to deliver best results</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+                        <img class="service-icon rounded-circle mx-auto mb-3" src="{% static 'assets/img/Analytical.png' %}" style="object-position: 4px 0px; " alt="Profile_picture"/>
+                        <h4><strong>Logical</strong></h4>
+                        <p class="text-faded mb-0">
+                            More than 25 years of logical and analytical profile
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <img class="service-icon rounded-circle mx-auto mb-3" src="{% static 'assets/img/Ready_to_work.png' %}" alt="Profile_picture"/>
+                        <h4><strong>Ready to work</strong></h4>
+                        <p class="text-faded mb-0">Experience and know-how to make an impact from day one</p>
+                    </div>
+                </div>
+            </div>
+            <p><a class="btn btn-warning btn-xl mt-3 mb-5 fs-4" href="{% url 'about me home' %}">More About Me</a></p>
+            <br>
+            <p><a class="btn btn-light btn-xl mt-5 fs-5" href="/#Roadmap">Personal Roadmap</a></p>
+        </section>
+        <!-- Roadmap -->
+        <section class="content-section" id="Roadmap">
+            <div class="content-section-heading text-center">
+                <h2 class="mx-auto mb-5 m3-5">Personal Roadmap</h2>
+            </div> 
+            <div class="container">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <p>
+                            <h2 class="text-secondary mb-3"><em>2022</em></h2>
+                        </p>
+                        {% for task in Tasks %}
+                            {% if task.year == 2022 %}
+                            <p>
+                                {% if task.is_completed == 1 %}
+                                <input class="form-check-input me-1" type="checkbox" checked disabled value="">
+                                {% else %}
+                                <input class="form-check-input me-1" type="checkbox" value="">
+                                {% endif %}
+                                <label class="form-check-label" for="firstCheckbox"><strong>{{task.title}}:</strong> {{task.description}}</label>
+                            </p>
+                            {% endif %}
+                        {% endfor %}
+                        <p>
+                            <h2 class="text-secondary mb-3 mt-5"><em>2023</em></h2>
+                        </p>
+                        {% for task in Tasks %}
+                            {% if task.year == 2023 %}
+                            <p>
+                                {% if task.is_completed == 1 %}
+                                <input class="form-check-input me-1" type="checkbox" checked disabled value="">
+                                {% else %}
+                                <input class="form-check-input me-1" type="checkbox" value="">
+                                {% endif %}
+                                <label class="form-check-label" for="firstCheckbox"><strong>{{task.title}}:</strong> {{task.description}}</label>
+                            </p>
+                            {% endif %}
+                        {% endfor %}
+                        <p>
+                            <h2 class="text-secondary mb-3 mt-5"><em>2024</em></h2>
+                        </p>
+                        {% for task in Tasks %}
+                            {% if task.year == 2024 %}
+                            <p>
+                                {% if task.is_completed == 1 %}
+                                <input class="form-check-input me-1" type="checkbox" checked disabled value="">
+                                {% else %}
+                                <input class="form-check-input me-1" type="checkbox" value="">
+                                {% endif %}
+                                <label class="form-check-label" for="firstCheckbox"><strong>{{task.title}}:</strong> {{task.description}}</label>
+                            </p>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            <div class="container px-4 px-lg-5 text-center">
+                <a class="btn btn-success btn-xl m-5 active fs-5" href="/#Contact">Contact me</a>
+            </div> 
+        </section>
+
+        <!-- Contact -->
+        {% include 'landing\contact_method_2.html' %}
+
+{% endblock %}
