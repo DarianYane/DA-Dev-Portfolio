@@ -22,4 +22,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('landing.urls')),
-]
+    path('', include('fastReading.urls')),
+    path('', include('aboutme.urls')),
+    path('', include('blog.urls')),
+    path('users/', include('django.contrib.auth.urls')), #contrib.auth is the autentication system
+    path('users/', include('blogusers.urls')),
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
