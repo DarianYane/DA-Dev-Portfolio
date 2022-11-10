@@ -1,10 +1,10 @@
-{% extends 'blog\base.html' %}
+{% extends 'blog/base.html' %}
 
 {% load static %}
 
 {% block content %}
 <head>
-    {% include 'blog\main_title.html' %}
+    {% include 'blog/main_title.html' %}
 
     <div class="position-relative overflow-hidden text-center mb-5">
         <div class="col-md-6 p-lg-6 mx-auto my-1">
@@ -17,7 +17,7 @@
 <body>
     <div class="">
         {% for post in object_list %}
-            {% include 'blog\post_preview.html' %}
+            {% include 'blog/post_preview.html' %}
         {% endfor %}
     </div>    
 </body>

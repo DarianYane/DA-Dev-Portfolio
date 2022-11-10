@@ -1,10 +1,10 @@
-{% extends 'blog\base.html' %}
+{% extends 'blog/base.html' %}
 
 {% load static %}
 
 {% block content %}
 <head>
-    {% include 'blog\main_title.html' %}
+    {% include 'blog/main_title.html' %}
 
     {% if user.is_authenticated %}
     <div class="position-relative overflow-hidden text-center mb-5">
@@ -56,7 +56,7 @@
                     <br>
                 </div>
     {% endif %}
-                {% include 'blog\back_to_blog_home.html' %}
+                {% include 'blog/back_to_blog_home.html' %}
 
             </div>
             <div class="col">

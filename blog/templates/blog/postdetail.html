@@ -1,10 +1,10 @@
-{% extends 'blog\base.html' %}
+{% extends 'blog/base.html' %}
 
 {% load static %}
 
 {% block content %}
 <head>
-    {% include 'blog\main_title.html' %}
+    {% include 'blog/main_title.html' %}
 </head>
 
 <body>
@@ -32,7 +32,7 @@
                 </div>
                 {% endif %}
 
-                {% include 'blog\likes.html' %}
+                {% include 'blog/likes.html' %}
 
                 {% if user.id == post.author.id %}
                     <div class="card-footer text-end">
@@ -45,7 +45,7 @@
                 {% endif %}
 
             </div>
-            {% include 'blog\back_to_blog_home.html' %}
+            {% include 'blog/back_to_blog_home.html' %}
         </div>
     </div> 
 </body>
