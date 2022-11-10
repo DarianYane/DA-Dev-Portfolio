@@ -3,3 +3,8 @@ Django==4.0.4
 gunicorn==20.1.0
 psycopg2==2.8.6
 sqlparse==0.4.2
+PyPDF2==2.10.8
+xhtml2pdf==0.2.8
+django-environ==0.9.0
+django-ckeditor==6.5.1
+Pillow==9.3.0
