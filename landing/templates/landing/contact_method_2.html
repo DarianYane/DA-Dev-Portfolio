@@ -16,10 +16,6 @@
                             <div class="text-center">
                                 <p class="mb-4"><h5 class="mb-4 text-dark">Please, send me your message, and I will get back to you as soon as possible.</h5></p>
                             </div>
-                            <!-- * * * * * * * * * * * * * *
-                            // * * SB Forms Contact Form * *
-                            // * * * * * * * * * * * * * * *
-                            -->
                             <form id="contact-form" method="POST" action="{% url 'send_email' %}">
                                 {% csrf_token %}
                                 <!-- Name Input -->
@@ -50,13 +46,8 @@
                                 <div class="d-grid">
                                     <button class="btn btn-success btn-lg" id="submitButton" type="submit">Submit</button>
                                 </div>
-                                <!-- Thank you page 
-                                By default, after submitting a form the user is shown the FormSubmit "Thank You" page. You can provide an alternative URL for "Thank You" page.
-                                <input type="hidden" name="_next" value="https://yourdomain.co/thanks.html">
-                                -->
-                                <input type="hidden" name="_subject" value="New submission!"> <!-- This value is used for the email's subject, so that you can quickly reply to submissions without having to edit the subject line each time. -->
-                                <!-- <input type="hidden" name="_cc" value="yanedarian@gmail.com"> This value is used for the email's CC Field. This lets you send a copy of each submission to another email address. -->
-                                <input type="hidden" name="_autoresponse" value="Thank you very much for leaving me your message. I will be contacting you as soon as possible."> <!-- You can send an instant response to your users with a copy of the submission. Add a custom message to the email body. -->
+                                <input type="hidden" name="_subject" value="New submission!">
+                                <input type="hidden" name="_autoresponse" value="Thank you very much for leaving me your message. I will be contacting you as soon as possible.">
                             </form>
                             <!-- End of contact form -->
                         </div>
