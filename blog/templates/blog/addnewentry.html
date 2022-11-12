@@ -14,19 +14,15 @@
     </div>
 </head>
 
-<section class="content-section bg-primary">
+<body>
     <div class="position-relative overflow-hidden">
         <div class="row align-items-center">
-            <div class="col">
-            </div>
-            <div class="col-5 text-white">
-                <p class="text mx-4">Do you need a new category? You can create it <a style="color:#ffffff;" href="{% url 'CreateCategoryView' %}">here</a>.
-            </div>
-            <div class="col">
+            <div class="col-5 mx-auto" style="color:#aaaaaa;">
+                <p class="text-reset mt-3" >Do you need a new category? You can create it <a class="text-reset" href="{% url 'CreateCategoryView' %}">here</a>.</p>
             </div>
         </div>
     </div>
-    <div class="position-relative overflow-hidden p-3 p-md-7 m-md-3">
+    <div class="position-relative overflow-hidden p-md-7 m-md-3">
         <div class="row align-items-center">
             <div class="col">
             </div>
@@ -43,7 +39,6 @@
                     var name = "{{ user.id }}";
                     document.getElementById("user").value = name
                 </script>
-
     {% else %} 
                 <div class="row align-items-center text-center"> 
                     <p><h4 class="text-secondary m-1">You do not have permission to create a post.</h4>
@@ -63,6 +58,6 @@
             </div>
         </div>
     </div>
-</section>
+</body>
 
 {% endblock %} 

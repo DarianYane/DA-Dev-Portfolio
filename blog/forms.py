@@ -12,6 +12,11 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('title', 'subtitle', 'category', 'story', 'image', 'author')
+        labels = {
+            'category': ('Select the continent where you traveled'),
+            'story': ('Share your experience'),
+            'image': ('Upload the best image of your trip'),
+        }
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Insert a title for your post'}),
@@ -21,10 +26,17 @@ class PostForm(forms.ModelForm):
             'category': forms.Select(choices=choices, attrs={'class': 'form-control'}),
         }
 
+
+
 class UpdatePostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('title', 'subtitle', 'category', 'story', 'image')
+        labels = {
+            'category': ('Select the continent where you traveled'),
+            'story': ('Share your experience'),
+            'image': ('Upload the best image of your trip'),
+        }
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Insert a title for your post'}),

@@ -1,12 +1,9 @@
-25. Set the final Coder project
-
-    100. secret key?
+10. Under each project, put a button to see the code
 
 30. Upload this project to a server
 
     0. Test the mail form
     1. buy a domain and associate it
-    2. see the issue of passwords
 
 42. Make an application to generate a personalized nutritional plan.
 43. Make the exercise routine
@@ -14,11 +11,7 @@
 
 100. Doing Machine Learning / Artificial Intelligence project
 
-101. Under each project, put a button to see the code, and another one to see the live version.
-
 102. update my resume in static files (in english)
-
-103. In Programming skills - What I Know put the PYTHON, DJANGO and BOOTSTRAP logos
 
 990. Review and update my resume if necessary.
     Description
@@ -35,7 +28,7 @@
         I am looking for a company that gives me an opportunity to demonstrate my skills and knowledge, and I offer my absolute commitment to be able to collaborate with whatever the company and the team needs.
         In the medium term, I want to continue learning about machine learning, artificial intelligence and blockchain programming.
 
-(Buscar curriculums o readmes de personas que sepan python y django)
+(Looking for resumes or readmes of people who know python and django)
 
     Education
         Python at Coderhouse
