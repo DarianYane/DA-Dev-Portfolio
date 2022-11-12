@@ -1,4 +1,4 @@
-{% extends 'landing/base.html' %}
+{% extends 'blog/base.html' %}
 
 {% load static %}
 
@@ -9,47 +9,52 @@
 
 {% block content %}
 
-<section class="content-section bg-primary">
-    <div class="container px-4 px-lg-5 text-center">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-lg-10">
-                <div class="content-section-heading text-center">
-                    <h1 style="font-size: 90px" class="mb-4"><strong>REGISTER</strong></h1>
-                </div>
+<div class="container text-center p-3">
+    <div class="row gx-4 gx-lg-5 justify-content-center mt-4">
+        <div class="col-lg-10">
+            <div class="content-section-heading text-center">
+                <h1 style="font-size: 90px" class="mb-4"><strong>REGISTER</strong></h1>
             </div>
         </div>
     </div>
-    <div class="position-relative overflow-hidden p-3 p-md-7 m-md-3 text-center">
-        <div class="col-md-6 p-lg-6 mx-auto my-1">
+    <div class="position-relative overflow-hidden p-md-7 m-md-3 text-center">
+        <div class="col-md-6 p-lg-6 mx-auto">
             <h2 class="fw-normal" style="color:#ffd000;">CREATE YOUR USER</h2>
         </div>
     </div>
-    <div class="position-relative overflow-hidden p-3 p-md-7 m-md-3">
-        <div class="row align-items-center">
-            <div class="col">
-            </div>
-            <div class="col-5 form-group">
-                <form action="" method="POST">
-                    {% csrf_token %}
+</div>
 
-                    {{form.as_p}}
 
-                    <input class="btn btn-warning btn-l fs-4" type="submit" value="Register" >
-                </form>
-                <div class="m-4 text-center">
-                    <p><h4 class="text-secondary mb-1">Already registered?</h4>
-                    <a class="btn btn-light" href="{% url 'login' %}">Login</a></p>
-                </div>
-                <br>
-                <div class="m-4 text-center">
-                    <a class="btn btn-warning btn-l" href="{% url 'BlogListView' %}">Back to Blog Home</a>
-                </div>
-                
+<div class="position-relative overflow-hidden p-md-7 m-md-3">
+    <div class="row align-items-center">
+        <div class="col">
+        </div>
+        <div class="col-5 form-group">
+            <form action="" method="POST">
+                {% csrf_token %}
+
+                {{form.as_p}}
+
+                <input class="btn btn-success btn-l fs-4" type="submit" value="Register" >
+            </form>
+            <div class="m-4 text-center">
+                <p>
+                    <h4 class="text-secondary mb-1">Already registered?</h4>
+                </p>
+                <p>
+                    <a class="btn btn-light" href="{% url 'login' %}">Login</a>
+                </p>
             </div>
-            <div class="col">
+            <br>
+            <div class="m-4 text-center">
+                <a class="btn btn-warning btn-l" href="{% url 'BlogListView' %}">Back to Blog Home</a>
             </div>
+            
+        </div>
+        <div class="col">
         </div>
     </div>
-</section>
+</div>
+
 
 {% endblock %} 

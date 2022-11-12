@@ -1,8 +1,12 @@
 25. Set the final Coder project
 
-    99. Fix a post every day
+    100. secret key?
 
 30. Upload this project to a server
+
+    0. Test the mail form
+    1. buy a domain and associate it
+    2. see the issue of passwords
 
 42. Make an application to generate a personalized nutritional plan.
 43. Make the exercise routine
