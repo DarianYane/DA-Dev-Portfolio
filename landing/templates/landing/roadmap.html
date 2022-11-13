@@ -1,0 +1,66 @@
+{% load static %}
+
+<section class="content-section" id="Roadmap">
+    <div class="content-section-heading text-center">
+        <h2 class="mx-auto mb-3">Personal Roadmap</h2>
+    </div> 
+    <div class="position-relative overflow-hidden text-center mb-3">
+        <div class="col-md-6 p-lg-6 mx-auto my-1">
+            <p class="lead fw-normal text-muted" style="color:#ffffff;">This section is dynamic. The site administrator can modify it through a CRUD.</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <p>
+                    <h2 class="text-secondary mb-3"><em>2022</em></h2>
+                </p>
+                {% for task in Tasks %}
+                    {% if task.year == 2022 %}
+                    <p>
+                        {% if task.is_completed == 1 %}
+                        <input class="form-check-input me-1" type="checkbox" checked disabled value="">
+                        {% else %}
+                        <input class="form-check-input me-1" type="checkbox" value="">
+                        {% endif %}
+                        <label class="form-check-label" for="firstCheckbox"><strong>{{task.title}}:</strong> {{task.description}}</label>
+                    </p>
+                    {% endif %}
+                {% endfor %}
+                <p>
+                    <h2 class="text-secondary mb-3 mt-5"><em>2023</em></h2>
+                </p>
+                {% for task in Tasks %}
+                    {% if task.year == 2023 %}
+                    <p>
+                        {% if task.is_completed == 1 %}
+                        <input class="form-check-input me-1" type="checkbox" checked disabled value="">
+                        {% else %}
+                        <input class="form-check-input me-1" type="checkbox" value="">
+                        {% endif %}
+                        <label class="form-check-label" for="firstCheckbox"><strong>{{task.title}}:</strong> {{task.description}}</label>
+                    </p>
+                    {% endif %}
+                {% endfor %}
+                <p>
+                    <h2 class="text-secondary mb-3 mt-5"><em>2024</em></h2>
+                </p>
+                {% for task in Tasks %}
+                    {% if task.year == 2024 %}
+                    <p>
+                        {% if task.is_completed == 1 %}
+                        <input class="form-check-input me-1" type="checkbox" checked disabled value="">
+                        {% else %}
+                        <input class="form-check-input me-1" type="checkbox" value="">
+                        {% endif %}
+                        <label class="form-check-label" for="firstCheckbox"><strong>{{task.title}}:</strong> {{task.description}}</label>
+                    </p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    <div class="container px-4 px-lg-5 text-center">
+        <a class="btn btn-success btn-xl m-5 active fs-5" href="/#Contact">Contact me</a>
+    </div> 
+</section>

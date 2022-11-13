@@ -1,0 +1,37 @@
+{% load static %}
+
+<section class="content-section bg-primary text-center" id="About Me">
+    <div class="container px-4 px-lg-5">
+        <div class="content-section-heading">
+            <h3 class="text-secondary mb-0">Knowledge and Experience</h3>
+            <h2 class="mb-5">About Me</h2>
+        </div>
+        <div class="row gx-4 gx-lg-5 m-3 mb-5">
+            <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                <img class="service-icon rounded-circle mx-auto mb-3" src="{% static 'assets/img/Collaborative.png' %}" style="object-position: 2px -2px; " alt="Profile_picture"/>
+                <h4><strong>Collaborative</strong></h4>
+                <p class="text-faded mb-0">Always ready to help the team and the company</p>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                <img class="service-icon rounded-circle mx-auto mb-3" src="{% static 'assets/img/Professional.png' %}" alt="Profile_picture"/>
+                <h4><strong>Professional</strong></h4>
+                <p class="text-faded mb-0">Professional attitude in any situation to deliver best results</p>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+                <img class="service-icon rounded-circle mx-auto mb-3" src="{% static 'assets/img/Analytical.png' %}" style="object-position: 4px 0px; " alt="Profile_picture"/>
+                <h4><strong>Logical</strong></h4>
+                <p class="text-faded mb-0">
+                    More than 25 years of logical and analytical profile
+                </p>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <img class="service-icon rounded-circle mx-auto mb-3" src="{% static 'assets/img/Ready_to_work.png' %}" alt="Profile_picture"/>
+                <h4><strong>Ready to work</strong></h4>
+                <p class="text-faded mb-0">Experience and know-how to make an impact from day one</p>
+            </div>
+        </div>
+    </div>
+    <p><a class="btn btn-warning btn-xl mt-3 mb-5 fs-4" href="{% url 'about me home' %}">More About Me</a></p>
+    <br>
+    <p><a class="btn btn-light btn-xl mt-5 fs-5" href="/#Roadmap">Personal Roadmap</a></p>
+</section>

@@ -2,7 +2,6 @@
 
 30. Upload this project to a server
 
-    0. Test the mail form
     1. buy a domain and associate it
 
 42. Make an application to generate a personalized nutritional plan.
