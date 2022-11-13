@@ -142,30 +142,32 @@
                     If you just want to test how it works, you can optimize the file <a target="_blank"  href="{% static 'What_Is_Python_Used_For_-_A_Beginners_Guide.pdf' %}" style="color:#ffffff;">What_Is_Python_Used_For_-_A_Beginners_Guide.pdf</a> directly by clicking <a href="{% url 'fastReading/wipuf' %}" style="color:#ffffff;"><strong>here</strong></a>.
                 </p>
             </div>
-            <section class="content-section">
-                <div class="container px-4 px-lg-5 text-center">
-                    <div class="row gx-4 gx-lg-5 justify-content-center">
-                        <div class="col-lg-10">
-                            <div class="content-section-heading text-center m-4" id="Load the file">
-                                <h2 class="mb-1"><strong>Load the text file you want to optimize</strong></h2>
-                            </div>
+            <div class="container px-4 px-lg-5 text-center mt-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center mt-3">
+                    <div class="col-lg-10">
+                        <div class="content-section-heading text-center m-4" id="Load the file">
+                            <h2 class="mb-1"><strong>Load the text file you want to optimize</strong></h2>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="content-section-heading text-center">
-                                <form action="" method="post" class="form-signin mt-5" enctype="multipart/form-data">
-                                    {% csrf_token %}
-                                    <input class="mt-3 mb-5 form-control" type="file" name="myfile" id="inputGroupFile">
-                                    <button class="btn btn-warning btn-l fs-4" type="submit" for="inputGroupFile">Upload</button>
-                                </form>
-                            </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="content-section-heading text-center">
+                            <form action="" method="post" class="form-signin mt-5" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <input class="mt-3 mb-5 form-control" type="file" name="myfile" id="inputGroupFile">
+                                <button class="btn btn-warning btn-l fs-4" type="submit" for="inputGroupFile">Upload</button>
+                            </form>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
         </div>
     </div>
 </section>
     {% if uploaded_file_url %}
         <p>File uploaded in: <a href="{{ uploaded_file_url }}">={{ uploaded_file_url }}</a></p>
     {% endif %}
+
+        <!-- Pre-Footer -->
+        {% include 'fastReading/pre_footer.html' %}
+        
 {% endblock %}
