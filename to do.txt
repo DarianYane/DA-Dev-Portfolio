@@ -1,4 +1,3 @@
-41. Improve the Readme (to check "Como hacer un buen readme.txt" in desktop)
 42. Make an application to generate a personalized nutritional plan.
 43. Make the exercise routine
 44. Login to nutrition and exercise projects
