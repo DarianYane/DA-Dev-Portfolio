@@ -62,11 +62,8 @@ Do you want to contact me? You can do it from [here](https://www.darianyane.com/
 Here you will find the goals I have already accomplished, and my future plans as a developer (this section is dynamic and is fed from a database that I modify from the administration panel).
 
 <a href="https://www.linkedin.com/in/darian-yane/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/3536/3536505.png" style="width: 54px; height: 54px;" width="54" height="54" /></a>
-
 <a href="https://www.youtube.com/c/DarianInvierte" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/2111/2111748.png" style="width: 54px; height: 54px;" width="54" height="54" /></a>
-
 <a href="https://twitter.com/DarianInvierte"><img src="https://cdn-icons-png.flaticon.com/128/3670/3670211.png" style="width: 54px; height: 54px;" width="54" height="54" /></a>
-
 <a href="https://github.com/DarianYane" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/536/536452.png" style="width: 54px; height: 54px;" width="54" height="54" /></a>
 
 
