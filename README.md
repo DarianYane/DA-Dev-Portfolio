@@ -69,24 +69,24 @@ Here you will find the goals I have already accomplished, and my future plans as
 
 # FAQ
 
-## Why are you doing this portfolio?
+#### Why are you doing this portfolio?
 Because I want to find a job as a Python developer.
 
-## Can I optimize a file with Fast-Reading?
+#### Can I optimize a file with Fast-Reading?
 Yes, you can.
 
-## What kind of files can I optimize with Fast-Reading?
+#### What kind of files can I optimize with Fast-Reading?
 For now, only pdf files. I hope in the future to expand the functionality for other file types.
 
-## Does it cost anything?
+#### Does it cost anything?
 There is no cost.
 
-## Can I register and create a travel blog post?
+#### Can I register and create a travel blog post?
 Yes, you can!
 
-## How can I contact you?
+#### How can I contact you?
 You can do it from [here](https://www.darianyane.com/#Contact) 
 
-## How is this project done?
+#### How is this project done?
 This project is made with Python, Django, Bootstrap, and is deployed on Railway.
 To make this README I also used https://stackedit.io
