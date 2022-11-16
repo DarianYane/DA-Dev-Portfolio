@@ -2,7 +2,7 @@
 Through this portfolio you will be able to know my skills and you will get all the necessary information to contact me.
 
 <a href="https://www.darianyane.com/#Contact" target="_blank"><img src="https://www.drbuckparker.com/wp-content/uploads/2014/01/contact-me-button-300x112.jpg" style="width: 150px; height: 54px;" width="150" height="54" /></a>
-<a href="https://www.linkedin.com/in/darian-yane/" target="_blank"><img src="https://blog.jdrgroup.co.uk/hs-fs/hubfs/How%20To%20Use%20a%20LinkedIn%20Email%20Button.png?width=387&name=How%20To%20Use%20a%20LinkedIn%20Email%20Button.png" style="width: 150px; height: 70px;" width="150" height="70" /></a>
+<a href="https://www.linkedin.com/in/darian-yane/" target="_blank"><img src="https://blog.jdrgroup.co.uk/hs-fs/hubfs/How%20To%20Use%20a%20LinkedIn%20Email%20Button.png?width=387&name=How%20To%20Use%20a%20LinkedIn%20Email%20Button.png" style="width: 116px; height: 54px;" width="116" height="54" /></a>
 
 # Table of Contents
 - [Darian Yane Portfolio](#darian-yane-portfolio)
