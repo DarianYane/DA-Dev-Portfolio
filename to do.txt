@@ -1,9 +1,4 @@
-10. Under each project, put a button to see the code
-
-30. Upload this project to a server
-
-    1. buy a domain and associate it
-
+41. Improve the Readme (to check "Como hacer un buen readme.txt" in desktop)
 42. Make an application to generate a personalized nutritional plan.
 43. Make the exercise routine
 44. Login to nutrition and exercise projects
