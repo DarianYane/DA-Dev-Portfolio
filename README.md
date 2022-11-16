@@ -46,9 +46,9 @@ This application receives a .pdf and places the first two characters of each wor
 Fast-Reading facilitates the reading process by guiding the eyes through text with artficial fixation points. As a result, the reader is only focusing on the highlighted initial letters and lets the brain center complete the word.
 
 Below is a screenshot demonstrating how the extension works.
-![fast-reading](https://www.darianyane.com/static/assets/img/after.jpg )
+
 <p align="center">
-<a target="_blank"><img src="https://www.darianyane.com/static/assets/img/after.jpg" style="width: 54px; height: 54px;" width="54" height="54" /></a>
+<a><img src="https://www.darianyane.com/static/assets/img/after.jpg" style="width: 554px; height: 554px;" width="554" height="554" /></a>
 </p>
 
 
