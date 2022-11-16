@@ -1,9 +1,11 @@
 # Darian Yane Portfolio
 Through this portfolio you will be able to know my skills and you will get all the necessary information to contact me.
 
+<p align="center">
 <a href="https://www.darianyane.com/#Contact" target="_blank"><img src="https://www.dreamcatcherslifecoach.com/images/Contact_Me_Button-ID-9c13fed2-07d1-456f-c41d-2772ed696194.png" style="width: 150px; height: 104px;" width="150" height="104" /></a>
 
 <a href="https://www.linkedin.com/in/darian-yane/" target="_blank"><img src="https://blog.jdrgroup.co.uk/hs-fs/hubfs/How%20To%20Use%20a%20LinkedIn%20Email%20Button.png?width=387&name=How%20To%20Use%20a%20LinkedIn%20Email%20Button.png" style="width: 150px; height: 70px;" width="150" height="70" /></a>
+</p>
 
 # Table of Contents
 - [Darian Yane Portfolio](#darian-yane-portfolio)
