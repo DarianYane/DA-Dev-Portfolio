@@ -2,7 +2,7 @@
 Through this portfolio you will be able to know my skills and you will get all the necessary information to contact me.
 
 <a href="https://www.darianyane.com/#Contact" target="_blank"><img src="https://www.drbuckparker.com/wp-content/uploads/2014/01/contact-me-button-300x112.jpg" style="width: 150px; height: 54px;" width="150" height="54" /></a>
-<a href="https://www.linkedin.com/in/darian-yane/" target="_blank"><img src="https://blog.jdrgroup.co.uk/hs-fs/hubfs/How%20To%20Use%20a%20LinkedIn%20Email%20Button.png?width=387&name=How%20To%20Use%20a%20LinkedIn%20Email%20Button.png" style="width: 116px; height: 54px;" width="116" height="54" /></a>
+<a href="https://www.linkedin.com/in/darian-yane/" target="_blank"><img src="https://blog.jdrgroup.co.uk/hs-fs/hubfs/How%20To%20Use%20a%20LinkedIn%20Email%20Button.png?width=387&name=How%20To%20Use%20a%20LinkedIn%20Email%20Button.png" style="width: 150px; height: 70px;" width="150" height="70" /></a>
 
 # Table of Contents
 - [Darian Yane Portfolio](#darian-yane-portfolio)
@@ -13,53 +13,22 @@ Through this portfolio you will be able to know my skills and you will get all t
 	  - [Fast-Reading](#fast-reading)
 	  - [Travel Blog](#travel-blog)
   - [About me](#about-me)
-  - [Firefox Nightly / Fennec F-droid / Mull (Android)](#firefox-nightly--fennec-f-droid--mull-android)
-  - [Opera](#opera)
-  - [Edge](#edge)
-  - [Android (kiwi Browser)](#android-kiwi-browser)
-  - [Bookmarklet](#bookmarklet)
-- [First Installation Welcome](#first-installation-welcome)
-  - [Notes on the extension](#notes-on-the-extension)
-  - [Notes on this page](#notes-on-this-page)
+  - [Personal Roadmap](#personal-roadmap)
+  - [Contact Form](#contact-form)
+  - [My networks](#my-networks)
 - [FAQ](#faq)
-    - [How to access the extension settings/popup ui](#how-to-access-the-extension-settingspopup-ui)
-      - [Desktop](#desktop)
-    - [Android (kiwi browser)](#android-kiwi-browser-1)
-    - [What are the functions of the buttons and sliders](#what-are-the-functions-of-the-buttons-and-sliders)
-      - [Global preferences button](#global-preferences-button)
-      - [Site preferences button](#site-preferences-button)
-      - [Enable reading mode button](#enable-reading-mode-button)
-      - [Saccades interval slider](#saccades-interval-slider)
-      - [Fixation strength slider](#fixation-strength-slider)
-      - [Fixation edge opacity](#fixation-edge-opacity)
-      - [Saccades colors](#saccades-colors)
-      - [Saccades styles](#saccades-styles)
-      - [Line height buttons](#line-height-buttons)
-      - [Always on/off button](#always-onoff-button)
-      - [Reset Defaults](#reset-defaults)
-  - [PDF and Epub support](#pdf-and-epub-support)
-    - [Google Play Books Native (Epub)](#google-play-books-native-epub)
-      - [Upload Epubs to Google PlayBooks (Epubs)](#upload-epubs-to-google-playbooks-epubs)
-    - [PFD Support (convert pdf files to epub or html)](#pfd-support-convert-pdf-files-to-epub-or-html)
-    - [Google Docs support (publish method)](#google-docs-support-publish-method)
-    - [Google Docs support (html download method)](#google-docs-support-html-download-method)
-    - [Enable file url permissions (chrome html)](#enable-file-url-permissions-chrome-html)
-- [Customizations](#customizations)
-  - [Shortcut](#shortcut)
-- [What is Bionic Reading?](#what-is-bionic-reading)
-- [Reporting Issues, bugs and feature request](#reporting-issues-bugs-and-feature-request)
-- [How to Contribute](#how-to-contribute)
-- [Help with Translations](#help-with-translations)
-  - [Working with the translation files.](#working-with-the-translation-files)
-  - [Submitting your translations](#submitting-your-translations)
-- [Supported languages](#supported-languages)
-  - [Development](#development)
-  - [Configure vscode to run the project when it is opened](#configure-vscode-to-run-the-project-when-it-is-opened)
-  - [Release a new version](#release-a-new-version)
+    - [Why are you doing this portfolio?](#why-are-you-doing-this-portfolio?)
+    - [Can I optimize a file with Fast-Reading?](#can-i-optimize-a-file-with-fast-reading?)
+    - [What kind of files can I optimize with Fast-Reading?](#what-kind-of-files-can-i-optimize-with-fast-reading?)
+    - [Does it cost anything?](#does-it-cost-anything?)
+    - [Can I register and create a travel blog post?](#can-i-register-and-create-a-travel-blog-post?)
+    - [How can I contact you?](#how-can-i-contact-you?)
+    - [How is this project done?](#how-is-this-project-done?)
+ 
 
 # What is included in this portfolio
-I made this portfolio in order to get a job.
-Here I explain the reasons for hiring me, show the projects I have created, tell you about my education and work experience, give you links to my social networks, and provide you with a contact form so we can arrange an interview.
+I made this portfolio in order to get a job. You can see the deployed version at www.darianyane.com
+In this site I explain the reasons for hiring me, show the projects I have created, tell you about my education and work experience, give you links to my social networks, and provide you with a contact form so we can arrange an interview.
 
 ## Reasons for hiring me
 Here you will find the reasons why you should hire me as soon as possible.
@@ -70,8 +39,12 @@ In this section you will find the access to the different projects I have worked
 ### Fast-Reading
 This application receives a .pdf and places the first two characters of each word in "bold" to make the text easier to read.
 
+Fast-Reading facilitates the reading process by guiding the eyes through text with artficial fixation points. As a result, the reader is only focusing on the highlighted initial letters and lets the brain center complete the word.
+
 Below is a screenshot demonstrating how the extension works.
-![fast-reading](https://www.darianyane.com/static/assets/img/after.jpg)
+![fast-reading](https://www.darianyane.com/static/assets/img/after.jpg ) 
+
+To optimize a file you do not need to download or install anything. You can do it directly from the project page. And if you don't have a .pdf file nearby, I provide one so you can test the project.
 
 ### Travel Blog
 This travel blog is an improved version of the final work I did for my Python course at Coderhouse. It includes a CRUD for the posts and a user management system.
@@ -79,4 +52,44 @@ This travel blog is an improved version of the final work I did for my Python co
 ## About me
 In this section you will find a description of my knowledge, experiences and objectives. You can also download my CV.
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/GB6Eki?referralCode=U5zXSw)
+## Personal Roadmap
+Here you will find the goals I have already accomplished, and my future plans as a developer (this section is dynamic and is fed from a database that I modify from the administration panel).
+
+## Contact Form
+Do you want to contact me? You can do it from [here](https://www.darianyane.com/#Contact) 
+
+## My networks
+Here you will find the goals I have already accomplished, and my future plans as a developer (this section is dynamic and is fed from a database that I modify from the administration panel).
+
+<a href="https://www.linkedin.com/in/darian-yane/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/3536/3536505.png" style="width: 54px; height: 54px;" width="54" height="54" /></a>
+
+<a href="https://www.youtube.com/c/DarianInvierte" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/2111/2111748.png" style="width: 54px; height: 54px;" width="54" height="54" /></a>
+
+<a href="https://twitter.com/DarianInvierte"><img src="https://cdn-icons-png.flaticon.com/128/3670/3670211.png" style="width: 54px; height: 54px;" width="54" height="54" /></a>
+
+<a href="https://github.com/DarianYane" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/536/536452.png" style="width: 54px; height: 54px;" width="54" height="54" /></a>
+
+
+# FAQ
+
+## Why are you doing this portfolio?
+Because I want to find a job as a Python developer.
+
+## Can I optimize a file with Fast-Reading?
+Yes, you can.
+
+## What kind of files can I optimize with Fast-Reading?
+For now, only pdf files. I hope in the future to expand the functionality for other file types.
+
+## Does it cost anything?
+There is no cost.
+
+## Can I register and create a travel blog post?
+Yes, you can!
+
+## How can I contact you?
+You can do it from [here](https://www.darianyane.com/#Contact) 
+
+## How is this project done?
+This project is made with Python, Django, Bootstrap, and is deployed on Railway.
+To make this README I also used https://stackedit.io
