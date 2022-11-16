@@ -46,9 +46,8 @@ This application receives a .pdf and places the first two characters of each wor
 Fast-Reading facilitates the reading process by guiding the eyes through text with artficial fixation points. As a result, the reader is only focusing on the highlighted initial letters and lets the brain center complete the word.
 
 Below is a screenshot demonstrating how the extension works.
-<p align="center">
 ![fast-reading](https://www.darianyane.com/static/assets/img/after.jpg )
-</p>
+
 
 To optimize a file you do not need to download or install anything. You can do it directly from the project page. And if you don't have a .pdf file nearby, I provide one so you can test the project.
 
@@ -66,11 +65,12 @@ Do you want to contact me? You can do it from [here](https://www.darianyane.com/
 
 ## My networks
 Here you will find the goals I have already accomplished, and my future plans as a developer (this section is dynamic and is fed from a database that I modify from the administration panel).
-
+<p align="center">
 <a href="https://www.linkedin.com/in/darian-yane/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/3536/3536505.png" style="width: 54px; height: 54px;" width="54" height="54" /></a>
 <a href="https://www.youtube.com/c/DarianInvierte" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/2111/2111748.png" style="width: 54px; height: 54px;" width="54" height="54" /></a>
 <a href="https://twitter.com/DarianInvierte"><img src="https://cdn-icons-png.flaticon.com/128/3670/3670211.png" style="width: 54px; height: 54px;" width="54" height="54" /></a>
 <a href="https://github.com/DarianYane" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/536/536452.png" style="width: 54px; height: 54px;" width="54" height="54" /></a>
+</p>
 
 
 # FAQ
