@@ -48,7 +48,7 @@ Fast-Reading facilitates the reading process by guiding the eyes through text wi
 Below is a screenshot demonstrating how the extension works.
 
 <p align="center">
-<a><img src="https://www.darianyane.com/static/assets/img/after.jpg" style="width: 554px; height: 554px;" width="554" height="554" /></a>
+<a><img src="https://www.darianyane.com/static/assets/img/after.jpg" style="width: 400px; height: 400px;" width="400" height="400" /></a>
 </p>
 
 
