@@ -63,17 +63,18 @@ In this section you will find a description of my knowledge, experiences and obj
 Here you will find the goals I have already accomplished, and my future plans as a developer (this section is dynamic and is fed from a database that I modify from the administration panel).
 
 
-## Contact Form ✉
+## Contact Form
 Do you want to contact me? You can do it from [here](https://www.darianyane.com/#Contact) 
 
 
 ## My networks
-Here you will find the goals I have already accomplished, and my future plans as a developer (this section is dynamic and is fed from a database that I modify from the administration panel).
+These are my social networks, my Linkedin, and the form so you can contact me.
 <p align="center">
 <a href="https://www.linkedin.com/in/darian-yane/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/3536/3536505.png" style="width: 54px; height: 54px;" width="54" height="54" /></a>
 <a href="https://www.youtube.com/c/DarianInvierte" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/2111/2111748.png" style="width: 54px; height: 54px;" width="54" height="54" /></a>
 <a href="https://twitter.com/DarianInvierte"><img src="https://cdn-icons-png.flaticon.com/128/3670/3670211.png" style="width: 54px; height: 54px;" width="54" height="54" /></a>
 <a href="https://github.com/DarianYane" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/536/536452.png" style="width: 54px; height: 54px;" width="54" height="54" /></a>
+<a href="https://www.darianyane.com/#Contact" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/609/609386.png" style="width: 54px; height: 54px;" width="54" height="54" /></a>
 </p>
 
 
