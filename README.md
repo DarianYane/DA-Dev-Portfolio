@@ -47,6 +47,9 @@ Fast-Reading facilitates the reading process by guiding the eyes through text wi
 
 Below is a screenshot demonstrating how the extension works.
 ![fast-reading](https://www.darianyane.com/static/assets/img/after.jpg )
+<p align="center">
+<a target="_blank"><img src="https://www.darianyane.com/static/assets/img/after.jpg" style="width: 54px; height: 54px;" width="54" height="54" /></a>
+</p>
 
 
 To optimize a file you do not need to download or install anything. You can do it directly from the project page. And if you don't have a .pdf file nearby, I provide one so you can test the project.
