@@ -2,7 +2,7 @@
 Through this portfolio you will be able to know my skills and you will get all the necessary information to contact me.
 
 <p align="center">
-<a href="https://www.darianyane.com/#Contact" target="_blank"><img src="https://www.dreamcatcherslifecoach.com/images/Contact_Me_Button-ID-9c13fed2-07d1-456f-c41d-2772ed696194.png" style="width: 150px; height: 104px;" width="150" height="104" /></a>
+<a href="https://www.darianyane.com/#Contact" target="_blank"><img src="https://www.dreamcatcherslifecoach.com/images/Contact_Me_Button-ID-9c13fed2-07d1-456f-c41d-2772ed696194.png" style="width: 150px; height: 100px;" width="150" height="100" /></a>
 </p>
 <p align="center">
 <a href="https://www.linkedin.com/in/darian-yane/" target="_blank"><img src="https://blog.jdrgroup.co.uk/hs-fs/hubfs/How%20To%20Use%20a%20LinkedIn%20Email%20Button.png?width=387&name=How%20To%20Use%20a%20LinkedIn%20Email%20Button.png" style="width: 150px; height: 70px;" width="150" height="70" /></a>
@@ -46,7 +46,9 @@ This application receives a .pdf and places the first two characters of each wor
 Fast-Reading facilitates the reading process by guiding the eyes through text with artficial fixation points. As a result, the reader is only focusing on the highlighted initial letters and lets the brain center complete the word.
 
 Below is a screenshot demonstrating how the extension works.
-![fast-reading](https://www.darianyane.com/static/assets/img/after.jpg ) 
+<p align="center">
+![fast-reading](https://www.darianyane.com/static/assets/img/after.jpg )
+</p>
 
 To optimize a file you do not need to download or install anything. You can do it directly from the project page. And if you don't have a .pdf file nearby, I provide one so you can test the project.
 
