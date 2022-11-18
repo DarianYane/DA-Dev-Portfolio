@@ -22,19 +22,13 @@ def upload(request):
     return render(request, "fastReading/upload.html")
 
 def wipuf(request):
-    # TODO
-    """ Upload the original pdf  
-    if request.method == 'POST' and request.FILES['myfile']: # myfile is the file in the form
-        myfile = request.FILES['myfile']
-        fs = FileSystemStorage() # we generate the FileSystemStorage object here"""
-
     global filename # this is the variable that I am going to optimize in the other view, that's why I make it global
     filename = "What_Is_Python_Used_For_-_A_Beginners_Guide.pdf" # we save the file with the name of the file, and the second parameter is the file itself
     return redirect(f2_bolded)
 
 
 def f2_bolded(request):
-	# Optimize the uploaded PDF """
+	# Optimize the uploaded PDF
     global b_text
     b_text = ""
     count = 0
