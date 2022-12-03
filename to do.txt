@@ -1,10 +1,9 @@
-42. Make an application to generate a personalized nutritional plan.
+01. update my resume in static files (in english)
+02. Make an application to generate a personalized nutritional plan.
 43. Make the exercise routine
 44. Login to nutrition and exercise projects
 
 100. Doing Machine Learning / Artificial Intelligence project
-
-102. update my resume in static files (in english)
 
 990. Review and update my resume if necessary.
     Description
@@ -65,7 +64,5 @@
         Additionally, I intend to continue improving my English level, and learning about Machine Learning, Solidity and Artificial Intelligence.
 
 998. Make a video explaining how every project works, and showing and explaining a little the code
-
-999. Make a Github-Page
 
 1000 Comments in the blog
