@@ -7023,6 +7023,14 @@ textarea.form-control-lg {
   flex-direction: column !important;
 }
 
+.flex-container-about {
+  display: flex;
+}
+
+.flex-item-about {
+  margin: 8px;
+}
+
 .flex-row-reverse {
   flex-direction: row-reverse !important;
 }
