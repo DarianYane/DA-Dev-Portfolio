@@ -3,6 +3,7 @@ from fastReading.views import upload
 from aboutme.views import aboutmehome
 from blog.views import BlogListView
 from landing import views
+from nutriplan.views import home
 
 urlpatterns = [
     path('fastReading/upload', upload, name="fastReading/upload"),

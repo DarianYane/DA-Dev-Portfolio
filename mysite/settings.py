@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "blog",
     "blogusers",
     "ckeditor",
+    "nutriplan",
 ]
 
 MIDDLEWARE = [
