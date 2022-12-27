@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutriplan</title>
+    <link href="{% static 'css/normalize.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/nutriplan.css' %}" rel="stylesheet" />
+</head>
+<body>
+    <header>
+    </header>
+
+    <main>
+<!--         <h2>Hola {Claudia}!</h2> -->
+        <h2>¡Felicitaciones por haber comenzado este viaje de transformación!</h2>
+        <p>
+            Tu índice metabólico basal (IMB) es de {{IMB}} kilo-calorías (Kcal).
+        </p>
+        <p>
+            Tus calorías de mantenimiento (CDM) son {{CDM}} kilo-calorías (Kcal).
+        </p>
+        <p>
+            Para {{target}} debes consumir {{CaloriasObjetivo}} kilo-calorías (Kcal) diarias.
+        </p>
+        <div>
+            <h2>Macronutrientes</h2>
+            <p>No todas las calorías son iguales. Por este motivo, debes lograr un balance en el consumo de proteínas, grasas, e hidratos de carbono.</p>
+            <p>Para alcanzar tu objetivo debes consumir diariamente la siguiente combinación de calorías:</p>
+            <table>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Gramos</th>
+                </tr>
+                <tr>
+                    <td>Proteínas</td>
+                    <td>{{proteinas}}</td>
+                </tr>
+                <tr>
+                    <td>Grasas</td>
+                    <td>{{grasas}}</td>
+                </tr>
+                <tr>
+                    <td>Hidratos de Carbono</td>
+                    <td>{{hidratos}}</td>
+                </tr>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+    </footer>
+</body>
+</html>
