@@ -1,4 +1,15 @@
 {% load static %}
+<head>
+    <style>
+        #Back-to-top {
+            transition: transform 0.3s;
+        }
+
+        #Back-to-top:hover  {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
 <!-- Footer-->
 <div class="d-flex justify-content-evenly align-items-center">
     <div class="col-4 p-2 text-center">
@@ -23,7 +34,7 @@
             </div>
         </footer>
     <div class="col-4 text-center align-items-center">
-        <a href="#page-top" style="text-decoration:none"><img class="p-1 bg-body mb-1" src="{% static 'assets/img/back-to-top.png' %}" style="  height: 5rem; width: 5rem;" alt="Back-to-top"/><p class="text-muted small mb-0">Back to Top</p></a>
+        <a href="#page-top" style="text-decoration:none"><img class="p-1 bg-body mb-1" id="Back-to-top" src="{% static 'assets/img/back-to-top.png' %}" style="height: 5rem; width: 5rem;" alt="Back-to-top"/><p class="text-muted small mb-0">Back to Top</p></a>
         <br>
         <br>
     </div>        
