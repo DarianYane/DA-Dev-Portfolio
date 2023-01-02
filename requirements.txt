@@ -9,3 +9,6 @@ PyPDF2==2.10.8
 sqlparse==0.4.2
 whitenoise==6.2.0
 xhtml2pdf==0.2.8
+
+openpyxl==3.0.10
+pandas==1.4.3

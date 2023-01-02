@@ -1,0 +1,13 @@
+Preparé un archivo excel con los datos dentro de una tabla.
+Los datos tienen las propiedades del modelo, y en el mismo orden.
+En terminal, ejecuto python manage.py shell para importar los datos por shell
+Importo el modelo: from nutriplan.models import Alimentos
+Importo pandas: import pandas as pd
+Genero el dataframe df = pd.read_excel('nutriplan/alimentos.xlsx')
+Itero los index, los nombres, y las calorias para verificar que el dataframe (df) está correcto:
+    for index, row in df.iterrows(): print(index)
+    for index, row in df.iterrows(): print(row['nombre'])
+    for index, row in df.iterrows(): print(row['calorias'])
+Itero en cada elemento, y lo voy salvando como una instancia:
+    for index, row in df.iterrows(): obj = Alimentos(nombre=row['nombre'], categoria=row['categoria'], calorias=row['calorias'], hidratos=row['hidratos'], proteinas=row['proteinas'], grasas=row['grasas'], porcion=row['porcion'],); obj.save()
+Voy al admin, y verifico que las instancias se hayan generado correctamente.
