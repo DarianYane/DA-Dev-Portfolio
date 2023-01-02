@@ -67,3 +67,27 @@ def howManyCalories(request):
         }
     
     return render(request,'nutriplan/how-many-calories.html', context)
+
+"""
+Para resolver un sistema de 3 ecuaciones con 3 incógnitas en Python, puedes utilizar la biblioteca numpy. Esta biblioteca proporciona la función solve(), que permite resolver sistemas de ecuaciones lineales de la forma Ax = b, donde A es una matriz de coeficientes, x es un vector de incógnitas y b es un vector de términos independientes.
+
+Por ejemplo, si quieres resolver el siguiente sistema de ecuaciones:
+2x + 3y + z = 1
+x - 2y + 3z = -1
+3x + 2y - 4z = 0
+
+Puedes utilizar el siguiente código:
+
+import numpy as np
+
+# Definir la matriz de coeficientes A y el vector de términos independientes b
+A = np.array([[2, 3, 1], [1, -2, 3], [3, 2, -4]])
+b = np.array([1, -1, 0])
+
+# Resolver el sistema de ecuaciones utilizando la función solve() de numpy
+x = np.linalg.solve(A, b)
+
+# Imprimir la solución
+print(x)
+
+"""
