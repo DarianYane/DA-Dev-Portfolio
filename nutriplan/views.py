@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from nutriplan.models import Alimentos
 
 # Create your views here.
 def home(request):
@@ -14,7 +14,6 @@ def howManyCalories(request):
     age = int(request.POST.get('age'))
     raf = request.POST.get('raf')
     objetivo = request.POST.get('objetivo')
-    #print(gender)
     
     # Calculo el Índice Metabólico Basal (IMB)
     if gender == 'hombre':
@@ -51,9 +50,17 @@ def howManyCalories(request):
     CaloriasObjetivo = int(CDM*ajuste)
     print(f'CaloriasObjetivo es {CaloriasObjetivo}')
     
-    proteinas=int(CaloriasObjetivo*0.4/4)
-    grasas=int(CaloriasObjetivo*0.3/9)
-    hidratos=int(CaloriasObjetivo*0.3/4)
+    proteinasObjetivo=int(CaloriasObjetivo*0.4/4)
+    grasasObjetivo=int(CaloriasObjetivo*0.3/9)
+    hidratosObjetivo=int(CaloriasObjetivo*0.3/4)
+    
+    global COMIDA_CHOICES
+    COMIDA_CHOICES = (
+        'Desayuno', 
+        'Almuerzo', 
+        'Merienda', 
+        'Cena', 
+    )
     
     # Envío el contexto
     context={
@@ -61,17 +68,106 @@ def howManyCalories(request):
         'CDM':CDM,
         'target':target,
         'CaloriasObjetivo':CaloriasObjetivo,
-        'proteinas':proteinas,
-        'grasas':grasas,
-        'hidratos':hidratos,
+        'proteinasObjetivo':proteinasObjetivo,
+        'grasasObjetivo':grasasObjetivo,
+        'hidratosObjetivo':hidratosObjetivo,
+        'alimentos': Alimentos.objects.all(),
+        'COMIDA_CHOICES':COMIDA_CHOICES,
         }
     
     return render(request,'nutriplan/how-many-calories.html', context)
 
+def dietPlan(request):
+    # Obtengo los datos que vienen del formulario
+    # Lo debo transformar en diccionario para poder contar los valores de cada key
+    querydict=dict(request.POST)
+    print(querydict)
+    
+    for comida in COMIDA_CHOICES:
+        d=comida*2
+        print(d)
+        
+    
+    try:
+        print(len(querydict['opcionesDesayuno']))
+        for id in querydict['opcionesDesayuno']:
+            print(id)
+    except:
+        pass
+    try:
+        print(len(querydict['opcionesAlmuerzo']))
+    except:
+        pass
+    try:
+        print(len(querydict['opcionesMerienda']))
+    except:
+        pass
+    try:
+        alimentosCena = list(querydict['opcionesCena'])
+        alimentosCena=alimentosCena*7
+        #alimentosCena[0].append(789)
+        
+        print(alimentosCena)
+        print(len(querydict['opcionesCena']))
+        """
+        la función solve() permite resolver sistemas de ecuaciones lineales de la forma Ax = b, donde A es una matriz de coeficientes, x es un vector de incógnitas y b es un vector de términos independientes.
+
+        Por ejemplo, si quieres resolver el siguiente sistema de ecuaciones
+        2x + 3y + z = 1
+        x - 2y + 3z = -1
+        3x + 2y - 4z = 0
+
+        Puedes utilizar el siguiente código:
+
+        import numpy as np
+
+        # Definir la matriz de coeficientes A y el vector de términos independientes b
+        A = np.array([[2, 3, 1], [1, -2, 3], [3, 2, -4]])
+        b = np.array([1, -1, 0])
+
+        # Resolver el sistema de ecuaciones utilizando la función solve() de numpy
+        x = np.linalg.solve(A, b)
+
+        # Imprimir la solución
+        print(x)
+
+        """
+        import numpy as np
+
+        # Definir la matriz de coeficientes A y el vector de términos independientes b
+        A = np.array([[2, 3, 1], [1, -2, 3], [3, 2, -4]])
+        b = np.array([1, -1, 0])
+
+        # Resolver el sistema de ecuaciones utilizando la función solve() de numpy
+        x = np.linalg.solve(A, b)
+
+        # Imprimir la solución
+        print(x)
+    except:
+        pass
+
+    dias = range(1,8)
+    Desayuno=[1,2,3,4]
+    #print(Desayuno[3])
+    almuerzos=()
+    meriendas=()
+    cenas=()
+
+    
+
+    context={
+        'COMIDA_CHOICES':COMIDA_CHOICES,
+        'dias': dias,
+        'Desayuno': Desayuno,
+        }
+        
+    return render(request,'nutriplan/diet-plan.html', context)
+
+
 """
 Para resolver un sistema de 3 ecuaciones con 3 incógnitas en Python, puedes utilizar la biblioteca numpy. Esta biblioteca proporciona la función solve(), que permite resolver sistemas de ecuaciones lineales de la forma Ax = b, donde A es una matriz de coeficientes, x es un vector de incógnitas y b es un vector de términos independientes.
 
-Por ejemplo, si quieres resolver el siguiente sistema de ecuaciones:
+Por ejemplo, si quieres resolver el siguiente sistema de ecuaciones
 2x + 3y + z = 1
 x - 2y + 3z = -1
 3x + 2y - 4z = 0

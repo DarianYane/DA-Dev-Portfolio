@@ -12,14 +12,14 @@ class Alimentos(models.Model):
         ('Lacteos', 'Lacteos'),
         ('Otros', 'Otros'),
     )
-    categoria = models.CharField(max_length=50, choices=CATEGORIA_CHOICES, default='Otros')
+    categoria = models.CharField(verbose_name="Tipo de alimento", max_length=50, choices=CATEGORIA_CHOICES, default='Otros')
     COMIDA_CHOICES = (
         ('Desayuno', 'Desayuno'),
         ('Almuerzo', 'Almuerzo'),
         ('Merienda', 'Merienda'),
         ('Cena', 'Cena'),
     )
-    comida = models.CharField(max_length=150, choices=COMIDA_CHOICES, default='Almuerzo')
+    comida = models.CharField(verbose_name="Comida en la que se suele consumir", max_length=150, choices=COMIDA_CHOICES, default='Almuerzo')
     calorias=models.IntegerField(verbose_name="Calorías por porción")
     hidratos=models.IntegerField(verbose_name="Hidratos de Carbono por porción")
     proteinas=models.IntegerField(verbose_name="Proteínas por porción")

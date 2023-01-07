@@ -8,23 +8,50 @@
     <title>Nutriplan</title>
     <link href="{% static 'css/normalize.css' %}" rel="stylesheet" />
     <link href="{% static 'css/nutriplan.css' %}" rel="stylesheet" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {% for comida in COMIDA_CHOICES %}
+        <!-- Script dinámico para el mensaje de alerta -->
+        <script type="text/javascript">
+            function onlyOneCheckBox{{comida}}() {
+                
+                var checkboxgroup{{comida}} = document.getElementById('checkboxgroup{{comida}}').getElementsByTagName("input");
+                var limit = 3;
+                for (var i = 0; i < checkboxgroup{{comida}}.length; i++) {
+                    checkboxgroup{{comida}}[i].onclick = function() {
+                        var checkedcount = 0;
+                            for (var i = 0; i < checkboxgroup{{comida}}.length; i++) {
+                            checkedcount += (checkboxgroup{{comida}}[i].checked) ? 1 : 0;
+                        }
+                        if (checkedcount > limit) {
+                            /* console.log("You can select maximum of " + limit + " checkbox."); */
+                            /* Mensaje de alerta si se quieren seleccionar más opciones de las permitidas */
+                            swal("Recuerda que sólo puedes seleccionar " + limit + " opciones de {{comida.lower}} como máximo","","error");
+                            
+                            this.checked = false;
+                        }
+                    }
+                }
+            }
+        </script>
+    {% endfor %}
 </head>
 <body>
     <header>
     </header>
 
     <main>
-<!--         <h2>Hola {Claudia}!</h2> -->
-        <h2>¡Felicitaciones por haber comenzado este viaje de transformación!</h2>
-        <p>
-            Tu índice metabólico basal (IMB) es de {{IMB}} kilo-calorías (Kcal).
-        </p>
-        <p>
-            Tus calorías de mantenimiento (CDM) son {{CDM}} kilo-calorías (Kcal).
-        </p>
-        <p>
-            Para {{target}} debes consumir {{CaloriasObjetivo}} kilo-calorías (Kcal) diarias.
-        </p>
+        <div>
+            <h2>¡Felicitaciones por haber comenzado este viaje de transformación!</h2>
+            <p>
+                Tu índice metabólico basal (IMB) es de {{IMB}} kilo-calorías (Kcal).
+            </p>
+            <p>
+                Tus calorías de mantenimiento (CDM) son {{CDM}} kilo-calorías (Kcal).
+            </p>
+            <p>
+                Para {{target}} debes consumir {{CaloriasObjetivo}} kilo-calorías (Kcal) diarias.
+            </p>
+        </div>
         <div>
             <h2>Macronutrientes</h2>
             <p>No todas las calorías son iguales. Por este motivo, debes lograr un balance en el consumo de proteínas, grasas, e hidratos de carbono.</p>
@@ -36,18 +63,78 @@
                 </tr>
                 <tr>
                     <td>Proteínas</td>
-                    <td>{{proteinas}}</td>
+                    <td>{{proteinasObjetivo}}</td>
                 </tr>
                 <tr>
                     <td>Grasas</td>
-                    <td>{{grasas}}</td>
+                    <td>{{grasasObjetivo}}</td>
                 </tr>
                 <tr>
                     <td>Hidratos de Carbono</td>
-                    <td>{{hidratos}}</td>
+                    <td>{{hidratosObjetivo}}</td>
                 </tr>
             </table>
         </div>
+        <div>
+            <h2>Vamos a ayudarte a generar tu dieta ideal</h2>
+            <p>Elige hasta 3 de tus alimentos favoritos para cada comida.</p>
+            <p>A partir de ellos, generaremos una dieta semanal de 4 comidas diarias, que incluya tus alimentos favoritos, y cumpla con el objetivo calórico que acabamos de determinar.</p>
+
+            <form action="/nutriplan/diet-plan" method="POST">
+                {% csrf_token %}
+
+                {% for comida in COMIDA_CHOICES %}
+                    <h3>{{comida}}</h3>
+                    <div id="checkboxgroup{{comida}}">
+                    {% for alimento in alimentos %}
+                        {% if alimento.comida == comida %}
+                        <label>
+                            <input type="checkbox" name="opciones{{comida}}" value="AlimentoID{{alimento.id}}" onclick="return onlyOneCheckBox{{comida}}()"> {{alimento.nombre}} <!-- {{alimento.id}} {{alimento.comida}} -->
+                        </label><br>
+                        {% endif %}
+                    {% endfor %}
+                    </div>
+                    <script type="text/javascript">
+                        onlyOneCheckBox{{comida}}()
+                    </script>
+
+                {% endfor %}
+
+                <input type="submit" value="Generar Plan">
+            </form>
+
+        </div>
+
+        <!-- otra forma de contar checkboxes -->
+<!--         <div>
+                <span id="notvalid" style="color: red;"> </span>
+            </div>
+
+            <script type="text/javascript">
+
+                function myfun() {
+                    var a = document.getElementsByName('opcionesCena');
+                    var newvar = 0;
+                    var count;
+                    for(count = 0; count <a.length; count++){
+                        if(a[count].checked==true){
+                            newvar = newvar + 1;
+                        }
+                    }
+
+                    if(newvar>=5){
+                        document.getElementById('notvalid').innerHTML="**Please select only Four**"
+                        return false;
+                    }
+
+                    if(newvar<5){
+                        document.getElementById('notvalid').innerHTML=""
+                        return true;
+                    }
+                }
+                
+            </script> -->
+
     </main>
 
     <footer>
