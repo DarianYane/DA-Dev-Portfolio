@@ -83,9 +83,9 @@ def dietPlan(request):
     querydict=dict(request.POST)
     print(querydict)
     
-    for comida in COMIDA_CHOICES:
-        d=comida*2
-        print(d)
+    """ for comida in COMIDA_CHOICES:
+        d=str(comida)+"1"
+        print(d) """
         
     
     try:
@@ -105,7 +105,7 @@ def dietPlan(request):
     try:
         alimentosCena = list(querydict['opcionesCena'])
         alimentosCena=alimentosCena*7
-        #alimentosCena[0].append(789)
+        alimentosCena[0].append(789)
         
         print(alimentosCena)
         print(len(querydict['opcionesCena']))
@@ -146,22 +146,45 @@ def dietPlan(request):
     except:
         pass
 
-    dias = range(1,8)
-    Desayuno=[1,2,3,4]
+    dias = range(1,8) #ok
+    
+    Dieta={
+        'Desayuno':{
+            'test':{'pan2':110, 'manteca2':130},
+            'leche2':120,
+            'manteca2':130,
+            },
+        'Almuerzo':{
+            'test':{'pan':210, 'manteca':230},
+            'leche':220,
+            'manteca':230,
+            },
+        'Merienda':{
+            'test':{'pan':310, 'manteca':330},
+            'leche':320,
+            'manteca':330,
+            },
+        'Cena':{
+            'test':{'pan':410, 'manteca':430},
+            'leche':420,
+            'manteca':430,
+            },
+        
+        }
     #print(Desayuno[3])
     almuerzos=()
     meriendas=()
     cenas=()
 
-    
+
 
     context={
-        'COMIDA_CHOICES':COMIDA_CHOICES,
-        'dias': dias,
-        'Desayuno': Desayuno,
+        'COMIDA_CHOICES':COMIDA_CHOICES, #ok
+        'dias': dias, #ok
+        'Dieta': Dieta,
         }
         
-    return render(request,'nutriplan/diet-plan.html', context)
+    return render(request,'nutriplan/diet-plan.html', context) #ok
 
 
 """

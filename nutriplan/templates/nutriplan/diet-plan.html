@@ -29,15 +29,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    </tr>
-                    <tr>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    </tr>
-                    <tr>
+                    {% for key, value in Dieta.items %}
+                        {% if key == comida %}
+                        <tr>
+                        <td>{{ key }}</td>
+                        <td>{{ value }}</td>
+                        </tr>
+                        {% endif %}
+                    {% endfor %}
                 </tbody>
                 </table>
                 {% endfor %}
