@@ -83,6 +83,47 @@ def dietPlan(request):
     querydict=dict(request.POST)
     print(querydict)
     
+    #Esto es lo que tengo que ir generando automaticamente
+    Dieta={
+        'Desayuno':{
+            1:{
+                'quesu':110,
+                'leche':120,
+                'manteca':130,
+            },
+            2:{
+                'jamon':110,
+                'tostada':120,
+                'yogur':130,
+            },
+        },
+
+        'Almuerzo':{
+            1:{
+                'arroz':110,
+                'fideos':120,
+                'carne':130,
+            },
+            2:{
+                'empanadas':110,
+                'ravioles':120,
+                'pollo':130,
+            },
+        },
+        
+        'Merienda':{
+            'test':{'pan':310, 'manteca':330},
+            'leche':320,
+            'manteca':330,
+            },
+        'Cena':{
+            'test':{'pan':410, 'manteca':430},
+            'leche':420,
+            'manteca':430,
+            },
+        
+        }
+    
     """ for comida in COMIDA_CHOICES:
         d=str(comida)+"1"
         print(d) """
@@ -148,29 +189,7 @@ def dietPlan(request):
 
     dias = range(1,8) #ok
     
-    Dieta={
-        'Desayuno':{
-            'test':{'pan2':110, 'manteca2':130},
-            'leche2':120,
-            'manteca2':130,
-            },
-        'Almuerzo':{
-            'test':{'pan':210, 'manteca':230},
-            'leche':220,
-            'manteca':230,
-            },
-        'Merienda':{
-            'test':{'pan':310, 'manteca':330},
-            'leche':320,
-            'manteca':330,
-            },
-        'Cena':{
-            'test':{'pan':410, 'manteca':430},
-            'leche':420,
-            'manteca':430,
-            },
-        
-        }
+    
     #print(Desayuno[3])
     almuerzos=()
     meriendas=()
@@ -181,7 +200,7 @@ def dietPlan(request):
     context={
         'COMIDA_CHOICES':COMIDA_CHOICES, #ok
         'dias': dias, #ok
-        'Dieta': Dieta,
+        'Dieta': Dieta, #ok
         }
         
     return render(request,'nutriplan/diet-plan.html', context) #ok

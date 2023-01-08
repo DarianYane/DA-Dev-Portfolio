@@ -29,13 +29,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for key, value in Dieta.items %}
-                        {% if key == comida %}
-                        <tr>
-                        <td>{{ key }}</td>
-                        <td>{{ value }}</td>
-                        </tr>
+                    {% for momentoDelDia, numeroDeDia in Dieta.items %}
+
+                        {% if momentoDelDia == comida %}
+
+                            {% for numeroDeDia, alimento in numeroDeDia.items %}
+
+                                {% if numeroDeDia == dia %}
+
+                                    {% for nombre, gramos in alimento.items %}
+                                    <tr>
+                                    <td>{{ nombre }}</td>
+                                    <td>{{ gramos }}</td>
+                                    </tr>
+                                    {% endfor %}
+
+                                {% endif %}
+                            
+                            {% endfor %}
+                        
                         {% endif %}
+
                     {% endfor %}
                 </tbody>
                 </table>
