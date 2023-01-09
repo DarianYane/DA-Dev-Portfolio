@@ -89,7 +89,7 @@
                     {% for alimento in alimentos %}
                         {% if alimento.comida == comida %}
                         <label>
-                            <input type="checkbox" name="opciones{{comida}}" value="AlimentoID{{alimento.id}}" onclick="return onlyOneCheckBox{{comida}}()"> {{alimento.nombre}} <!-- {{alimento.id}} {{alimento.comida}} -->
+                            <input type="checkbox" name="opciones{{comida}}" value="{{alimento.id}}" onclick="return onlyOneCheckBox{{comida}}()"> {{alimento.nombre}} <!-- {{alimento.id}} {{alimento.comida}} -->
                         </label><br>
                         {% endif %}
                     {% endfor %}

@@ -1,5 +1,16 @@
 from django.shortcuts import render
 from nutriplan.models import Alimentos
+import random
+
+# Determino las constantes
+COMIDA_CHOICES = (
+    'Desayuno', 
+    'Almuerzo', 
+    'Merienda', 
+    'Cena', 
+)
+
+dias = range(1,8)
 
 # Create your views here.
 def home(request):
@@ -50,17 +61,16 @@ def howManyCalories(request):
     CaloriasObjetivo = int(CDM*ajuste)
     print(f'CaloriasObjetivo es {CaloriasObjetivo}')
     
-    proteinasObjetivo=int(CaloriasObjetivo*0.4/4)
-    grasasObjetivo=int(CaloriasObjetivo*0.3/9)
+    # Nutrientes objetivos. Son globales para poder calcular la dieta
+    global hidratosObjetivo
     hidratosObjetivo=int(CaloriasObjetivo*0.3/4)
     
-    global COMIDA_CHOICES
-    COMIDA_CHOICES = (
-        'Desayuno', 
-        'Almuerzo', 
-        'Merienda', 
-        'Cena', 
-    )
+    global proteinasObjetivo
+    proteinasObjetivo=int(CaloriasObjetivo*0.4/4)
+    
+    global grasasObjetivo
+    grasasObjetivo=int(CaloriasObjetivo*0.3/9)
+
     
     # Envío el contexto
     context={
@@ -68,9 +78,9 @@ def howManyCalories(request):
         'CDM':CDM,
         'target':target,
         'CaloriasObjetivo':CaloriasObjetivo,
+        'hidratosObjetivo':hidratosObjetivo,
         'proteinasObjetivo':proteinasObjetivo,
         'grasasObjetivo':grasasObjetivo,
-        'hidratosObjetivo':hidratosObjetivo,
         'alimentos': Alimentos.objects.all(),
         'COMIDA_CHOICES':COMIDA_CHOICES,
         }
@@ -78,11 +88,178 @@ def howManyCalories(request):
     return render(request,'nutriplan/how-many-calories.html', context)
 
 def dietPlan(request):
-    # Obtengo los datos que vienen del formulario
-    # Lo debo transformar en diccionario para poder contar los valores de cada key
-    querydict=dict(request.POST)
-    print(querydict)
+    # Transformo en diccionario todas las instancias de mi db
+    alimentos= Alimentos.objects.all()
+    # Crear una lista vacía donde se almacenarán los alimentos
+    listaAlimentos = []
+    # Iterar sobre el queryset y crear un diccionario para cada persona
+    for alimento in alimentos:
+        datos_alimento = {
+            'id': alimento.id,
+            'nombre': alimento.nombre,
+            'categoria': alimento.categoria,
+            'comida': alimento.comida,
+            'calorias': alimento.calorias,
+            'hidratos': alimento.hidratos,
+            'proteinas': alimento.proteinas,
+            'grasas': alimento.grasas,
+            'porcion': alimento.porcion,
+        }
+        listaAlimentos.append(datos_alimento)
+
+    print(listaAlimentos)
     
+    # Obtengo los datos que vienen del formulario
+    querydict=dict(request.POST)
+    
+    try:
+        alimentosCenaFav = list(querydict['opcionesCena'])
+        idFav1 = random.choice(alimentosCenaFav)
+        alimento1=idFav1
+        """ print(alimento1) """
+    except:
+        alimento1 = random.choice(listaAlimentos)['id']
+        """ print(alimento1) """
+    
+    alimento2=random.choice(listaAlimentos)['id']
+    """ print(alimento2) """
+        
+    alimento3=random.choice(listaAlimentos)['id']
+    """ print(alimento3) """
+    
+    for alimento in listaAlimentos:
+        if alimento['id']==alimento1:
+            hidratos1=[]
+            proteinas1=[]
+            grasas1=[]
+            hidratos1=(alimento['hidratos'])
+            proteinas1=(alimento['proteinas'])
+            grasas1=(alimento['grasas'])
+            """ print(alimento1)
+            print(hidratos1)
+            print(proteinas1)
+            print(grasas1) """
+            
+        if alimento['id']==alimento2:
+            hidratos2=[]
+            proteinas2=[]
+            grasas2=[]
+            hidratos2=(alimento['hidratos'])
+            proteinas2=(alimento['proteinas'])
+            grasas2=(alimento['grasas'])
+            """ print(alimento2)
+            print(hidratos2)
+            print(proteinas2)
+            print(grasas2) """
+            
+        if alimento['id']==alimento3:
+            hidratos3=[]
+            proteinas3=[]
+            grasas3=[]
+            hidratos3=(alimento['hidratos'])
+            proteinas3=(alimento['proteinas'])
+            grasas3=(alimento['grasas'])
+            """ print(alimento3)
+            print(hidratos3)
+            print(proteinas3)
+            print(grasas3) """
+
+
+    
+    """ la función solve() permite resolver sistemas de ecuaciones lineales de la forma Ax = b, donde A es una matriz de coeficientes, x es un vector de incógnitas y b es un vector de términos independientes.
+
+        Por ejemplo, si quieres resolver el siguiente sistema de ecuaciones
+        2x + 3y + z = 1
+        x - 2y + 3z = -1
+        3x + 2y - 4z = 0
+        
+        NOTAS:
+            Los resultados son "b"
+            las constantes (los array A) son los gramos de cada nutriente por cada gramo de ese alimento
+            x, y y z van a ser los gramos de cada alimento (lo que quiero averiguar)
+
+        Puedes utilizar el siguiente código: 
+
+        import numpy as np
+
+        # Definir la matriz de coeficientes A y el vector de términos independientes b
+        A = np.array([[2, 3, 1], [1, -2, 3], [3, 2, -4]]) #([[hidratos de cada alimento/100],[proteinas de cada alimento/100],[grasas de cada alimento/100]])
+        b = np.array([1, -1, 0])
+
+        # Resolver el sistema de ecuaciones utilizando la función solve() de numpy
+        x = np.linalg.solve(A, b)
+
+        # Imprimir la solución
+        print(x)"""
+    
+    import numpy as np
+    
+    hidratosDeCadaAlimento = [hidratos1, hidratos2, hidratos3]
+    """ print(hidratos1)
+    print(hidratos2)
+    print(hidratos3)
+    print(hidratosDeCadaAlimento) """
+    proteinasDeCadaAlimento = [proteinas1, proteinas2, proteinas3]
+    grasasDeCadaAlimento = [grasas1, grasas2, grasas3]
+    
+    # Definir la matriz de coeficientes A y el vector de términos independientes b
+    nutrientesDeCadaAlimento = np.array([hidratosDeCadaAlimento, proteinasDeCadaAlimento, grasasDeCadaAlimento])
+    print(nutrientesDeCadaAlimento)
+    objetivos = np.array([hidratosObjetivo, proteinasObjetivo, grasasObjetivo])
+    print(objetivos)
+
+    # Resolver el sistema de ecuaciones utilizando la función solve() de numpy
+    respuesta = np.linalg.solve(nutrientesDeCadaAlimento, objetivos)
+
+    # Imprimir la solución
+    print(respuesta)
+
+    
+    Dieta2={
+        'Desayuno':{
+            1:{
+                'quesu':110,
+                'leche':120,
+                'manteca':130,
+            },
+            2:{
+                'jamon':110,
+                'tostada':120,
+                'yogur':130,
+            },
+            3:{
+                'quesu':110,
+                'leche':120,
+                'manteca':130,
+            },
+        },
+    }
+    
+    """ uno = {}
+    
+    alimentosporcomida= Alimentos.objects.filter(comida="Desayuno")
+    
+    desayuno_aleatorio = random.choice(alimentosporcomida)
+    print(desayuno_aleatorio)
+
+    uno[desayuno_aleatorio.nombre] = desayuno_aleatorio.calorias
+    
+    desayuno_aleatorio = random.choice(alimentosporcomida)
+    print(desayuno_aleatorio)
+
+    uno[desayuno_aleatorio.nombre] = desayuno_aleatorio.calorias
+    
+
+    print(uno) """
+    """ print(Dieta2['Desayuno'][1]) """
+    
+    
+    """ print(Dieta2) """
+    """ print(Dieta2['1']) """
+    """ print(Dieta2) """
+
+
+
     #Esto es lo que tengo que ir generando automaticamente
     Dieta={
         'Desayuno':{
@@ -92,6 +269,31 @@ def dietPlan(request):
                 'manteca':130,
             },
             2:{
+                'jamon':110,
+                'tostada':120,
+                'yogur':130,
+            },
+            3:{
+                'quesu':110,
+                'leche':120,
+                'manteca':130,
+            },
+            4:{
+                'jamon':110,
+                'tostada':120,
+                'yogur':130,
+            },
+            5:{
+                'jamon':110,
+                'tostada':120,
+                'yogur':130,
+            },
+            6:{
+                'quesu':110,
+                'leche':120,
+                'manteca':130,
+            },
+            7:{
                 'jamon':110,
                 'tostada':120,
                 'yogur':130,
@@ -124,76 +326,16 @@ def dietPlan(request):
         
         }
     
+    """ print(Dieta) """
+    
+
+    
     """ for comida in COMIDA_CHOICES:
         d=str(comida)+"1"
         print(d) """
         
     
-    try:
-        print(len(querydict['opcionesDesayuno']))
-        for id in querydict['opcionesDesayuno']:
-            print(id)
-    except:
-        pass
-    try:
-        print(len(querydict['opcionesAlmuerzo']))
-    except:
-        pass
-    try:
-        print(len(querydict['opcionesMerienda']))
-    except:
-        pass
-    try:
-        alimentosCena = list(querydict['opcionesCena'])
-        alimentosCena=alimentosCena*7
-        alimentosCena[0].append(789)
-        
-        print(alimentosCena)
-        print(len(querydict['opcionesCena']))
-        """
-        la función solve() permite resolver sistemas de ecuaciones lineales de la forma Ax = b, donde A es una matriz de coeficientes, x es un vector de incógnitas y b es un vector de términos independientes.
 
-        Por ejemplo, si quieres resolver el siguiente sistema de ecuaciones
-        2x + 3y + z = 1
-        x - 2y + 3z = -1
-        3x + 2y - 4z = 0
-
-        Puedes utilizar el siguiente código:
-
-        import numpy as np
-
-        # Definir la matriz de coeficientes A y el vector de términos independientes b
-        A = np.array([[2, 3, 1], [1, -2, 3], [3, 2, -4]])
-        b = np.array([1, -1, 0])
-
-        # Resolver el sistema de ecuaciones utilizando la función solve() de numpy
-        x = np.linalg.solve(A, b)
-
-        # Imprimir la solución
-        print(x)
-
-        """
-        import numpy as np
-
-        # Definir la matriz de coeficientes A y el vector de términos independientes b
-        A = np.array([[2, 3, 1], [1, -2, 3], [3, 2, -4]])
-        b = np.array([1, -1, 0])
-
-        # Resolver el sistema de ecuaciones utilizando la función solve() de numpy
-        x = np.linalg.solve(A, b)
-
-        # Imprimir la solución
-        print(x)
-    except:
-        pass
-
-    dias = range(1,8) #ok
-    
-    
-    #print(Desayuno[3])
-    almuerzos=()
-    meriendas=()
-    cenas=()
 
 
 
@@ -205,27 +347,3 @@ def dietPlan(request):
         
     return render(request,'nutriplan/diet-plan.html', context) #ok
 
-
-"""
-Para resolver un sistema de 3 ecuaciones con 3 incógnitas en Python, puedes utilizar la biblioteca numpy. Esta biblioteca proporciona la función solve(), que permite resolver sistemas de ecuaciones lineales de la forma Ax = b, donde A es una matriz de coeficientes, x es un vector de incógnitas y b es un vector de términos independientes.
-
-Por ejemplo, si quieres resolver el siguiente sistema de ecuaciones
-2x + 3y + z = 1
-x - 2y + 3z = -1
-3x + 2y - 4z = 0
-
-Puedes utilizar el siguiente código:
-
-import numpy as np
-
-# Definir la matriz de coeficientes A y el vector de términos independientes b
-A = np.array([[2, 3, 1], [1, -2, 3], [3, 2, -4]])
-b = np.array([1, -1, 0])
-
-# Resolver el sistema de ecuaciones utilizando la función solve() de numpy
-x = np.linalg.solve(A, b)
-
-# Imprimir la solución
-print(x)
-
-"""
