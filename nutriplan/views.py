@@ -107,7 +107,7 @@ def dietPlan(request):
         }
         listaAlimentos.append(datos_alimento)
 
-    print(listaAlimentos)
+    """ print(listaAlimentos) """
     
     # Obtengo los datos que vienen del formulario
     querydict=dict(request.POST)
@@ -132,21 +132,23 @@ def dietPlan(request):
             hidratos1=[]
             proteinas1=[]
             grasas1=[]
-            hidratos1=(alimento['hidratos'])
-            proteinas1=(alimento['proteinas'])
-            grasas1=(alimento['grasas'])
+            hidratos1=(alimento['hidratos'])/100
+            proteinas1=(alimento['proteinas'])/100
+            grasas1=(alimento['grasas'])/100
             """ print(alimento1)
             print(hidratos1)
             print(proteinas1)
             print(grasas1) """
+            print(grasas1)
+            print(type(grasas1))
             
         if alimento['id']==alimento2:
             hidratos2=[]
             proteinas2=[]
             grasas2=[]
-            hidratos2=(alimento['hidratos'])
-            proteinas2=(alimento['proteinas'])
-            grasas2=(alimento['grasas'])
+            hidratos2=(alimento['hidratos'])/100
+            proteinas2=(alimento['proteinas'])/100
+            grasas2=(alimento['grasas'])/100
             """ print(alimento2)
             print(hidratos2)
             print(proteinas2)
@@ -156,9 +158,9 @@ def dietPlan(request):
             hidratos3=[]
             proteinas3=[]
             grasas3=[]
-            hidratos3=(alimento['hidratos'])
-            proteinas3=(alimento['proteinas'])
-            grasas3=(alimento['grasas'])
+            hidratos3=(alimento['hidratos'])/100
+            proteinas3=(alimento['proteinas'])/100
+            grasas3=(alimento['grasas'])/100
             """ print(alimento3)
             print(hidratos3)
             print(proteinas3)
@@ -205,7 +207,7 @@ def dietPlan(request):
     # Definir la matriz de coeficientes A y el vector de términos independientes b
     nutrientesDeCadaAlimento = np.array([hidratosDeCadaAlimento, proteinasDeCadaAlimento, grasasDeCadaAlimento])
     print(nutrientesDeCadaAlimento)
-    objetivos = np.array([hidratosObjetivo, proteinasObjetivo, grasasObjetivo])
+    objetivos = np.array([hidratosObjetivo/4, proteinasObjetivo/4, grasasObjetivo/4])
     print(objetivos)
 
     # Resolver el sistema de ecuaciones utilizando la función solve() de numpy
