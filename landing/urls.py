@@ -2,6 +2,7 @@ from django.urls import path
 from fastReading.views import upload
 from aboutme.views import aboutmehome
 from blog.views import BlogListView
+from nutriplan.views import home
 from landing import views
 
 
@@ -10,6 +11,7 @@ urlpatterns = [
     path('aboutme', aboutmehome, name="about me home"),
     path('', views.Tasks_lists.as_view(), name="home"),
     path('blog', BlogListView.as_view(), name="BlogListView"),
+    path('nutriplan', home, name="nutriplan/home"),
 
     # COntact Form
     path('send_email/', views.sendEmail, name="send_email"),

@@ -88,10 +88,12 @@ def howManyCalories(request):
     return render(request,'nutriplan/how-many-calories.html', context)
 
 def dietPlan(request):
-    # Transformo en diccionario todas las instancias de mi db
+    # Transformar en diccionario todas las instancias de mi db
     alimentos= Alimentos.objects.all()
+    
     # Crear una lista vacía donde se almacenarán los alimentos
     listaAlimentos = []
+    
     # Iterar sobre el queryset y crear un diccionario para cada persona
     for alimento in alimentos:
         datos_alimento = {
@@ -106,68 +108,38 @@ def dietPlan(request):
             'porcion': alimento.porcion,
         }
         listaAlimentos.append(datos_alimento)
-
-    """ print(listaAlimentos) """
     
-    # Obtengo los datos que vienen del formulario
+    
+    # Obtener los datos que vienen del formulario
     querydict=dict(request.POST)
     
+    # Crear una lista vacía donde se almacenarán los alimentos seleccionados
+    alimentosSeleccionados=[]
+    
+    # Intentar obtener las opciones favoritas del usuario, y a partir del id, obtener la instancia
     try:
-        alimentosCenaFav = list(querydict['opcionesCena'])
-        idFav1 = random.choice(alimentosCenaFav)
-        alimento1=idFav1
-        """ print(alimento1) """
+        idalimentosCenaFav = list(querydict['opcionesCena'])
+        idFav1 = int(random.choice(idalimentosCenaFav))
+        for alimento in listaAlimentos:
+            if alimento['id']==idFav1:
+                alimento1=alimento
+
     except:
-        alimento1 = random.choice(listaAlimentos)['id']
-        """ print(alimento1) """
+        alimento1 = random.choice(listaAlimentos)
     
-    alimento2=random.choice(listaAlimentos)['id']
-    """ print(alimento2) """
-        
-    alimento3=random.choice(listaAlimentos)['id']
-    """ print(alimento3) """
+    # Eliminar el elemento seleccionado de la lista de alimentos para que no se incluya 2 veces en una comida
+    listaAlimentos.remove(alimento1)
     
-    for alimento in listaAlimentos:
-        if alimento['id']==alimento1:
-            hidratos1=[]
-            proteinas1=[]
-            grasas1=[]
-            hidratos1=(alimento['hidratos'])/100
-            proteinas1=(alimento['proteinas'])/100
-            grasas1=(alimento['grasas'])/100
-            """ print(alimento1)
-            print(hidratos1)
-            print(proteinas1)
-            print(grasas1) """
-            print(grasas1)
-            print(type(grasas1))
-            
-        if alimento['id']==alimento2:
-            hidratos2=[]
-            proteinas2=[]
-            grasas2=[]
-            hidratos2=(alimento['hidratos'])/100
-            proteinas2=(alimento['proteinas'])/100
-            grasas2=(alimento['grasas'])/100
-            """ print(alimento2)
-            print(hidratos2)
-            print(proteinas2)
-            print(grasas2) """
-            
-        if alimento['id']==alimento3:
-            hidratos3=[]
-            proteinas3=[]
-            grasas3=[]
-            hidratos3=(alimento['hidratos'])/100
-            proteinas3=(alimento['proteinas'])/100
-            grasas3=(alimento['grasas'])/100
-            """ print(alimento3)
-            print(hidratos3)
-            print(proteinas3)
-            print(grasas3) """
+    # Construir la lista de los 3 alimentos que tendrá cada comida
+    alimentosSeleccionados.append(alimento1)
+    
+    for i in range(2):
+        alimentoAleatorio=random.choice(listaAlimentos)
+        alimentosSeleccionados.append(alimentoAleatorio)
+        # Eliminar el elemento seleccionado de la lista de alimentos para que no se incluya 2 veces en una comida
+        listaAlimentos.remove(alimentoAleatorio)
 
 
-    
     """ la función solve() permite resolver sistemas de ecuaciones lineales de la forma Ax = b, donde A es una matriz de coeficientes, x es un vector de incógnitas y b es un vector de términos independientes.
 
         Por ejemplo, si quieres resolver el siguiente sistema de ecuaciones
@@ -196,19 +168,33 @@ def dietPlan(request):
     
     import numpy as np
     
-    hidratosDeCadaAlimento = [hidratos1, hidratos2, hidratos3]
-    """ print(hidratos1)
-    print(hidratos2)
-    print(hidratos3)
-    print(hidratosDeCadaAlimento) """
-    proteinasDeCadaAlimento = [proteinas1, proteinas2, proteinas3]
-    grasasDeCadaAlimento = [grasas1, grasas2, grasas3]
+    # Preparar los array coeficientes
+    hidratosDeCadaAlimento=[]
+    proteinasDeCadaAlimento=[]
+    grasasDeCadaAlimento=[]
+    
+    for alimentosSeleccionado in alimentosSeleccionados:
+        hidratos=(alimentosSeleccionado.get('hidratos'))/100
+        hidratosDeCadaAlimento.append(hidratos)
+        
+        proteinas=(alimentosSeleccionado.get('proteinas'))/100
+        proteinasDeCadaAlimento.append(proteinas)
+        
+        grasas=(alimentosSeleccionado.get('grasas'))/100
+        grasasDeCadaAlimento.append(grasas)
     
     # Definir la matriz de coeficientes A y el vector de términos independientes b
-    nutrientesDeCadaAlimento = np.array([hidratosDeCadaAlimento, proteinasDeCadaAlimento, grasasDeCadaAlimento])
-    print(nutrientesDeCadaAlimento)
-    objetivos = np.array([hidratosObjetivo/4, proteinasObjetivo/4, grasasObjetivo/4])
-    print(objetivos)
+    nutrientesDeCadaAlimento = np.array([
+        hidratosDeCadaAlimento, 
+        proteinasDeCadaAlimento, 
+        grasasDeCadaAlimento
+        ])
+    
+    objetivos = np.array([
+        hidratosObjetivo/4, 
+        proteinasObjetivo/4, 
+        grasasObjetivo/4
+        ])
 
     # Resolver el sistema de ecuaciones utilizando la función solve() de numpy
     respuesta = np.linalg.solve(nutrientesDeCadaAlimento, objetivos)
@@ -216,6 +202,19 @@ def dietPlan(request):
     # Imprimir la solución
     print(respuesta)
 
+
+
+
+
+
+
+
+
+    for alimentosSeleccionado in alimentosSeleccionados:
+        print(alimentosSeleccionado.get('nombre'))
+    
+    
+    
     
     Dieta2={
         'Desayuno':{
@@ -329,14 +328,6 @@ def dietPlan(request):
         }
     
     """ print(Dieta) """
-    
-
-    
-    """ for comida in COMIDA_CHOICES:
-        d=str(comida)+"1"
-        print(d) """
-        
-    
 
 
 
