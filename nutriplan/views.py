@@ -123,7 +123,6 @@ def dietPlan(request):
         for alimento in listaAlimentos:
             if alimento['id']==idFav1:
                 alimento1=alimento
-
     except:
         alimento1 = random.choice(listaAlimentos)
     
@@ -133,78 +132,93 @@ def dietPlan(request):
     # Construir la lista de los 3 alimentos que tendrá cada comida
     alimentosSeleccionados.append(alimento1)
     
-    for i in range(2):
-        alimentoAleatorio=random.choice(listaAlimentos)
-        alimentosSeleccionados.append(alimentoAleatorio)
-        # Eliminar el elemento seleccionado de la lista de alimentos para que no se incluya 2 veces en una comida
-        listaAlimentos.remove(alimentoAleatorio)
-
-
-    """ la función solve() permite resolver sistemas de ecuaciones lineales de la forma Ax = b, donde A es una matriz de coeficientes, x es un vector de incógnitas y b es un vector de términos independientes.
-
-        Por ejemplo, si quieres resolver el siguiente sistema de ecuaciones
-        2x + 3y + z = 1
-        x - 2y + 3z = -1
-        3x + 2y - 4z = 0
-        
-        NOTAS:
-            Los resultados son "b"
-            las constantes (los array A) son los gramos de cada nutriente por cada gramo de ese alimento
-            x, y y z van a ser los gramos de cada alimento (lo que quiero averiguar)
-
-        Puedes utilizar el siguiente código: 
-
-        import numpy as np
-
-        # Definir la matriz de coeficientes A y el vector de términos independientes b
-        A = np.array([[2, 3, 1], [1, -2, 3], [3, 2, -4]]) #([[hidratos de cada alimento/100],[proteinas de cada alimento/100],[grasas de cada alimento/100]])
-        b = np.array([1, -1, 0])
-
-        # Resolver el sistema de ecuaciones utilizando la función solve() de numpy
-        x = np.linalg.solve(A, b)
-
-        # Imprimir la solución
-        print(x)"""
+    # Variable que cambia de estado cuando se encuentra una solcuion satisfactoria al sistema de ecuaciones
+    solved = False
     
     import numpy as np
-    
-    # Preparar los array coeficientes
-    hidratosDeCadaAlimento=[]
-    proteinasDeCadaAlimento=[]
-    grasasDeCadaAlimento=[]
-    
-    for alimentosSeleccionado in alimentosSeleccionados:
-        hidratos=(alimentosSeleccionado.get('hidratos'))/100
-        hidratosDeCadaAlimento.append(hidratos)
-        
-        proteinas=(alimentosSeleccionado.get('proteinas'))/100
-        proteinasDeCadaAlimento.append(proteinas)
-        
-        grasas=(alimentosSeleccionado.get('grasas'))/100
-        grasasDeCadaAlimento.append(grasas)
-    
-    # Definir la matriz de coeficientes A y el vector de términos independientes b
-    nutrientesDeCadaAlimento = np.array([
-        hidratosDeCadaAlimento, 
-        proteinasDeCadaAlimento, 
-        grasasDeCadaAlimento
-        ])
-    
-    objetivos = np.array([
-        hidratosObjetivo/4, 
-        proteinasObjetivo/4, 
-        grasasObjetivo/4
-        ])
+    # Iterar mientras no se encuentre una solucion satisfactoria
+    while solved==False:
+        print(solved)
+        try:
+            # Agregar 2 alimentos aleatorios
+            for i in range(2):
+                alimentoAleatorio=random.choice(listaAlimentos)
+                alimentosSeleccionados.append(alimentoAleatorio)
+                # Eliminar el elemento seleccionado de la lista de alimentos para que no se incluya 2 veces en una comida
+                listaAlimentos.remove(alimentoAleatorio)
 
-    # Resolver el sistema de ecuaciones utilizando la función solve() de numpy
-    respuesta = np.linalg.solve(nutrientesDeCadaAlimento, objetivos)
+            """ la función solve() permite resolver sistemas de ecuaciones lineales de la forma Ax = b, donde A es una matriz de coeficientes, x es un vector de incógnitas y b es un vector de términos independientes.
 
-    # Imprimir la solución
-    print(respuesta)
+                Por ejemplo, si quieres resolver el siguiente sistema de ecuaciones
+                2x + 3y + z = 1
+                x - 2y + 3z = -1
+                3x + 2y - 4z = 0
+                
+                NOTAS:
+                    Los resultados son "b"
+                    las constantes (los array A) son los gramos de cada nutriente por cada gramo de ese alimento
+                    x, y y z van a ser los gramos de cada alimento (lo que quiero averiguar)
 
+                Puedes utilizar el siguiente código: 
 
+                import numpy as np
 
+                # Definir la matriz de coeficientes A y el vector de términos independientes b
+                A = np.array([[2, 3, 1], [1, -2, 3], [3, 2, -4]]) #([[hidratos de cada alimento/100],[proteinas de cada alimento/100],[grasas de cada alimento/100]])
+                b = np.array([1, -1, 0])
 
+                # Resolver el sistema de ecuaciones utilizando la función solve() de numpy
+                x = np.linalg.solve(A, b)
+
+                # Imprimir la solución
+                print(x)"""
+            
+            # Preparar los array coeficientes
+            hidratosDeCadaAlimento=[]
+            proteinasDeCadaAlimento=[]
+            grasasDeCadaAlimento=[]
+            
+            for alimentosSeleccionado in alimentosSeleccionados:
+                # Hidratos
+                hidratos=(alimentosSeleccionado.get('hidratos'))/100
+                hidratosDeCadaAlimento.append(hidratos)
+                # Proteinas
+                proteinas=(alimentosSeleccionado.get('proteinas'))/100
+                proteinasDeCadaAlimento.append(proteinas)
+                # Grasas
+                grasas=(alimentosSeleccionado.get('grasas'))/100
+                grasasDeCadaAlimento.append(grasas)
+            
+            # Definir la matriz de coeficientes A
+            nutrientesDeCadaAlimento = np.array([
+                hidratosDeCadaAlimento, 
+                proteinasDeCadaAlimento, 
+                grasasDeCadaAlimento
+                ])
+            # Definir l vector de resultaods b
+            objetivos = np.array([
+                hidratosObjetivo/4, 
+                proteinasObjetivo/4, 
+                grasasObjetivo/4
+                ])
+            # Resolver el sistema de ecuaciones utilizando la función solve() de numpy
+            respuesta = np.linalg.solve(nutrientesDeCadaAlimento, objetivos)
+            # Imprimir la solución
+            print(respuesta)
+            # Verificar que los componentes de la respuesta sean positivos
+            for resp in np.nditer(respuesta):
+                respu = float(resp)
+                # Si hay un valor negativo, levantar un error para que el while vuelva a empezar
+                if respu<0:
+                    solved=1/0
+            # Si no generó un error la matriz y no hay valores negativos, frenar la iteración
+            solved=True
+        except:
+            for i in range(2):
+                # Devolver a la lista de alimentos los 2 alientos elegidos en forma aleatoria
+                listaAlimentos.append(alimentosSeleccionados[len(alimentosSeleccionados)-1])
+                # Eliminar de los alimentos seleccionados los 2 alientos elegidos en forma aleatoria (solo queda 1 de los favoritos)
+                alimentosSeleccionados.pop()
 
 
 
