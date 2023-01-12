@@ -92,15 +92,12 @@ def dietPlan(request):
     Menu={}
     # Iterar un menú para las 4 comidas
     for comida in COMIDA_CHOICES:
+        
+        
         Menu[comida]={}
-        # Para cada comida, iterar un menú para cada día de la semana
+        
         for n in dias:
             Menu[comida][n]={}
-        
-        # quitarrrrrrrrrrrrrr
-        globals()[f"{comida}"] = {}
-        globals()[f"{comida}2"] = f"Hello the variable number {comida}2!"
-        #****************************************************************
         
         # Transformar en diccionario todas las instancias de mi db
         print(comida)
@@ -128,12 +125,15 @@ def dietPlan(request):
         # Obtener los datos que vienen del formulario
         querydict=dict(request.POST)
         
+        # Para cada comida, iterar un menú para cada día de la semana
+        
+        
         # Crear una lista vacía donde se almacenarán los alimentos seleccionados
         alimentosSeleccionados=[]
         
         # Intentar obtener las opciones favoritas del usuario, y a partir del id, obtener la instancia
         try:
-            idalimentosCenaFav = list(querydict['opcionesCena'])
+            idalimentosCenaFav = list(querydict['opciones%' % comida]) # TODO cambiar opcionesCena por opcionesComida y que itere
             idFav1 = int(random.choice(idalimentosCenaFav))
             for alimento in listaAlimentos:
                 if alimento['id']==idFav1:
@@ -220,6 +220,12 @@ def dietPlan(request):
                 respuesta = np.linalg.solve(nutrientesDeCadaAlimento, objetivos)
                 # Imprimir la solución
                 print(respuesta)
+                
+                #***********************
+                for i in range(9):
+                    print('******')
+                #***********************
+                
                 # Verificar que los componentes de la respuesta sean positivos
                 # y armar los diccionarios {nombre:gramos} para cada alimento
                 x=0
@@ -234,35 +240,28 @@ def dietPlan(request):
                     print(key)
                     print(value)
                     dictAliGr={key:value}
-                    print(dictAliGr)
+                    print([f'el alimento {x} es '],dictAliGr) #***********************
                     x+=1
                     print(x)
-                    grXalimento.append(dictAliGr)
+                    grXalimento.append(dictAliGr) # TODO grXalimento es lo que debe ir dentro de la matriz dieta
                     print(grXalimento)
 
                 # Si no generó un error la matriz y no hay valores negativos, frenar la iteración
                 solved=True
+                
+                # Agregar la combinacion de alimentos y gramos al diccionario general
+                #diccionario1["otro_diccionario"] = diccionario2
+                Menu[comida][1]=grXalimento
+            
             except:
                 for i in range(2):
                     # Devolver a la lista de alimentos los 2 alientos elegidos en forma aleatoria
                     listaAlimentos.append(alimentosSeleccionados[len(alimentosSeleccionados)-1])
                     # Eliminar de los alimentos seleccionados los 2 alientos elegidos en forma aleatoria (solo queda 1 de los favoritos)
                     alimentosSeleccionados.pop()
-        #**********************************************
-
-
-        
-
-
-    print(Desayuno)
-    print(Almuerzo)
-    print(Merienda)
-    print(Cena)
-
-    print(Desayuno2)
-    print(Almuerzo2)
-    print(Merienda2)
-    print(Cena2)
+    
+    for n in dias:
+        print(n)
     
     print(Menu)
 
@@ -272,8 +271,8 @@ def dietPlan(request):
 
 
 
-    for alimentosSeleccionado in alimentosSeleccionados:
-        print(alimentosSeleccionado.get('nombre'))
+    """ for alimentosSeleccionado in alimentosSeleccionados:
+        print(alimentosSeleccionado.get('nombre')) """
     
     
     
