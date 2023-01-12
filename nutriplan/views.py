@@ -90,175 +90,175 @@ def howManyCalories(request):
 def dietPlan(request):
     
     Menu={}
-    # Iterar un menú para las 4 comidas
-    for comida in COMIDA_CHOICES:
+    
+    for n in range(1,2):
+        # Iterar un menú para las 4 comidas
+        for comida in COMIDA_CHOICES:
         
         
-        Menu[comida]={}
-        
-        for n in dias:
+            Menu[comida]={}
             Menu[comida][n]={}
-        
-        # Transformar en diccionario todas las instancias de mi db
-        print(comida)
-        alimentos= Alimentos.objects.filter(comida=comida)
-        
-        # Crear una lista vacía donde se almacenarán los alimentos
-        listaAlimentos = []
-        
-        # Iterar sobre el queryset y crear un diccionario para cada persona
-        for alimento in alimentos:
-            datos_alimento = {
-                'id': alimento.id,
-                'nombre': alimento.nombre,
-                'categoria': alimento.categoria,
-                'comida': alimento.comida,
-                'calorias': alimento.calorias,
-                'hidratos': alimento.hidratos,
-                'proteinas': alimento.proteinas,
-                'grasas': alimento.grasas,
-                'porcion': alimento.porcion,
-            }
-            listaAlimentos.append(datos_alimento)
-        
-        
-        # Obtener los datos que vienen del formulario
-        querydict=dict(request.POST)
-        
-        # Para cada comida, iterar un menú para cada día de la semana
-        
-        
-        # Crear una lista vacía donde se almacenarán los alimentos seleccionados
-        alimentosSeleccionados=[]
-        
-        # Intentar obtener las opciones favoritas del usuario, y a partir del id, obtener la instancia
-        try:
-            idalimentosCenaFav = list(querydict['opciones%' % comida]) # TODO cambiar opcionesCena por opcionesComida y que itere
-            idFav1 = int(random.choice(idalimentosCenaFav))
-            for alimento in listaAlimentos:
-                if alimento['id']==idFav1:
-                    alimento1=alimento
-        except:
-            alimento1 = random.choice(listaAlimentos)
-        
-        # Eliminar el elemento seleccionado de la lista de alimentos para que no se incluya 2 veces en una comida
-        listaAlimentos.remove(alimento1)
-        
-        # Construir la lista de los 3 alimentos que tendrá cada comida
-        alimentosSeleccionados.append(alimento1)
-        
-        # Variable que cambia de estado cuando se encuentra una solcuion satisfactoria al sistema de ecuaciones
-        solved = False
-        
-        import numpy as np
-        # Iterar mientras no se encuentre una solucion satisfactoria
-        while solved==False:
-            print(solved)
-            try:
-                # Agregar 2 alimentos aleatorios
-                for i in range(2):
-                    alimentoAleatorio=random.choice(listaAlimentos)
-                    alimentosSeleccionados.append(alimentoAleatorio)
-                    # Eliminar el elemento seleccionado de la lista de alimentos para que no se incluya 2 veces en una comida
-                    listaAlimentos.remove(alimentoAleatorio)
-
-                """ la función solve() permite resolver sistemas de ecuaciones lineales de la forma Ax = b, donde A es una matriz de coeficientes, x es un vector de incógnitas y b es un vector de términos independientes.
-
-                    Por ejemplo, si quieres resolver el siguiente sistema de ecuaciones
-                    2x + 3y + z = 1
-                    x - 2y + 3z = -1
-                    3x + 2y - 4z = 0
-                    
-                    NOTAS:
-                        Los resultados son "b"
-                        las constantes (los array A) son los gramos de cada nutriente por cada gramo de ese alimento
-                        x, y y z van a ser los gramos de cada alimento (lo que quiero averiguar)
-
-                    Puedes utilizar el siguiente código: 
-
-                    import numpy as np
-
-                    # Definir la matriz de coeficientes A y el vector de términos independientes b
-                    A = np.array([[2, 3, 1], [1, -2, 3], [3, 2, -4]]) #([[hidratos de cada alimento/100],[proteinas de cada alimento/100],[grasas de cada alimento/100]])
-                    b = np.array([1, -1, 0])
-
-                    # Resolver el sistema de ecuaciones utilizando la función solve() de numpy
-                    x = np.linalg.solve(A, b)
-
-                    # Imprimir la solución
-                    print(x)"""
-                
-                # Preparar los array coeficientes
-                hidratosDeCadaAlimento=[]
-                proteinasDeCadaAlimento=[]
-                grasasDeCadaAlimento=[]
-                
-                for alimentosSeleccionado in alimentosSeleccionados:
-                    # Hidratos
-                    hidratos=(alimentosSeleccionado.get('hidratos'))/100
-                    hidratosDeCadaAlimento.append(hidratos)
-                    # Proteinas
-                    proteinas=(alimentosSeleccionado.get('proteinas'))/100
-                    proteinasDeCadaAlimento.append(proteinas)
-                    # Grasas
-                    grasas=(alimentosSeleccionado.get('grasas'))/100
-                    grasasDeCadaAlimento.append(grasas)
-                
-                # Definir la matriz de coeficientes A
-                nutrientesDeCadaAlimento = np.array([
-                    hidratosDeCadaAlimento, 
-                    proteinasDeCadaAlimento, 
-                    grasasDeCadaAlimento
-                    ])
-                # Definir l vector de resultaods b
-                objetivos = np.array([
-                    hidratosObjetivo/4, 
-                    proteinasObjetivo/4, 
-                    grasasObjetivo/4
-                    ])
-                # Resolver el sistema de ecuaciones utilizando la función solve() de numpy
-                respuesta = np.linalg.solve(nutrientesDeCadaAlimento, objetivos)
-                # Imprimir la solución
-                print(respuesta)
-                
-                #***********************
-                for i in range(9):
-                    print('******')
-                #***********************
-                
-                # Verificar que los componentes de la respuesta sean positivos
-                # y armar los diccionarios {nombre:gramos} para cada alimento
-                x=0
-                grXalimento=[]
-                for resp in np.nditer(respuesta):
-                    value = float(resp)
-                    # Si hay un valor negativo, levantar un error para que el while vuelva a empezar
-                    if value<0:
-                        solved=1/0
-                    
-                    key=alimentosSeleccionados[x].get('nombre')
-                    print(key)
-                    print(value)
-                    dictAliGr={key:value}
-                    print([f'el alimento {x} es '],dictAliGr) #***********************
-                    x+=1
-                    print(x)
-                    grXalimento.append(dictAliGr) # TODO grXalimento es lo que debe ir dentro de la matriz dieta
-                    print(grXalimento)
-
-                # Si no generó un error la matriz y no hay valores negativos, frenar la iteración
-                solved=True
-                
-                # Agregar la combinacion de alimentos y gramos al diccionario general
-                #diccionario1["otro_diccionario"] = diccionario2
-                Menu[comida][1]=grXalimento
             
+            # Transformar en diccionario todas las instancias de mi db
+            print(comida)
+            alimentos= Alimentos.objects.filter(comida=comida)
+            
+            # Crear una lista vacía donde se almacenarán los alimentos
+            listaAlimentos = []
+            
+            # Iterar sobre el queryset y crear un diccionario para cada persona
+            for alimento in alimentos:
+                datos_alimento = {
+                    'id': alimento.id,
+                    'nombre': alimento.nombre,
+                    'categoria': alimento.categoria,
+                    'comida': alimento.comida,
+                    'calorias': alimento.calorias,
+                    'hidratos': alimento.hidratos,
+                    'proteinas': alimento.proteinas,
+                    'grasas': alimento.grasas,
+                    'porcion': alimento.porcion,
+                }
+                listaAlimentos.append(datos_alimento)
+            
+            
+            # Obtener los datos que vienen del formulario
+            querydict=dict(request.POST)
+            
+            # Para cada comida, iterar un menú para cada día de la semana
+            
+            
+            # Crear una lista vacía donde se almacenarán los alimentos seleccionados
+            alimentosSeleccionados=[]
+            
+            # Intentar obtener las opciones favoritas del usuario, y a partir del id, obtener la instancia
+            try:
+                idalimentosCenaFav = list(querydict['opciones%' % comida]) # TODO cambiar opcionesCena por opcionesComida y que itere
+                idFav1 = int(random.choice(idalimentosCenaFav))
+                for alimento in listaAlimentos:
+                    if alimento['id']==idFav1:
+                        alimento1=alimento
             except:
-                for i in range(2):
-                    # Devolver a la lista de alimentos los 2 alientos elegidos en forma aleatoria
-                    listaAlimentos.append(alimentosSeleccionados[len(alimentosSeleccionados)-1])
-                    # Eliminar de los alimentos seleccionados los 2 alientos elegidos en forma aleatoria (solo queda 1 de los favoritos)
-                    alimentosSeleccionados.pop()
+                alimento1 = random.choice(listaAlimentos)
+        
+            # Eliminar el elemento seleccionado de la lista de alimentos para que no se incluya 2 veces en una comida
+            listaAlimentos.remove(alimento1)
+            
+            # Construir la lista de los 3 alimentos que tendrá cada comida
+            alimentosSeleccionados.append(alimento1)
+            
+            # Variable que cambia de estado cuando se encuentra una solcuion satisfactoria al sistema de ecuaciones
+            solved = False
+        
+            import numpy as np
+            # Iterar mientras no se encuentre una solucion satisfactoria
+            while solved==False:
+                print(solved)
+                try:
+                    # Agregar 2 alimentos aleatorios
+                    for i in range(2):
+                        alimentoAleatorio=random.choice(listaAlimentos)
+                        alimentosSeleccionados.append(alimentoAleatorio)
+                        # Eliminar el elemento seleccionado de la lista de alimentos para que no se incluya 2 veces en una comida
+                        listaAlimentos.remove(alimentoAleatorio)
+
+                    """ la función solve() permite resolver sistemas de ecuaciones lineales de la forma Ax = b, donde A es una matriz de coeficientes, x es un vector de incógnitas y b es un vector de términos independientes.
+
+                        Por ejemplo, si quieres resolver el siguiente sistema de ecuaciones
+                        2x + 3y + z = 1
+                        x - 2y + 3z = -1
+                        3x + 2y - 4z = 0
+                        
+                        NOTAS:
+                            Los resultados son "b"
+                            las constantes (los array A) son los gramos de cada nutriente por cada gramo de ese alimento
+                            x, y y z van a ser los gramos de cada alimento (lo que quiero averiguar)
+
+                        Puedes utilizar el siguiente código: 
+
+                        import numpy as np
+
+                        # Definir la matriz de coeficientes A y el vector de términos independientes b
+                        A = np.array([[2, 3, 1], [1, -2, 3], [3, 2, -4]]) #([[hidratos de cada alimento/100],[proteinas de cada alimento/100],[grasas de cada alimento/100]])
+                        b = np.array([1, -1, 0])
+
+                        # Resolver el sistema de ecuaciones utilizando la función solve() de numpy
+                        x = np.linalg.solve(A, b)
+
+                        # Imprimir la solución
+                        print(x)"""
+                    
+                    # Preparar los array coeficientes
+                    hidratosDeCadaAlimento=[]
+                    proteinasDeCadaAlimento=[]
+                    grasasDeCadaAlimento=[]
+                    
+                    for alimentosSeleccionado in alimentosSeleccionados:
+                        # Hidratos
+                        hidratos=(alimentosSeleccionado.get('hidratos'))/100
+                        hidratosDeCadaAlimento.append(hidratos)
+                        # Proteinas
+                        proteinas=(alimentosSeleccionado.get('proteinas'))/100
+                        proteinasDeCadaAlimento.append(proteinas)
+                        # Grasas
+                        grasas=(alimentosSeleccionado.get('grasas'))/100
+                        grasasDeCadaAlimento.append(grasas)
+                    
+                    # Definir la matriz de coeficientes A
+                    nutrientesDeCadaAlimento = np.array([
+                        hidratosDeCadaAlimento, 
+                        proteinasDeCadaAlimento, 
+                        grasasDeCadaAlimento
+                        ])
+                    # Definir l vector de resultaods b
+                    objetivos = np.array([
+                        hidratosObjetivo/4, 
+                        proteinasObjetivo/4, 
+                        grasasObjetivo/4
+                        ])
+                    # Resolver el sistema de ecuaciones utilizando la función solve() de numpy
+                    respuesta = np.linalg.solve(nutrientesDeCadaAlimento, objetivos)
+                    # Imprimir la solución
+                    print(respuesta)
+                    
+                    #***********************
+                    for i in range(9):
+                        print('******')
+                    #***********************
+                    
+                    # Verificar que los componentes de la respuesta sean positivos
+                    # y armar los diccionarios {nombre:gramos} para cada alimento
+                    x=0
+                    grXalimento=[]
+                    for resp in np.nditer(respuesta):
+                        value = float(resp)
+                        # Si hay un valor negativo, levantar un error para que el while vuelva a empezar
+                        if value<0:
+                            solved=1/0
+                        
+                        key=alimentosSeleccionados[x].get('nombre')
+                        print(key)
+                        print(value)
+                        dictAliGr={key:value}
+                        print([f'el alimento {x} es '],dictAliGr) #***********************
+                        x+=1
+                        print(x)
+                        grXalimento.append(dictAliGr) # TODO grXalimento es lo que debe ir dentro de la matriz dieta
+                        print(grXalimento)
+
+                    # Si no generó un error la matriz y no hay valores negativos, frenar la iteración
+                    solved=True
+                    
+                    # Agregar la combinacion de alimentos y gramos al diccionario general
+                    #diccionario1["otro_diccionario"] = diccionario2
+                    Menu[comida][n]=grXalimento
+                
+                except:
+                    for i in range(2):
+                        # Devolver a la lista de alimentos los 2 alientos elegidos en forma aleatoria
+                        listaAlimentos.append(alimentosSeleccionados[len(alimentosSeleccionados)-1])
+                        # Eliminar de los alimentos seleccionados los 2 alientos elegidos en forma aleatoria (solo queda 1 de los favoritos)
+                        alimentosSeleccionados.pop()
     
     for n in dias:
         print(n)
