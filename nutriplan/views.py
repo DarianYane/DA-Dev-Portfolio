@@ -109,7 +109,6 @@ def verificarPositivo(respuesta):
         if gramos<0:
             solved=1/0
         if gramos>20:
-            
             key=nombreDeCadaAlimento[i]
             value=int(gramos)
             dictAliGr={key:value}

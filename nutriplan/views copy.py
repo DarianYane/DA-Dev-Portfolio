@@ -192,7 +192,7 @@ def dietPlan(request):
                         print(x)"""
                     
                     
-                    #print(alimentosSeleccionados)
+                    print(alimentosSeleccionados)
                     
                     # Preparar los array coeficientes
                     hidratosDeCadaAlimento=[]
