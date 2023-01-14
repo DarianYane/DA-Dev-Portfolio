@@ -20,17 +20,15 @@ for comida in COMIDA_CHOICES:
     for n in dias:
         Dieta[comida][n]={}
 
-for x in range(0, 7):
+for x in range(0, 7): #********************************
     globals()[f"variable1{x}"] = f"Hello the variable number {x}!"
-
-
 
 
 # Create your views here.
 def home(request):
     return render(request,'nutriplan/home.html')
 
-def howManyCalories(request):
+def cuantas_calorias_se_necesitan(request):
     # Obtengo los datos que vienen del formulario
     print(request.POST)
     gender = request.POST.get('gender')
@@ -99,13 +97,13 @@ def howManyCalories(request):
         'COMIDA_CHOICES':COMIDA_CHOICES,
         }
     
-    return render(request,'nutriplan/how-many-calories.html', context)
+    return render(request,'nutriplan/cuantas_calorias_se_necesitan.html', context)
 
-def verificarPositivo(respuesta):
+def verificar_positivo(respuesta):
     global grXalimento
-    i=0 # borrar una vez tenga los key
+    #i=0 # borrar una vez tenga los key
     grXalimento={}
-    for gramos in np.nditer(respuesta):
+    for i,gramos in enumerate(np.nditer(respuesta)):
         if gramos<0:
             solved=1/0
         if gramos>20:
@@ -113,7 +111,7 @@ def verificarPositivo(respuesta):
             value=int(gramos)
             dictAliGr={key:value}
             grXalimento.update(dictAliGr)
-        i+=1
+        #i+=1
 
 def solve(A,b):
     # Definir la matriz de coeficientes A y el vector de términos independientes b
@@ -123,9 +121,9 @@ def solve(A,b):
     respuesta = np.linalg.solve(A, b)
     
     # Imprimir la solución
-    verificarPositivo(respuesta)
+    verificar_positivo(respuesta)
 
-def elegirAlimentosYHPG(alimentos):
+def elegir_alimentos_y_HPG(alimentos):
     #global alimentosSeleccionados
     #alimentosSeleccionados=[]
     global proteinasDeCadaAlimento
@@ -163,12 +161,11 @@ def elegirAlimentosYHPG(alimentos):
         # Nombres
         nombre=(datos_alimento.get('nombre'))
         nombreDeCadaAlimento.append(nombre)
-        
 
 
-def dietPlan(request):
+def plan_de_dieta(request):
     # Obtener los datos que vienen del formulario
-    querydict=dict(request.POST)
+    querydict=dict(request.POST) # TODO  
     
     for comida in COMIDA_CHOICES:
         alimentos= Alimentos.objects.filter(comida=comida)
@@ -177,7 +174,7 @@ def dietPlan(request):
             solved=False
             while solved==False:
                 try:
-                    elegirAlimentosYHPG(alimentos)
+                    elegir_alimentos_y_HPG(alimentos)
                     # Preparar A para solve
                     A=[
                         hidratosDeCadaAlimento, 
@@ -198,11 +195,10 @@ def dietPlan(request):
                     Dieta[comida][d]=grXalimento
                 except:
                     pass
-        
+    
     
     print(Dieta)
     #print(variable15)
-
 
     context={
         'COMIDA_CHOICES':COMIDA_CHOICES, #ok
@@ -210,4 +206,4 @@ def dietPlan(request):
         'Dieta': Dieta, #ok
         }
         
-    return render(request,'nutriplan/diet-plan.html', context) #ok
+    return render(request,'nutriplan/plan_de_dieta.html', context) #ok

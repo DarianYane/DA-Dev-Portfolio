@@ -80,7 +80,7 @@
             <p>Elige hasta 3 de tus alimentos favoritos para cada comida.</p>
             <p>A partir de ellos, generaremos una dieta semanal de 4 comidas diarias, que incluya tus alimentos favoritos, y cumpla con el objetivo calórico que acabamos de determinar.</p>
 
-            <form action="/nutriplan/diet-plan" method="POST">
+            <form action="/nutriplan/plan_de_dieta" method="POST">
                 {% csrf_token %}
 
                 {% for comida in COMIDA_CHOICES %}
