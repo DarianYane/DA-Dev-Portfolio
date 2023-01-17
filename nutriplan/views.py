@@ -137,7 +137,7 @@ def solve(A,b):
 def calcular_desayunos(request):
     #print(request.POST)
     querydict=dict(request.POST)
-
+    
     global proteinasDeCadaAlimento
     global hidratosDeCadaAlimento
     global grasasDeCadaAlimento
