@@ -20,13 +20,9 @@ for comida in COMIDA_CHOICES:
     for n in dias:
         Dieta[comida][n]={}
 
-for x in range(0, 7): #********************************
-    globals()[f"variable1{x}"] = f"Hello the variable number {x}!"
-
-
 # Create your views here.
-def home(request):
-    return render(request,'nutriplan/home.html')
+def nutrihome(request):
+    return render(request,'nutriplan/nutrihome.html')
 
 def cuantas_calorias_se_necesitan(request):
     # Obtengo los datos que vienen del formulario
@@ -76,6 +72,7 @@ def cuantas_calorias_se_necesitan(request):
     # Nutrientes objetivos. Son globales para poder calcular la dieta
     global hidratosObjetivo
     hidratosObjetivo=int(CaloriasObjetivo*0.3/4)
+    print('hidratosObjetivo es', hidratosObjetivo)
     
     global proteinasObjetivo
     proteinasObjetivo=int(CaloriasObjetivo*0.4/4)
@@ -97,11 +94,26 @@ def cuantas_calorias_se_necesitan(request):
         'COMIDA_CHOICES':COMIDA_CHOICES,
         }
     
-    return render(request,'nutriplan/cuantas_calorias_se_necesitan.html', context)
+    return render(request,'nutriplan/cuantas-calorias-se-necesitan.html', context)
+
+
+
+def elegir_desayunos_favoritos(request):
+    print(Dieta)
+    
+    context={
+        'hidratosObjetivo':hidratosObjetivo,
+        'proteinasObjetivo':proteinasObjetivo,
+        'grasasObjetivo':grasasObjetivo,
+        'alimentos': Alimentos.objects.all(),
+        'COMIDA_CHOICES':COMIDA_CHOICES,
+        }
+        
+    return render(request,'nutriplan/elegir-desayunos-favoritos.html', context)
 
 def verificar_positivo(respuesta):
     global grXalimento
-    #i=0 # borrar una vez tenga los key
+    
     grXalimento={}
     for i,gramos in enumerate(np.nditer(respuesta)):
         if gramos<0:
@@ -111,7 +123,6 @@ def verificar_positivo(respuesta):
             value=int(gramos)
             dictAliGr={key:value}
             grXalimento.update(dictAliGr)
-        #i+=1
 
 def solve(A,b):
     # Definir la matriz de coeficientes A y el vector de términos independientes b
@@ -123,87 +134,210 @@ def solve(A,b):
     # Imprimir la solución
     verificar_positivo(respuesta)
 
-def elegir_alimentos_y_HPG(alimentos):
-    #global alimentosSeleccionados
-    #alimentosSeleccionados=[]
+def calcular_desayunos(request):
+    #print(request.POST)
+    querydict=dict(request.POST)
+
     global proteinasDeCadaAlimento
     global hidratosDeCadaAlimento
     global grasasDeCadaAlimento
     global nombreDeCadaAlimento
     
-    hidratosDeCadaAlimento=[]
-    proteinasDeCadaAlimento=[]
-    grasasDeCadaAlimento=[]
-    nombreDeCadaAlimento=[]
-    for r in range(3):
-        alimento=random.choice(alimentos)                
-        datos_alimento = {
-            #'id': alimento.id,
-            'nombre': alimento.nombre,
-            #'categoria': alimento.categoria,
-            #'comida': alimento.comida,
-            #'calorias': alimento.calorias,
-            'hidratos': alimento.hidratos,
-            'proteinas': alimento.proteinas,
-            'grasas': alimento.grasas,
-            #'porcion': alimento.porcion,
-        }
-        
-        #alimentosSeleccionados.append(datos_alimento)
-        hidratos=(datos_alimento.get('hidratos'))/100
-        hidratosDeCadaAlimento.append(hidratos)
-        # Proteinas
-        proteinas=(datos_alimento.get('proteinas'))/100
-        proteinasDeCadaAlimento.append(proteinas)
-        # Grasas
-        grasas=(datos_alimento.get('grasas'))/100
-        grasasDeCadaAlimento.append(grasas)
-        # Nombres
-        nombre=(datos_alimento.get('nombre'))
-        nombreDeCadaAlimento.append(nombre)
-
-
-def plan_de_dieta(request):
-    # Obtener los datos que vienen del formulario
-    querydict=dict(request.POST) # TODO  
+    # Todos los Desayunos
+    desayunosFiltrados=Alimentos.objects.filter(comida='Desayuno')
     
-    for comida in COMIDA_CHOICES:
-        alimentos= Alimentos.objects.filter(comida=comida)
-        
-        for d in dias:
-            solved=False
-            while solved==False:
+    for d in dias:
+        solved=False
+        while solved==False:
+            try:
+                hidratosDeCadaAlimento=[]
+                proteinasDeCadaAlimento=[]
+                grasasDeCadaAlimento=[]
+                nombreDeCadaAlimento=[]
+                
                 try:
-                    elegir_alimentos_y_HPG(alimentos)
-                    # Preparar A para solve
-                    A=[
-                        hidratosDeCadaAlimento, 
-                        proteinasDeCadaAlimento, 
-                        grasasDeCadaAlimento
-                    ]
-                    # Preparar b para solve
-                    b=[
-                        hidratosObjetivo/4, 
-                        proteinasObjetivo/4, 
-                        grasasObjetivo/4
-                    ]
-                    solve(A,b)
+                    idDesayunoFav = int(random.choice(querydict['opcionesDesayuno']))
+                    DesayunoFav=Alimentos.objects.filter(id=idDesayunoFav)
                     
-                    # Si no arrojó error de matriz singular...
-                    solved=True
-
-                    Dieta[comida][d]=grXalimento
+                    # Iterar sobre el queryset y crear un diccionario para DesayunoFav
+                    for alimento in DesayunoFav:
+                        datos_alimento = {
+                            'id': alimento.id,
+                            'nombre': alimento.nombre,
+                            #'categoria': alimento.categoria,
+                            #'comida': alimento.comida,
+                            #'calorias': alimento.calorias,
+                            'hidratos': alimento.hidratos,
+                            'proteinas': alimento.proteinas,
+                            'grasas': alimento.grasas,
+                            #'porcion': alimento.porcion,
+                        }
+                        
+                        hidratosDeCadaAlimento.append(datos_alimento['hidratos']/100)
+                        proteinasDeCadaAlimento.append(datos_alimento['proteinas']/100)
+                        grasasDeCadaAlimento.append(datos_alimento['grasas']/100)
+                        nombreDeCadaAlimento.append(datos_alimento['nombre'])
                 except:
-                    pass
+                    desayunoAleatorio=random.choice(desayunosFiltrados)
+                    
+                    hidratosDeCadaAlimento.append(desayunoAleatorio.hidratos/100)
+                    proteinasDeCadaAlimento.append(desayunoAleatorio.proteinas/100)
+                    grasasDeCadaAlimento.append(desayunoAleatorio.grasas/100)
+                    nombreDeCadaAlimento.append(desayunoAleatorio.nombre)    
+                
+                for r in range(2):
+                    desayunoAleatorio=random.choice(desayunosFiltrados)
+                    
+                    hidratosDeCadaAlimento.append(desayunoAleatorio.hidratos/100)
+                    proteinasDeCadaAlimento.append(desayunoAleatorio.proteinas/100)
+                    grasasDeCadaAlimento.append(desayunoAleatorio.grasas/100)
+                    nombreDeCadaAlimento.append(desayunoAleatorio.nombre)
+
+                #print(hidratosDeCadaAlimento)
+                #print(proteinasDeCadaAlimento)
+                #print(grasasDeCadaAlimento)
+                #print(nombreDeCadaAlimento)
+                
+                # Preparar A para solve
+                A=[
+                    hidratosDeCadaAlimento, 
+                    proteinasDeCadaAlimento, 
+                    grasasDeCadaAlimento
+                ]
+                # Preparar b para solve
+                b=[
+                    hidratosObjetivo/4, 
+                    proteinasObjetivo/4, 
+                    grasasObjetivo/4
+                ]
+                solve(A,b)
+                
+                # Si no arrojó error de matriz singular...
+                solved=True
+
+                Dieta['Desayuno'][d]=grXalimento
+            except:
+                pass
     
     
     print(Dieta)
-    #print(variable15)
-
+    
     context={
-        'COMIDA_CHOICES':COMIDA_CHOICES, #ok
-        'dias': dias, #ok
-        'Dieta': Dieta, #ok
+        'hidratosObjetivo':hidratosObjetivo,
+        'proteinasObjetivo':proteinasObjetivo,
+        'grasasObjetivo':grasasObjetivo,
+        'alimentos': Alimentos.objects.all(),
+        'COMIDA_CHOICES':COMIDA_CHOICES,
         }
         
-    return render(request,'nutriplan/plan_de_dieta.html', context) #ok
+    return render(request,'nutriplan/almuerzos_favoritos.html', context)
+
+def meriendas_favoritas(request):
+    print(request.POST)
+    querydict=dict(request.POST)
+    
+    # Almuerzos aleatorios
+    almuerzosFiltrados=Alimentos.objects.filter(comida='Almuerzo')
+    print(almuerzosFiltrados)
+    
+    #***********************************************
+    idAlmuerzoFav=0
+    try:
+        idAlmuerzoFav = int(random.choice(querydict['opcionesAlmuerzo']))
+    except:
+        pass
+    
+    if idAlmuerzoFav!=0:
+        print('ok')
+    else:
+        print('NOOOOO')
+    #***********************************************
+    
+    for d in dias:
+        solved=False
+        while solved==False:
+            try:
+                hidratosDeCadaAlimento=[]
+                proteinasDeCadaAlimento=[]
+                grasasDeCadaAlimento=[]
+                nombreDeCadaAlimento=[]
+                
+                try:
+                    idAlmuerzoFav = int(random.choice(querydict['opcionesAlmuerzo']))
+                    AlmuerzoFav=Alimentos.objects.filter(id=idAlmuerzoFav)
+                    
+                    # Iterar sobre el queryset y crear un diccionario para AlmuerzoFav
+                    for alimento in AlmuerzoFav:
+                        datos_alimento = {
+                            'id': alimento.id,
+                            'nombre': alimento.nombre,
+                            #'categoria': alimento.categoria,
+                            #'comida': alimento.comida,
+                            #'calorias': alimento.calorias,
+                            'hidratos': alimento.hidratos,
+                            'proteinas': alimento.proteinas,
+                            'grasas': alimento.grasas,
+                            #'porcion': alimento.porcion,
+                        }
+                        
+                        hidratosDeCadaAlimento.append(datos_alimento['hidratos']/100)
+                        proteinasDeCadaAlimento.append(datos_alimento['proteinas']/100)
+                        grasasDeCadaAlimento.append(datos_alimento['grasas']/100)
+                        nombreDeCadaAlimento.append(datos_alimento['nombre'])
+                except:
+                    almuerzoAleatorio=random.choice(almuerzosFiltrados)
+                    
+                    hidratosDeCadaAlimento.append(almuerzoAleatorio.hidratos/100)
+                    proteinasDeCadaAlimento.append(almuerzoAleatorio.proteinas/100)
+                    grasasDeCadaAlimento.append(almuerzoAleatorio.grasas/100)
+                    nombreDeCadaAlimento.append(almuerzoAleatorio.nombre)    
+                
+                for r in range(2):
+                    almuerzoAleatorio=random.choice(almuerzosFiltrados)
+                    
+                    hidratosDeCadaAlimento.append(almuerzoAleatorio.hidratos/100)
+                    proteinasDeCadaAlimento.append(almuerzoAleatorio.proteinas/100)
+                    grasasDeCadaAlimento.append(almuerzoAleatorio.grasas/100)
+                    nombreDeCadaAlimento.append(almuerzoAleatorio.nombre)
+
+                #print(hidratosDeCadaAlimento)
+                #print(proteinasDeCadaAlimento)
+                #print(grasasDeCadaAlimento)
+                #print(nombreDeCadaAlimento)
+                
+                # Preparar A para solve
+                A=[
+                    hidratosDeCadaAlimento, 
+                    proteinasDeCadaAlimento, 
+                    grasasDeCadaAlimento
+                ]
+                # Preparar b para solve
+                b=[
+                    hidratosObjetivo/4, 
+                    proteinasObjetivo/4, 
+                    grasasObjetivo/4
+                ]
+                solve(A,b)
+                
+                # Si no arrojó error de matriz singular...
+                solved=True
+
+                Dieta['Almuerzo'][d]=grXalimento
+            except:
+                pass
+    
+    
+    
+    
+    
+    #print(Dieta)
+    
+    context={
+        'hidratosObjetivo':hidratosObjetivo,
+        'proteinasObjetivo':proteinasObjetivo,
+        'grasasObjetivo':grasasObjetivo,
+        'alimentos': Alimentos.objects.all(),
+        'COMIDA_CHOICES':COMIDA_CHOICES,
+        }
+        
+    return render(request,'nutriplan/meriendas_favoritas.html', context)

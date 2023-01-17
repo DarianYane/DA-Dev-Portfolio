@@ -77,19 +77,19 @@
         </div>
         <div>
             <h2>Vamos a ayudarte a generar tu dieta ideal</h2>
-            <p>Elige hasta 3 de tus alimentos favoritos para cada comida.</p>
+            <p>Elegirás hasta 3 de tus alimentos favoritos para cada comida.</p>
             <p>A partir de ellos, generaremos una dieta semanal de 4 comidas diarias, que incluya tus alimentos favoritos, y cumpla con el objetivo calórico que acabamos de determinar.</p>
 
-            <form action="/nutriplan/plan_de_dieta" method="POST">
+            <form action="/nutriplan/elegir-desayunos-favoritos" method="POST">
                 {% csrf_token %}
 
-                {% for comida in COMIDA_CHOICES %}
+                <!-- {% for comida in COMIDA_CHOICES %}
                     <h3>{{comida}}</h3>
                     <div id="checkboxgroup{{comida}}">
                     {% for alimento in alimentos %}
                         {% if alimento.comida == comida %}
                         <label>
-                            <input type="checkbox" name="opciones{{comida}}" value="{{alimento.id}}" onclick="return onlyOneCheckBox{{comida}}()"> {{alimento.nombre}} <!-- {{alimento.id}} {{alimento.comida}} -->
+                            <input type="checkbox" name="opciones{{comida}}" value="{{alimento.id}}" onclick="return onlyOneCheckBox{{comida}}()"> {{alimento.nombre}}
                         </label><br>
                         {% endif %}
                     {% endfor %}
@@ -98,12 +98,11 @@
                         onlyOneCheckBox{{comida}}()
                     </script>
 
-                {% endfor %}
+                {% endfor %} -->
 
-                <input type="submit" value="Generar Plan">
+                <input type="submit" value="¡Empecemos!">
             </form>
-            <br>
-*****************
+
         </div>
 
         <!-- otra forma de contar checkboxes -->

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutriplan</title>
+    <link href="{% static 'css/normalize.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/nutriplan.css' %}" rel="stylesheet" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {% for comida in COMIDA_CHOICES %}
+        <!-- Script dinámico para el mensaje de alerta -->
+        <script type="text/javascript">
+            function onlyOneCheckBox{{comida}}() {
+                
+                var checkboxgroup{{comida}} = document.getElementById('checkboxgroup{{comida}}').getElementsByTagName("input");
+                var limit = 3;
+                for (var i = 0; i < checkboxgroup{{comida}}.length; i++) {
+                    checkboxgroup{{comida}}[i].onclick = function() {
+                        var checkedcount = 0;
+                            for (var i = 0; i < checkboxgroup{{comida}}.length; i++) {
+                            checkedcount += (checkboxgroup{{comida}}[i].checked) ? 1 : 0;
+                        }
+                        if (checkedcount > limit) {
+                            /* console.log("You can select maximum of " + limit + " checkbox."); */
+                            /* Mensaje de alerta si se quieren seleccionar más opciones de las permitidas */
+                            swal("Recuerda que sólo puedes seleccionar " + limit + " opciones de {{comida.lower}} como máximo","","error");
+                            
+                            this.checked = false;
+                        }
+                    }
+                }
+            }
+        </script>
+    {% endfor %}
+</head>
+<body>
+    <header>
+    </header>
+
+    <main>
+        <div>
+            <h2>Paso 2: Almuerzos</h2>
+            <p>Ya hemos llegado a la mitad del día, pero aun queda recorrido por delante.</p>
+            <p>Por eso necesitamos recargar nuestras energías con un almuerzo balanceado según nuestras necesidades.</p>
+            <p>Elige hasta 3 de tus alimentos favoritos para el almuerzo.</p>
+
+
+            <form action="/nutriplan/meriendas_favoritas" method="POST">
+                {% csrf_token %}
+
+                {% for comida in COMIDA_CHOICES %}
+                    {% if comida == 'Almuerzo' %}
+                        <h3>{{comida}}</h3>
+                        <div id="checkboxgroup{{comida}}">
+                        {% for alimento in alimentos %}
+                            {% if alimento.comida == comida %}
+                            <label>
+                                <input type="checkbox" name="opciones{{comida}}" value="{{alimento.id}}" onclick="return onlyOneCheckBox{{comida}}()"> {{alimento.nombre}} <!-- {{alimento.id}} {{alimento.comida}} -->
+                            </label><br>
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+                        <script type="text/javascript">
+                            onlyOneCheckBox{{comida}}()
+                        </script>
+                    {% endif %}
+                {% endfor %}
+
+                <input type="submit" value="Ya estamos más cerca! Vamos al paso 3">
+            </form>
+        </div>
+
+        <!-- otra forma de contar checkboxes -->
+<!--         <div>
+                <span id="notvalid" style="color: red;"> </span>
+            </div>
+
+            <script type="text/javascript">
+
+                function myfun() {
+                    var a = document.getElementsByName('opcionesCena');
+                    var newvar = 0;
+                    var count;
+                    for(count = 0; count <a.length; count++){
+                        if(a[count].checked==true){
+                            newvar = newvar + 1;
+                        }
+                    }
+
+                    if(newvar>=5){
+                        document.getElementById('notvalid').innerHTML="**Please select only Four**"
+                        return false;
+                    }
+
+                    if(newvar<5){
+                        document.getElementById('notvalid').innerHTML=""
+                        return true;
+                    }
+                }
+                
+            </script> -->
+    </main>
+
+    <footer>
+    </footer>
+</body>
+</html>
