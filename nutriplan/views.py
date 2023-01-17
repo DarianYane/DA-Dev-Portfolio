@@ -145,59 +145,76 @@ def calcular_desayunos(request):
     
     # Todos los Desayunos
     desayunosFiltrados=Alimentos.objects.filter(comida='Desayuno')
+    #print('desayunosFiltrados es', desayunosFiltrados)
     
     for d in dias:
         solved=False
         while solved==False:
+            hidratosDeCadaAlimento=[]
+            proteinasDeCadaAlimento=[]
+            grasasDeCadaAlimento=[]
+            nombreDeCadaAlimento=[]
+            
+            # Verificar si hay Desayuno Fav
+            idDesayunoFav=0
             try:
-                hidratosDeCadaAlimento=[]
-                proteinasDeCadaAlimento=[]
-                grasasDeCadaAlimento=[]
-                nombreDeCadaAlimento=[]
+                idDesayunoFav = int(random.choice(querydict['opcionesDesayuno']))
+            except:
+                pass
+            
+            # SI hay desayuno Fav, se elige uno al azar como primer alimento del menú
+            if idDesayunoFav!=0:
+                print('hay deayuno Fav')
+                DesayunoFav=Alimentos.objects.filter(id=idDesayunoFav)
+                #print(DesayunoFav)
                 
-                try:
-                    idDesayunoFav = int(random.choice(querydict['opcionesDesayuno']))
-                    DesayunoFav=Alimentos.objects.filter(id=idDesayunoFav)
+                # Iterar sobre el queryset y crear un diccionario para DesayunoFav
+                for alimento in DesayunoFav:
+                    datos_alimento = {
+                        'id': alimento.id,
+                        'nombre': alimento.nombre,
+                        #'categoria': alimento.categoria,
+                        #'comida': alimento.comida,
+                        #'calorias': alimento.calorias,
+                        'hidratos': alimento.hidratos,
+                        'proteinas': alimento.proteinas,
+                        'grasas': alimento.grasas,
+                        #'porcion': alimento.porcion,
+                    }
                     
-                    # Iterar sobre el queryset y crear un diccionario para DesayunoFav
-                    for alimento in DesayunoFav:
-                        datos_alimento = {
-                            'id': alimento.id,
-                            'nombre': alimento.nombre,
-                            #'categoria': alimento.categoria,
-                            #'comida': alimento.comida,
-                            #'calorias': alimento.calorias,
-                            'hidratos': alimento.hidratos,
-                            'proteinas': alimento.proteinas,
-                            'grasas': alimento.grasas,
-                            #'porcion': alimento.porcion,
-                        }
-                        
-                        hidratosDeCadaAlimento.append(datos_alimento['hidratos']/100)
-                        proteinasDeCadaAlimento.append(datos_alimento['proteinas']/100)
-                        grasasDeCadaAlimento.append(datos_alimento['grasas']/100)
-                        nombreDeCadaAlimento.append(datos_alimento['nombre'])
-                except:
-                    desayunoAleatorio=random.choice(desayunosFiltrados)
-                    
-                    hidratosDeCadaAlimento.append(desayunoAleatorio.hidratos/100)
-                    proteinasDeCadaAlimento.append(desayunoAleatorio.proteinas/100)
-                    grasasDeCadaAlimento.append(desayunoAleatorio.grasas/100)
-                    nombreDeCadaAlimento.append(desayunoAleatorio.nombre)    
+                    hidratosDeCadaAlimento.append(datos_alimento['hidratos']/100)
+                    proteinasDeCadaAlimento.append(datos_alimento['proteinas']/100)
+                    grasasDeCadaAlimento.append(datos_alimento['grasas']/100)
+                    nombreDeCadaAlimento.append(datos_alimento['nombre'])
+            else:
+                # Si no hay desayuno Fav, se elige un alimento aleatoriamente como primer alimento del menú
+                print('NOOOOO hay deayuno Fav')
                 
-                for r in range(2):
-                    desayunoAleatorio=random.choice(desayunosFiltrados)
-                    
-                    hidratosDeCadaAlimento.append(desayunoAleatorio.hidratos/100)
-                    proteinasDeCadaAlimento.append(desayunoAleatorio.proteinas/100)
-                    grasasDeCadaAlimento.append(desayunoAleatorio.grasas/100)
-                    nombreDeCadaAlimento.append(desayunoAleatorio.nombre)
-
-                #print(hidratosDeCadaAlimento)
-                #print(proteinasDeCadaAlimento)
-                #print(grasasDeCadaAlimento)
-                #print(nombreDeCadaAlimento)
+                desayunoAleatorio=random.choice(desayunosFiltrados)
                 
+                hidratosDeCadaAlimento.append(desayunoAleatorio.hidratos/100)
+                proteinasDeCadaAlimento.append(desayunoAleatorio.proteinas/100)
+                grasasDeCadaAlimento.append(desayunoAleatorio.grasas/100)
+                nombreDeCadaAlimento.append(desayunoAleatorio.nombre)
+            
+            print('hasta ahora:',hidratosDeCadaAlimento, proteinasDeCadaAlimento, grasasDeCadaAlimento, nombreDeCadaAlimento)
+            
+            # Elegir otros 2 alimentos en forma aleatoria
+            for r in range(2):
+                desayunoAleatorio=random.choice(desayunosFiltrados)
+                
+                hidratosDeCadaAlimento.append(desayunoAleatorio.hidratos/100)
+                proteinasDeCadaAlimento.append(desayunoAleatorio.proteinas/100)
+                grasasDeCadaAlimento.append(desayunoAleatorio.grasas/100)
+                nombreDeCadaAlimento.append(desayunoAleatorio.nombre)
+            
+            print(hidratosDeCadaAlimento)
+            print(proteinasDeCadaAlimento)
+            print(grasasDeCadaAlimento)
+            print(nombreDeCadaAlimento)
+            
+            # Intentar resolver las 3 ecuaciones con 3 incógnitas
+            try:
                 # Preparar A para solve
                 A=[
                     hidratosDeCadaAlimento, 
@@ -214,7 +231,8 @@ def calcular_desayunos(request):
                 
                 # Si no arrojó error de matriz singular...
                 solved=True
-
+                
+                # Actualizar la Dieta completa
                 Dieta['Desayuno'][d]=grXalimento
             except:
                 pass
@@ -230,7 +248,7 @@ def calcular_desayunos(request):
         'COMIDA_CHOICES':COMIDA_CHOICES,
         }
         
-    return render(request,'nutriplan/almuerzos_favoritos.html', context)
+    return render(request,'nutriplan/elegir-almuerzos-favoritos.html', context)
 
 def meriendas_favoritas(request):
     print(request.POST)
@@ -238,7 +256,7 @@ def meriendas_favoritas(request):
     
     # Almuerzos aleatorios
     almuerzosFiltrados=Alimentos.objects.filter(comida='Almuerzo')
-    print(almuerzosFiltrados)
+    print('almuerzosFiltrados es ', almuerzosFiltrados)
     
     #***********************************************
     idAlmuerzoFav=0
@@ -330,7 +348,7 @@ def meriendas_favoritas(request):
     
     
     
-    #print(Dieta)
+    print(Dieta)
     
     context={
         'hidratosObjetivo':hidratosObjetivo,
