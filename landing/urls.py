@@ -11,7 +11,7 @@ urlpatterns = [
     path('aboutme', aboutmehome, name="about me home"),
     path('', views.Tasks_lists.as_view(), name="home"),
     path('blog', BlogListView.as_view(), name="BlogListView"),
-    path('nutriplan', nutrihome, name="nutriplan/nutrihome"),
+    path('nutriplan', nutrihome, name="nutrihome"),
 
     # COntact Form
     path('send_email/', views.sendEmail, name="send_email"),
