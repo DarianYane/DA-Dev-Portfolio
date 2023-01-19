@@ -254,6 +254,7 @@ def calcular_desayunos(request):
     
     print(Dieta)
     
+    global context
     context = {
         "hidratosObjetivo": hidratosObjetivo,
         "proteinasObjetivo": proteinasObjetivo,
@@ -265,125 +266,69 @@ def calcular_desayunos(request):
     
     return render(request, "nutriplan/elegir-almuerzos-favoritos.html", context)
 
-
 def calcular_almuerzos(request):
+    global querydict
     querydict = dict(request.POST)
     
-    global n_COMIDA_CHOICES
+    comida_y_alimentosFiltrados()
     
-    n_COMIDA_CHOICES=n_COMIDA_CHOICES
-    
-    n_COMIDA_CHOICES+=1
-    
-    print('n_COMIDA_CHOICES es ', n_COMIDA_CHOICES)
-    
-    comida=COMIDA_CHOICES[n_COMIDA_CHOICES]
-    print('comida es ', comida)
-    
-    # Todos los Almuerzos
-    alimentosFiltrados = Alimentos.objects.filter(comida=comida)
-    print('alimentosFiltrados es', alimentosFiltrados)
-
-    for d in dias:
-        solved = False
-        while solved == False:
-            hidratosDeCadaAlimento = []
-            proteinasDeCadaAlimento = []
-            grasasDeCadaAlimento = []
-            nombreDeCadaAlimento = []
-
-            # Verificar si hay Almuerzo Fav
-            idAlmuerzoFav = 0
-            try:
-                idAlmuerzoFav = int(random.choice(querydict["opcionesAlmuerzo"]))
-            except:
-                pass
-
-            # SI hay almuerzo Fav, se elige uno al azar como primer alimento del menú
-            if idAlmuerzoFav != 0:
-                print("hay almuerzo Fav")
-                AlmuerzoFav = Alimentos.objects.filter(id=idAlmuerzoFav)
-                # print(AlmuerzoFav)
-
-                # Iterar sobre el queryset y crear un diccionario para AlmuerzoFav
-                for alimento in AlmuerzoFav:
-                    datos_alimento = {
-                        "id": alimento.id,
-                        "nombre": alimento.nombre,
-                        #'categoria': alimento.categoria,
-                        #'comida': alimento.comida,
-                        #'calorias': alimento.calorias,
-                        "hidratos": alimento.hidratos,
-                        "proteinas": alimento.proteinas,
-                        "grasas": alimento.grasas,
-                        #'porcion': alimento.porcion,
-                    }
-
-                    hidratosDeCadaAlimento.append(datos_alimento["hidratos"] / 100)
-                    proteinasDeCadaAlimento.append(datos_alimento["proteinas"] / 100)
-                    grasasDeCadaAlimento.append(datos_alimento["grasas"] / 100)
-                    nombreDeCadaAlimento.append(datos_alimento["nombre"])
-            else:
-                # Si no hay almuerzo Fav, se elige un alimento aleatoriamente como primer alimento del menú
-                print("NOOOOO hay almuerzo Fav")
-
-                almuerzoAleatorio = random.choice(alimentosFiltrados)
-
-                hidratosDeCadaAlimento.append(almuerzoAleatorio.hidratos / 100)
-                proteinasDeCadaAlimento.append(almuerzoAleatorio.proteinas / 100)
-                grasasDeCadaAlimento.append(almuerzoAleatorio.grasas / 100)
-                nombreDeCadaAlimento.append(almuerzoAleatorio.nombre)
-
-            print(
-                "hasta ahora:",
-                hidratosDeCadaAlimento,
-                proteinasDeCadaAlimento,
-                grasasDeCadaAlimento,
-                nombreDeCadaAlimento,
-            )
-
-            # Elegir otros 2 alimentos en forma aleatoria
-            for r in range(2):
-                almuerzoAleatorio = random.choice(alimentosFiltrados)
-
-                hidratosDeCadaAlimento.append(almuerzoAleatorio.hidratos / 100)
-                proteinasDeCadaAlimento.append(almuerzoAleatorio.proteinas / 100)
-                grasasDeCadaAlimento.append(almuerzoAleatorio.grasas / 100)
-                nombreDeCadaAlimento.append(almuerzoAleatorio.nombre)
-
-            print(hidratosDeCadaAlimento)
-            print(proteinasDeCadaAlimento)
-            print(grasasDeCadaAlimento)
-            print(nombreDeCadaAlimento)
-
-            # Intentar resolver las 3 ecuaciones con 3 incógnitas
-            try:
-                # Preparar A para solve
-                A = [
-                    hidratosDeCadaAlimento,
-                    proteinasDeCadaAlimento,
-                    grasasDeCadaAlimento,
-                ]
-                # Preparar b para solve
-                b = [hidratosObjetivo / 4, proteinasObjetivo / 4, grasasObjetivo / 4]
-                solve(A, b)
-
-                # Si no arrojó error de matriz singular...
-                solved = True
-
-                # Actualizar la Dieta completa
-                Dieta["Almuerzo"][d] = grXalimento
-            except:
-                pass
+    loop_diario()
     
     print(Dieta)
     
+    global context
     context = {
         "hidratosObjetivo": hidratosObjetivo,
         "proteinasObjetivo": proteinasObjetivo,
         "grasasObjetivo": grasasObjetivo,
         "alimentos": Alimentos.objects.all(),
         "COMIDA_CHOICES": COMIDA_CHOICES,
+        "n_COMIDA_CHOICES": n_COMIDA_CHOICES,
     }
+    
+    return render(request, "nutriplan/elegir-meriendas-favoritas.html", context)
 
-    return render(request, "nutriplan/meriendas_favoritas.html", context)
+def calcular_meriendas(request):
+    global querydict
+    querydict = dict(request.POST)
+    
+    comida_y_alimentosFiltrados()
+    
+    loop_diario()
+    
+    print(Dieta)
+    
+    global context
+    context = {
+        "hidratosObjetivo": hidratosObjetivo,
+        "proteinasObjetivo": proteinasObjetivo,
+        "grasasObjetivo": grasasObjetivo,
+        "alimentos": Alimentos.objects.all(),
+        "COMIDA_CHOICES": COMIDA_CHOICES,
+        "n_COMIDA_CHOICES": n_COMIDA_CHOICES,
+    }
+    
+    return render(request, "nutriplan/elegir-cenas-favoritas.html", context)
+
+def calcular_cenas(request):
+    global querydict
+    querydict = dict(request.POST)
+    
+    comida_y_alimentosFiltrados()
+    
+    loop_diario()
+    
+    print(Dieta)
+    
+    global context
+    context = {
+        "hidratosObjetivo": hidratosObjetivo,
+        "proteinasObjetivo": proteinasObjetivo,
+        "grasasObjetivo": grasasObjetivo,
+        "alimentos": Alimentos.objects.all(),
+        "COMIDA_CHOICES": COMIDA_CHOICES,
+        "n_COMIDA_CHOICES": n_COMIDA_CHOICES,
+    }
+    
+    return render(request, "nutriplan/dieta-plan.html", context)
+

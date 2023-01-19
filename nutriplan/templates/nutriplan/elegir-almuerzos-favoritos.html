@@ -47,7 +47,7 @@
             <p>Elige hasta 3 de tus alimentos favoritos para el almuerzo.</p>
 
 
-            <form action="/nutriplan/meriendas_favoritas" method="POST">
+            <form action="/nutriplan/elegir-meriendas-favoritas" method="POST">
                 {% csrf_token %}
 
                 {% for comida in COMIDA_CHOICES %}

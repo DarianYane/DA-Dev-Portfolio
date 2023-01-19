@@ -2,7 +2,11 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path("nutriplan", nutrihome, name="nutrihome"),
+    path(
+        "nutriplan",
+        nutrihome,
+        name="nutrihome"
+    ),
     path(
         "nutriplan/cuantas-calorias-se-necesitan",
         cuantas_calorias_se_necesitan,
@@ -19,8 +23,18 @@ urlpatterns = [
         name="elegir-almuerzos-favoritos",
     ),
     path(
-        "nutriplan/meriendas_favoritas", calcular_almuerzos, name="meriendas_favoritas"
+        "nutriplan/elegir-meriendas-favoritas",
+        calcular_almuerzos,
+        name="elegir-meriendas-favoritas"
     ),
-    # path('nutriplan/cenas_favoritas', cenas_favoritas, name="cenas_favoritas"),
-    # path('nutriplan/plan_de_dieta', plan_de_dieta, name="plan_de_dieta"),
+    path(
+        "nutriplan/elegir-cenas-favoritas",
+        calcular_meriendas,
+        name="elegir-cenas-favoritas"
+    ),
+    path(
+        "nutriplan/dieta-plan",
+        calcular_cenas,
+        name="dieta-plan"
+    ),
 ]

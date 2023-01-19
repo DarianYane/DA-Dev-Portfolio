@@ -41,17 +41,17 @@
 
     <main>
         <div>
-            <h2>Paso 2: Almuerzos</h2>
-            <p>Ya hemos llegado a la mitad del día, pero aun queda recorrido por delante.</p>
-            <p>Por eso necesitamos recargar nuestras energías con un almuerzo balanceado según nuestras necesidades.</p>
-            <p>Elige hasta 3 de tus alimentos favoritos para el almuerzo.</p>
+            <h2>Paso 3: Meriendas</h2>
+            <p>Nuestra jornada está casi terminando y hemos consumido muchas energías.</p>
+            <p>Ahora es momento de reponer fuerzar para llegar más balanceados a la cena y a la hora del descanso.</p>
+            <p>Elige hasta 3 de tus alimentos favoritos para la merienda.</p>
 
 
-            <form action="/nutriplan/meriendas_favoritas" method="POST">
+            <form action="/nutriplan/elegir-cenas-favoritas" method="POST">
                 {% csrf_token %}
 
                 {% for comida in COMIDA_CHOICES %}
-                    {% if comida == 'Almuerzo' %}
+                    {% if comida == 'Merienda' %}
                         <h3>{{comida}}</h3>
                         <div id="checkboxgroup{{comida}}">
                         {% for alimento in alimentos %}
@@ -68,39 +68,9 @@
                     {% endif %}
                 {% endfor %}
 
-                <input type="submit" value="Ya estamos más cerca! Vamos al paso 3">
+                <input type="submit" value="Ya casi terminamos! Vamos al último paso">
             </form>
         </div>
-
-        <!-- otra forma de contar checkboxes -->
-<!--         <div>
-                <span id="notvalid" style="color: red;"> </span>
-            </div>
-
-            <script type="text/javascript">
-
-                function myfun() {
-                    var a = document.getElementsByName('opcionesCena');
-                    var newvar = 0;
-                    var count;
-                    for(count = 0; count <a.length; count++){
-                        if(a[count].checked==true){
-                            newvar = newvar + 1;
-                        }
-                    }
-
-                    if(newvar>=5){
-                        document.getElementById('notvalid').innerHTML="**Please select only Four**"
-                        return false;
-                    }
-
-                    if(newvar<5){
-                        document.getElementById('notvalid').innerHTML=""
-                        return true;
-                    }
-                }
-                
-            </script> -->
     </main>
 
     <footer>
