@@ -327,7 +327,9 @@ def calcular_cenas(request):
         "grasasObjetivo": grasasObjetivo,
         "alimentos": Alimentos.objects.all(),
         "COMIDA_CHOICES": COMIDA_CHOICES,
-        "n_COMIDA_CHOICES": n_COMIDA_CHOICES,
+        #"n_COMIDA_CHOICES": n_COMIDA_CHOICES,
+        "dias": dias,
+        "Dieta": Dieta,
     }
     
     return render(request, "nutriplan/dieta-plan.html", context)
