@@ -1,6 +1,7 @@
 01. update my resume in static files (in english)
 02. Make an application to generate a personalized nutritional plan.
 03. Put a sidebar on it.
+04. Fix the white aboutme bar so that everything is centered when it becomes small (copy the format of the landing navbar).
 10. Comment the code
 43. Make the exercise routine or crypto project (like coingecko evaluating differences/distances between MC´s (like F1))
 44. Login to nutrition and exercise projects
