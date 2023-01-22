@@ -1,57 +1,53 @@
-<html>
-    <head>
-        <style>
-            /* To achieve a responsive navbar */
-            .navbar {
-                display: flex;
-                justify-content: center;
-            }
+<head>
+    <style>
+        /* To achieve a responsive navbar */
+        .navbar {
+            display: flex;
+            justify-content: center;
+        }
 
-            .nav-item {
-                display: flex;
-                flex-grow: 1;
-                justify-content: center;
-            }
+        .nav-item {
+            display: flex;
+            flex-grow: 1;
+            justify-content: center;
+        }
 
-            .search-container {
-                display: flex;
-                flex-grow: 1;
-                justify-content: center;
-            }
+        .search-container {
+            display: flex;
+            flex-grow: 1;
+            justify-content: center;
+        }
 
-            .search-bar {
-                flex-grow: 1;
-                width: 300px;
-            }
-        </style>
-    </head>
-    <header class="site-header sticky-top" style="background-color: #1500ce;">
-        <nav class="navbar">
-            <div class="nav-item">
-                <h5><strong><a class="nav-link active mx-2" aria-current="page" href="{% url 'home' %}" style="color:#f3f2f0;">Main Page</a></strong></h5>
-                <h5><strong><a class="nav-link active mx-2" aria-current="page" href="{% url 'BlogListView' %}" style="color:#ffd000;">Travel Blog Home</a></strong></h5>
-                {% if user.is_authenticated %}
-                    <h5><strong><a class="nav-link active" href="{% url 'CreatePostView' %}" style="color:#ffd000;">🞤 Add new Post</a></strong></h5>
-                {% endif %}
-            </div>
-            <div class="search-container">
-                <form class="d-flex" role="search" action="/blog/search/" method="GET">
-                    <input type="text" class="search-bar form-control mx-2" placeholder="Search by title..." name="title_search">
-                    <button class="btn btn-warning" type="submit">Search</button>
-                </form>
-            </div>
-            <div class="nav-item">
-                {% if user.is_authenticated %}
-                <h5 class="align-text-center" style="color:#f3f2f0;">Hi {{ user.username }}!&nbsp;&nbsp;&nbsp;&nbsp;</h5>
-                <h5 class="align-text-center" style="color:#ffd000;">|</h5>
-                <h5 class="align-text-center">&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'logout' %}" style="color: #cbf706; text-decoration:none;">🧳 Logout</a></h5>
-                {% else %}
-                <div class="text-center">
-                    <a href="{% url 'login' %}" class="btn btn-light me-2" style="background-color: #2AFFF5;">Login</a>
-                    <a href="{% url 'UserRegistrationView' %}" class="btn btn-light me-2" style="background-color: #E9ED00;">Register</a>
-                </div>
-                {% endif %}
-            </div>
-        </nav>
-    </header>
-</html>
+        .search-bar {
+            flex-grow: 1;
+            width: 300px;
+        }
+    </style>
+</head>
+<nav class="site-header sticky-top navbar" style="background-color: #1500ce;">
+    <div class="nav-item">
+        <h5><strong><a class="nav-link active mx-2" aria-current="page" href="{% url 'home' %}" style="color:#f3f2f0;">Main Page</a></strong></h5>
+        <h5><strong><a class="nav-link active mx-2" aria-current="page" href="{% url 'BlogListView' %}" style="color:#ffd000;">Travel Blog Home</a></strong></h5>
+        {% if user.is_authenticated %}
+            <h5><strong><a class="nav-link active" href="{% url 'CreatePostView' %}" style="color:#ffd000;">🞤 Add new Post</a></strong></h5>
+        {% endif %}
+    </div>
+    <div class="search-container">
+        <form class="d-flex" role="search" action="/blog/search/" method="GET">
+            <input type="text" class="search-bar form-control mx-2" placeholder="Search by title..." name="title_search">
+            <button class="btn btn-warning" type="submit">Search</button>
+        </form>
+    </div>
+    <div class="nav-item m-2">
+        {% if user.is_authenticated %}
+        <h5 class="align-text-center" style="color:#f3f2f0;">Hi {{ user.username }}!&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+        <h5 class="align-text-center" style="color:#ffd000;">|</h5>
+        <h5 class="align-text-center">&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'logout' %}" style="color: #cbf706; text-decoration:none;">🧳 Logout</a></h5>
+        {% else %}
+        <div class="text-center">
+            <a href="{% url 'login' %}" class="btn btn-light me-2" style="background-color: #2AFFF5;">Login</a>
+            <a href="{% url 'UserRegistrationView' %}" class="btn btn-light me-2" style="background-color: #E9ED00;">Register</a>
+        </div>
+        {% endif %}
+    </div>
+</nav>

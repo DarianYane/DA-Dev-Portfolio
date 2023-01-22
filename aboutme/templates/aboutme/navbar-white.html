@@ -1,27 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-    {% load static %}
-    <head>
-        <style>
-            .nav-item {
-                transition: transform 0.05s;
-            }
+<head>
+    <style>
+        .nav-item {
+            transition: transform 0.05s;
+        }
 
-            .nav-item:hover  {
-                transform: scale(1.1);
-            }
-        </style>
-    </head>
-    <body id="page-top">
-        <div class="container-fluid d-flex justify-content-center py-3">
-            <ul class="nav nav-pills">
-                <li class="nav-item"><a href="{% url 'home' %}" class="nav-link active" aria-current="page">Home</a></li>
-                <li class="nav-item"><a href="/#Reasons for hiring me" class="nav-link">Reasons for hiring me</a></li>
-                <li class="nav-item"><a href="/#My projects" class="nav-link">My projects</a></li>
-                <li class="nav-item"><a href="/#About Me" class="nav-link">About Me</a></li>
-                <li class="nav-item"><a href="/#Roadmap" class="nav-link">Roadmap</a></li>
-                <li class="nav-item"><a href="/#Contact" class="nav-link">Contact</a></li>
-            </ul>
-        </div>
-    </body>
-</html>
+        .nav-item:hover  {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body id="page-top">
+    <div class="container-fluid d-flex justify-content-center py-3">
+        <ul class="nav nav-pills justify-content-center">
+            <li class="nav-item"><a href="{% url 'home' %}" class="nav-link active" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="/#Reasons for hiring me" class="nav-link">Reasons for hiring me</a></li>
+            <li class="nav-item"><a href="/#My projects" class="nav-link">My projects</a></li>
+            <li class="nav-item"><a href="/#About Me" class="nav-link">About Me</a></li>
+            <li class="nav-item"><a href="/#Roadmap" class="nav-link">Roadmap</a></li>
+            <li class="nav-item"><a href="/#Contact" class="nav-link">Contact</a></li>
+        </ul>
+    </div>
+</body>

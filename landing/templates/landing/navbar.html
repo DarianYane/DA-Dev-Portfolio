@@ -1,62 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-    {% load static %}
-    <head>
-        <style>
-            /* To achieve a responsive navbar */
-            .navbar {
-                display: flex;
-                justify-content: center;
-            }
+<head>
+    <style>
+        /* To achieve a responsive navbar */
+        .navbar {
+            display: flex;
+            justify-content: center;
+        }
 
-            .nav-item {
-                display: flex;
-                flex-grow: 1;
-                justify-content: center;
-                transition: transform 0.3s;
-            }
+        .nav-item {
+            display: flex;
+            flex-grow: 1;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
 
-            .nav-item:hover  {
-                transform: scale(1.2);
-            }
+        .nav-item:hover  {
+            transform: scale(1.2);
+        }
 
-            .search-container {
-                display: flex;
-                flex-grow: 1;
-                justify-content: center;
-            }
+        .nav-link {
+            transition: transform 0.3s;
+        }
 
-            .search-bar {
-                flex-grow: 1;
-                width: 300px;
-            }
-        </style>
-    </head>
+        .nav-link:hover  {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<!-- Navigation-->
+<body id="page-top">
     <div class="container">
-        <body id="page-top">
-            <!-- Navigation-->
-            <header class="site-header sticky-top">
-                <nav class="navbar">
-                    <div class="nav-item">
-                        <a href="{% url 'home' %}" class="nav-link" aria-current="page" style="color:#f3f2f0;"><h5>Home</h5></a>
+        <header class="site-header sticky-top">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container-fluid">
+                    <a href="{% url 'home' %}" class="nav-link" aria-current="page" style="color:#f3f2f0;">
+                        <h5>Home</h5>
+                    </a>
+                    <button class="navbar-toggler nav-link" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerLanding"
+                        aria-controls="navbarTogglerLanding" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerLanding">
+                        <div class="nav-item">
+                            <a href="/#Reasons for hiring me" class="nav-link" style="color:#ffd000;">
+                                <h5>Reasons for hiring me</h5>
+                            </a>
+                        </div>
+                        <div class="nav-item">
+                            <a href="/#My projects" class="nav-link" style="color:#ffd000;">
+                                <h5>My projects</h5>
+                            </a>
+                        </div>
+                        <div class="nav-item">
+                            <a href="/#About Me" class="nav-link" style="color:#ffd000;">
+                                <h5>About Me</h5>
+                            </a>
+                        </div>
+                        <div class="nav-item">
+                            <a href="/#Roadmap" class="nav-link" style="color:#ffd000;">
+                                <h5>Roadmap</h5>
+                            </a>
+                        </div>
+                        <div class="nav-item">
+                            <a href="/#Contact" class="nav-link" style="color:#ffd000;">
+                                <h5>Contact</h5>
+                            </a>
+                        </div>
                     </div>
-                    <div class="nav-item">
-                        <a href="/#Reasons for hiring me" class="nav-link" style="color:#ffd000;"><h5>Reasons for hiring me</h5></a>
-                    </div>
-                    <div class="nav-item">
-                        <a href="/#My projects" class="nav-link" style="color:#ffd000;"><h5>My projects</h5></a>
-                    </div>
-                    <div class="nav-item">
-                        <a href="/#About Me" class="nav-link" style="color:#ffd000;"><h5>About Me</h5></a>
-                    </div>
-                    <div class="nav-item">
-                        <a href="/#Roadmap" class="nav-link" style="color:#ffd000;"><h5>Roadmap</h5></a>
-                    </div>
-                    <div class="nav-item">
-                        <a href="/#Contact" class="nav-link" style="color:#ffd000;"><h5>Contact</h5></a>
-                    </div>
-                </nav>
-            </header>
-        </body>
+                </div>
+            </nav>
+        </header>
     </div>
-</html>
+</body>
+
