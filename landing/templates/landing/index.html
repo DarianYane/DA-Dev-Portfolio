@@ -2,112 +2,114 @@
 
 {% load static %}
 
+{% block extrahead %}
 
-{% block content %}
-<head>
     <style>
         #btn-scaled {
             transition: transform 0.3s;
         }
 
-        #btn-scaled:hover  {
+        #btn-scaled:hover {
             transform: scale(1.2);
         }
     </style>
-</head>
-        <!-- Header-->
-        <header class="masthead d-flex align-items-center">
-            <div class="container mt-3 px-4 px-lg-5 text-center">
-                <!-- Masthead Avatar Image-->
-                <img class="rounded-circle shadow p-1 bg-body mb-4" width="250" height="250" src="{% static 'assets/img/profile-pic.png' %}" alt="Profile_picture"/>
-                <!-- Masthead Heading-->
-                <h1 class="mb-3">Darian Yane</h1>
-                <!-- Masthead Subheading-->
-                <h2 class="mb-3"><em>Junior Python Developer</em></h2>
-                <h5 class="mb-5"><em>Degree in Economics and MBA</em></h5>
-                    <div class="row gx-0 align-items-center">
-                        <div class="col-lg-2 "></div>
-                        <div class="col-lg-2 ">
-                            <div class="logo-python p-1 mb-4">
-                                <img class="p-1 bg-body mb-4" width="120" height="120" src="{% static 'assets/img/python-logo.png' %}" alt="Python_logo"/>
-                            </div>
-                        </div>
-                        <div class="col-lg-1 "></div>
-                        <div class="col-lg-2">
-                            <div class="logo-django p-1 mb-4">
-                                <img class="p-1 bg-body mb-4" width="140" height="130" src="{% static 'assets/img/django-logo.png' %}" alt="Django_logo"/>
-                            </div>
-                        </div>
-                        <div class="col-lg-1 "></div>
-                        <div class="col-lg-2">
-                            <div class="logo-bootstrap p-1 mb-4">
-                                <img class="p-1 bg-body mb-4" width="150" height="150" src="{% static 'assets/img/bootstrap-logo.png' %}" alt="Bootstrap_logo"/>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 "></div>
-                    </div>
-                <p><a class="btn btn-success btn-xl active fs-5" href="#Reasons for hiring me" id="btn-scaled">Reasons for hiring me</a></p>
-                
-            </div>
-        </header>
-        <!-- Reasons for hiring me-->
-        <section class="content-section bg-primary" id="Reasons for hiring me">
-            <div class="container px-4 px-lg-5 text-center">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-10">
-                        <div class="content-section-heading text-center">
-                            <h3 class="text-secondary mb-0">Why you should</h3>
-                            <h2 class="mb-5">Hire Me</h2>
-                        </div>
-                        <p class="lead mb-3 text-white" style="font-size: 30px">
-                            My knowledge of <strong>Python, Django, Bootstrap, Economics, Finance and Statistics</strong>, added to my extensive work experience in all types of companies and teams, make <strong>my incorporation extremely fluid and effective</strong>.
-                        </p>
-                        <br>
-                        <p class="lead mb-2 text-white" style="font-size: 24px">
-                            You will be adding to your company a person willing to <strong>help the team</strong> in any task needed.                    
-                        </p>
-                        <br>
-                        <p class="lead mb-2 text-white" style="font-size: 24px">
-                            Through my  <strong>logical and analytical skills</strong> I will solve any kind of problems that may arise on a daily basis.
-                        </p>
-                        <br>
-                        <p class="lead mb-4 text-white" style="font-size: 24px">
-                            You will be hiring an <strong>enthusiastic</strong> person, who <strong>can work alone or in a team</strong>, 
-                            and who is constantly <strong>looking for ways to generate new solutions, or optimize existing processes</strong>.
-                        </p>
-                        <br>
 
-                        <div class="content-section-heading text-center">
-                            <h2>I will be productive from day one!</h2>
+{% endblock %}
+
+{% block content %}
+    <!-- Header-->
+    <header class="masthead d-flex align-items-center">
+        <div class="container mt-3 px-4 px-lg-5 text-center">
+            <!-- Masthead Avatar Image-->
+            <img class="rounded-circle shadow p-1 bg-body mb-4" width="250" height="250" src="{% static 'assets/img/profile-pic.png' %}" alt="Profile picture"/>
+            <!-- Masthead Heading-->
+            <h1 class="mb-3">Darian Yane</h1>
+            <!-- Masthead Subheading-->
+            <h2 class="mb-3"><em>Junior Python Developer</em></h2>
+            <h5 class="mb-5"><em>Degree in Economics and MBA</em></h5>
+                <div class="row gx-0 align-items-center">
+                    <div class="col-lg-2 "></div>
+                    <div class="col-lg-2 ">
+                        <div class="logo-python p-1 mb-4">
+                            <img class="p-1 bg-body mb-4" width="120" height="120" src="{% static 'assets/img/python-logo.png' %}" alt="Python logo"/>
                         </div>
-                        <br>
-                        <br>
-                        <br>
-                        <a class="btn btn-light btn-xl fs-5" href="#My projects" id="btn-scaled">My projects</a>
                     </div>
+                    <div class="col-lg-1 "></div>
+                    <div class="col-lg-2">
+                        <div class="logo-django p-1 mb-4">
+                            <img class="p-1 bg-body mb-4" width="140" height="130" src="{% static 'assets/img/django-logo.png' %}" alt="Django logo"/>
+                        </div>
+                    </div>
+                    <div class="col-lg-1 "></div>
+                    <div class="col-lg-2">
+                        <div class="logo-bootstrap p-1 mb-4">
+                            <img class="p-1 bg-body mb-4" width="150" height="150" src="{% static 'assets/img/bootstrap-logo.png' %}" alt="Bootstrap logo"/>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 "></div>
+                </div>
+            <p><a class="btn btn-success btn-xl active fs-5" href="#Reasons for hiring me" id="btn-scaled">Reasons for hiring me</a></p>
+            
+        </div>
+    </header>
+    <!-- Reasons for hiring me-->
+    <section class="content-section bg-primary" id="Reasons for hiring me">
+        <div class="container px-4 px-lg-5 text-center">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-10">
+                    <div class="content-section-heading text-center">
+                        <h3 class="text-secondary mb-0">Why you should</h3>
+                        <h2 class="mb-5">Hire Me</h2>
+                    </div>
+                    <p class="lead mb-3 text-white" style="font-size: 30px">
+                        My knowledge of <strong>Python, Django, Bootstrap, Economics, Finance and Statistics</strong>, added to my extensive work experience in all types of companies and teams, make <strong>my incorporation extremely fluid and effective</strong>.
+                    </p>
+                    <br>
+                    <p class="lead mb-2 text-white" style="font-size: 24px">
+                        You will be adding to your company a person willing to <strong>help the team</strong> in any task needed.                    
+                    </p>
+                    <br>
+                    <p class="lead mb-2 text-white" style="font-size: 24px">
+                        Through my  <strong>logical and analytical skills</strong> I will solve any kind of problems that may arise on a daily basis.
+                    </p>
+                    <br>
+                    <p class="lead mb-4 text-white" style="font-size: 24px">
+                        You will be hiring an <strong>enthusiastic</strong> person, who <strong>can work alone or in a team</strong>, 
+                        and who is constantly <strong>looking for ways to generate new solutions, or optimize existing processes</strong>.
+                    </p>
+                    <br>
+
+                    <div class="content-section-heading text-center">
+                        <h2>I will be productive from day one!</h2>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <a class="btn btn-light btn-xl fs-5" href="#My projects" id="btn-scaled"><i class="bi bi-briefcase"></i>&nbsp;&nbsp;&nbsp;My projects</a>
                 </div>
             </div>
-        </section>
-        <!-- Projects -->
-        <section class="content-section" id="My projects">
-            <div class="container px-4 px-lg-5">
-                <div class="content-section-heading text-center">
-                    <h3 class="text-secondary mb-0">Portfolio</h3>
-                    <h2 class="mb-5">Recent Projects</h2>
-                </div>
-                {% include 'landing/projects.html' %}
+        </div>
+    </section>
+    <!-- Projects -->
+    <section class="content-section" id="My projects">
+        <div class="container px-4 px-lg-5">
+            <div class="content-section-heading text-center">
+                <h3 class="text-secondary mb-0">Portfolio</h3>
+                <h2 class="mb-5">Recent Projects</h2>
             </div>
-        </section>
-        <!-- About me -->
-        {% include 'landing/aboutme.html' %}
+            {% include 'landing/projects.html' %}
+        </div>
+    </section>
+    <!-- About me -->
+    {% include 'landing/aboutme.html' %}
 
-        <!-- Roadmap -->
-        {% include 'landing/roadmap.html' %}
+    <!-- Roadmap -->
+    {% include 'landing/roadmap.html' %}
 
-        <!-- Contact -->
-        {% include 'landing/contact_method_2.html' %}
+    <!-- Contact -->
+    {% include 'landing/contact_method_2.html' %}
 
-        <!-- Pre-Footer -->
-        {% include 'landing/pre_footer.html' %}
+    <!-- Pre-Footer -->
+    {% include 'landing/pre_footer.html' %}
 
 {% endblock %}

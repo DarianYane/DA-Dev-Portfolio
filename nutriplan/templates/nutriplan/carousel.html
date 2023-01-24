@@ -1,0 +1,50 @@
+{% load static %}
+
+{% block extrahead %}
+    <!-- Owl Stylesheets -->
+    <link rel="stylesheet" href="{% static 'css/nutriplan/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nutriplan/owl.theme.default.min.css' %}">
+    <!-- javascript -->
+    <script src="{% static 'js/nutriplan/jquery.min.js' %}"></script>
+    <script src="{% static 'js/nutriplan/owl.carousel.min.js' %}"></script>
+{% endblock %}
+
+<!--  Carousel AutoPlay from owlcarousel2.github.io-->
+<section>
+    <div class="row" style="--bs-gutter-x: 0rem;">
+        <div class="large-12 columns">
+            <div class="owl-carousel owl-theme">
+                <div class="item">
+                    <img class="img-fluid" src="{% static 'assets/img/comida-en-corazon.jpg' %}" alt="Food Heart Shape" />
+                </div>
+                <div class="item">
+                    <img class="img-fluid" src="{% static 'assets/img/travel-blog.jpg' %}" alt="Paris afternoon" />
+                </div>
+                <div class="item">
+                    <img class="img-fluid" src="{% static 'assets/img/words.jpg' %}" alt="Letters" />
+                </div>
+                <div class="item">
+                    <img class="img-fluid" src="{% static 'assets/img/portfolio-3.jpg' %}" alt="..." />
+                </div>
+                <div class="item">
+                    <img class="img-fluid" src="{% static 'assets/img/portfolio-4.jpg' %}" alt="..." />
+                </div>
+            </div>
+
+            <script>
+                $(document).ready(function () {
+                    var owl = $('.owl-carousel');
+                    owl.owlCarousel({
+                        items: 3,
+                        loop: true,
+                        margin: 30,
+                        autoplay: true,
+                        autoplayTimeout: 2000,
+                        autoplayHoverPause: false
+                    });
+                })
+            </script>
+
+        </div>
+    </div>
+</section>
