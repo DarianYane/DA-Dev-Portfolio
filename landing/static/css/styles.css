@@ -11635,3 +11635,33 @@ li {
 .about-body {
   background-color: #F8F8F8 !important;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+#Reasons_for_hiring_me:target {
+  transform: translateY(-50px);
+  transition: transform 0.5s ease-out;
+}
+
+#My_projects:target {
+  transform: translateY(-50px);
+  transition: transform 0.5s ease;
+}
+
+#About_Me:target {
+  transform: translateY(-50px);
+  transition: transform 0.5s ease;
+}
+
+#Roadmap:target {
+  transform: translateY(-50px);
+  transition: transform 0.5s ease;
+}
+
+#Contact:target {
+  transform: translateY(-50px);
+  transition: transform 0.5s ease;
+}
+

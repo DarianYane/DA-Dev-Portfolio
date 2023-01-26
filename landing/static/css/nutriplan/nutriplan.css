@@ -1,18 +1,21 @@
+body {
+    background-color: #43854e;
+}
+
 h1 {
-    color: blue;
+    text-align: center;
 }
 
 .wrapper {
     display: flex;
 }
 
-.main, .sidebar {
-    background-color: #fff;
-}
-
 .main {
     width: 85%;
-    height: 170vh;
+}
+
+.main h1, h2, p, ul, li {
+    color: white;
 }
 
 .sidebar {
@@ -21,10 +24,18 @@ h1 {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
+    justify-content: center;
+    text-align: center;
+    min-width: 180px;
+    background-color: lightgreen;
+    color: #315f38;
+    -webkit-box-shadow: 6px 0px 19px -1px rgba(5, 43, 1, 1);
+    -moz-box-shadow: 6px 0px 19px -1px rgba(5, 43, 1, 1);
+    box-shadow: 6px 0px 19px -1px rgba(5, 43, 1, 1);
 }
 
-body {
-    background-color: #ccc;
+.sidebar a {
+    color: #315f38;
 }
 
 .alimentos {

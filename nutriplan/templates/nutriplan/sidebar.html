@@ -1,8 +1,12 @@
+{% load static %}
 <div class="sidebar">
-    <h1>LOGO</h1>
+    <img class="rounded-circle bg-body m-4" style="border-color:#3c7e46; border-width: 3px; border-style: solid;" width="110" height="110" src="{% static 'assets/img/LOGO_NUTRIPLAN.png' %}" alt="Nutriplan Logo"/>
     <br>
-    <h1>Índice Sticky sidebar</h1>
+    <h3 class="m-4">Índice Sticky sidebar</h3>
     <ul class="nav flex-column">
+        <li>
+            <a href="{% url 'home' %}" class="nav-link" aria-current="page"><h5>Home</h5></a>
+        </li>
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Active</a>
         </li>

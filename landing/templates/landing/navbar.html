@@ -24,13 +24,24 @@
         .nav-link:hover  {
             transform: scale(1.2);
         }
+
+        #page-top {
+            background: rgba(0,2,20,1);
+            background: -moz-linear-gradient(top, rgba(0,2,20,1) 0%, rgba(43,58,201,1) 100%);
+            background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,2,20,1)), color-stop(100%, rgba(43,58,201,1)));
+            background: -webkit-linear-gradient(top, rgba(0,2,20,1) 0%, rgba(43,58,201,1) 100%);
+            background: -o-linear-gradient(top, rgba(0,2,20,1) 0%, rgba(43,58,201,1) 100%);
+            background: -ms-linear-gradient(top, rgba(0,2,20,1) 0%, rgba(43,58,201,1) 100%);
+            background: linear-gradient(to bottom, rgba(0,2,20,1) 0%, rgba(43,58,201,1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000214', endColorstr='#2b3ac9', GradientType=0 );
+        }
     </style>
 </head>
 <!-- Navigation-->
-<body id="page-top">
+<div id="page-top">
     <div class="container">
-        <header class="site-header sticky-top">
-            <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="site-header sticky-top">
+            <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
                     <a href="{% url 'home' %}" class="nav-link" aria-current="page" style="color:#f3f2f0;">
                         <h5>Home</h5>
@@ -41,17 +52,17 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarTogglerLanding">
                         <div class="nav-item">
-                            <a href="/#Reasons for hiring me" class="nav-link" style="color:#ffd000;">
+                            <a href="/#Reasons_for_hiring_me" class="nav-link" style="color:#ffd000;">
                                 <h5>Reasons for hiring me</h5>
                             </a>
                         </div>
                         <div class="nav-item">
-                            <a href="/#My projects" class="nav-link" style="color:#ffd000;">
+                            <a href="/#My_projects" class="nav-link" style="color:#ffd000;">
                                 <h5>My projects</h5>
                             </a>
                         </div>
                         <div class="nav-item">
-                            <a href="/#About Me" class="nav-link" style="color:#ffd000;">
+                            <a href="/#About_Me" class="nav-link" style="color:#ffd000;">
                                 <h5>About Me</h5>
                             </a>
                         </div>
@@ -68,7 +79,7 @@
                     </div>
                 </div>
             </nav>
-        </header>
+        </div>
     </div>
-</body>
+</div>
 
