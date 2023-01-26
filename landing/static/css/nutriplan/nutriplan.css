@@ -51,3 +51,13 @@ h1 {
     height: 500px;
 }
 
+.nav-link{
+    text-decoration: none;
+    transition: transform 0.3s;
+}
+
+.nav-link:hover, .nav-link:focus {
+    text-decoration: none;
+    color: #315f38;
+    transform: scale(1.2);
+}
