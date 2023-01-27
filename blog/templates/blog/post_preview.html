@@ -6,8 +6,12 @@
 
     <div class="card-body" style="color:#000000; text-decoration:none">
         <div class="col align-content-center align-text-center align-items-center">
-            <li><h4 class="card-title"><a href="{% url 'PostDetailView' post.pk %}" style="color:#000000; text-decoration:none">{{ post.title }}</a></h4></li>
-            <li>&nbsp;&nbsp; 🏷<a href="{% url 'CategoryView' post.category %}" style="text-decoration:none">{{ post.category }}</a></li>
+            <div>
+            <h4 class="card-title"><a href="{% url 'PostDetailView' post.pk %}" style="color:#000000; text-decoration:none">{{ post.title }}</a></h4>
+            </div>
+            <p>
+            &nbsp;&nbsp; 🏷<a href="{% url 'CategoryView' post.category %}" style="text-decoration:none">{{ post.category }}</a>
+            </p>
         </div>
         <h6 class="card-subtitle">{{ post.subtitle }}</h6>
         <p class="card-text m-1">{{ post.story|slice:":260"|safe }}
@@ -29,9 +33,9 @@
     </div>
     <div class="card-footer text-end">
         <div class="row align-content-center align-text-center align-items-center">
-            <li><h5 class="text-muted">Created by {{ post.author }}</h5></li>
-            <li><small class="text-muted">Posted on {{ post.created }}</small></li>
-            <li><small class="text-muted">Updated on {{ post.updated }}</small></li>
+            <h5 class="text-muted">Created by {{ post.author }}</h5>
+            <small class="text-muted">Posted on {{ post.created }}</small>
+            <small class="text-muted">Updated on {{ post.updated }}</small>
         </div>
     </div>
 </div>

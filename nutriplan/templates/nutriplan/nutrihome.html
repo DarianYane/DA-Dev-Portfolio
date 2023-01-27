@@ -10,9 +10,9 @@
 {% block content %}
         <div class="main px-5 py-3">
             <header>
-                <div>
+                <div class="m-5">
                     <h1>
-                        Plan Nutricional y Suplementación
+                        Plan Nutricional y de Suplementación
                     </h1>
                 </div>
             </header>
@@ -26,6 +26,10 @@
                     <div>
                         <h2>¿Cómo funciona?</h2>
                         <p>A partir de la informacion que proporciones, se calcularán diferentes indices que serán utilizados para determinar la dieta ideal para ti.</p>
+                    </div>
+                    <br>
+                    <div>
+                        <h2>Quiero empezar ¿Qué debo hacer?</h2>
                         <p>Los pasos a seguir son:</p>
                         <ol>
                             <li>Debes proporcionar tus datos fisiológicos personales</li>
@@ -42,6 +46,7 @@
                                 <p>Algunas personas buscan perder peso, mientras que otras buscan ganar masa muscular. Solo tú puedes indicarnos cuál es tu objetivo, y esto impactará directamente en la que será tu dieta ideal.</p>
                         </ol>
                     </div>
+                    <br>
                     <div>
                         <h1>¡Empecemos a ponerte en forma!</h1>
                     </div>
@@ -53,47 +58,47 @@
                             <h2>
                                 Datos Personales
                             </h2>
-                            
-                            <label for="gender">Género:</label><br>
-                            <input type="radio" id="gender" name="gender" value="hombre" required>Hombre<br>
-                            <input type="radio" id="gender" name="gender" value="mujer" required>Mujer<br>
-
+                            <div style="color: white;">
+                                <label for="gender"><h5>Género:</h5></label><br>
+                                <input type="radio" id="gender" name="gender" value="hombre" required> Hombre<br>
+                                <input type="radio" id="gender" name="gender" value="mujer" required> Mujer<br>
+                            </div>
                             <br>
-                            
-                            <label for="age">Edad:</label><br>
-                            <input type="number" id="age" name="age" min="15" max="120" required><br>
-                            
+                            <div style="color: white;">
+                                <label for="age"><h5>Edad:</h5></label><br>
+                                <input type="number" id="age" name="age" min="15" max="120" required><br>
+                            </div>
                             <br>
-                            
-                            <label for="height">Altura (en centímetros):</label><br>
-                            <input type="number" id="height" name="height" max="250" required><br>
-                            
+                            <div style="color: white;">
+                                <label for="height"><h5>Altura (en centímetros):</h5></label><br>
+                                <input type="number" id="height" name="height" max="250" required><br>
+                            </div>
                             <br>
-                            
-                            <label for="weight">Peso (en kilogramos):</label><br>
-                            <input type="number" id="weight" name="weight" min="30" required><br>
-                            
+                            <div style="color: white;">
+                                <label for="weight"><h5>Peso (en kilogramos):</h5></label><br>
+                                <input type="number" id="weight" name="weight" min="30" required><br>
+                            </div>
                             <br>
 
                             <h2>Rango de Actividad Física (RAF)</h2>
-
-                            <label for="raf">Seleccione el rango de actividad física actual:</label><br>
-                            <input type="radio" id="raf" name="raf" value="sedentario" required>Sedentario: Hasta 1 estímulo físico por semana<br>
-                            <input type="radio" id="raf" name="raf" value="ligero" required>Ejercicio Ligero: Entre 2 y 3 estímulos físicos por semana<br>
-                            <input type="radio" id="raf" name="raf" value="moderado" required>Ejercicio Moderado: Entre 4 y 5 estímulos físicos por semana<br>
-                            <input type="radio" id="raf" name="raf" value="deportista" required>Deportista: 6 o más estímulos físicos por semana<br>
-
+                            <div style="color: white;">
+                                <label for="raf"><h5>Seleccione el rango de actividad física actual:</h5></label><br>
+                                <input type="radio" id="raf" name="raf" value="sedentario" required> Sedentario: Hasta 1 estímulo físico por semana<br>
+                                <input type="radio" id="raf" name="raf" value="ligero" required> Ejercicio Ligero: Entre 2 y 3 estímulos físicos por semana<br>
+                                <input type="radio" id="raf" name="raf" value="moderado" required> Ejercicio Moderado: Entre 4 y 5 estímulos físicos por semana<br>
+                                <input type="radio" id="raf" name="raf" value="deportista" required> Deportista: 6 o más estímulos físicos por semana<br>
+                            </div>
                             <br>
 
                             <h2>Objetivo deseado</h2>
-
-                            <label for="raf">Seleccione su objetivo:</label><br>
-                            <input type="radio" id="objetivo" name="objetivo" value="adelgazar" required>Perder peso<br>
-                            <input type="radio" id="objetivo" name="objetivo" value="engordar" required>Ganar masa muscular<br>
-
+                            <div style="color: white;">
+                                <label for="raf"><h5>Seleccione su objetivo:</h5></label><br>
+                                <input type="radio" id="objetivo" name="objetivo" value="adelgazar" required> Perder peso<br>
+                                <input type="radio" id="objetivo" name="objetivo" value="engordar" required> Ganar masa muscular<br>
+                            </div>
                             <br>
 
-                            <input type="submit" value="Calcular">
+                            <input class="btn btn-light" type="submit" value="Calcular">
                         </form>
                     </div>
                 </section>

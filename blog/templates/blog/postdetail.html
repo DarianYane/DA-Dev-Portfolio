@@ -12,12 +12,12 @@
         <hr>
         <br>
         <div class="col">
-            <li><h1>{{ post.title }}</h1></li>
-            <li>&nbsp;&nbsp; 🏷<a href="{% url 'CategoryView' post.category %}" style="text-decoration:none; color:#ffffff;">{{ post.category }}</a></li>
+            <h1>{{ post.title }}</h1>
+            &nbsp;&nbsp; 🏷<a href="{% url 'CategoryView' post.category %}" style="text-decoration:none; color:#ffffff;">{{ post.category }}</a>
         </div>
         By: {{ post.author }}
         <div class="col">
-        <li><small class="text-muted">Posted on {{ post.created }}, Updated on {{ post.updated }}</small></li>
+        <small class="text-muted">Posted on {{ post.created }}, Updated on {{ post.updated }}</small>
         </div>
         <br>
         <div class="">  
