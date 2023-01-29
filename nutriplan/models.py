@@ -27,7 +27,7 @@ class Alimentos(models.Model):
     porcion=models.IntegerField(verbose_name="Tamaño de la porción", default=100)
     
     def __str__(self):
-        return self.nombre +" - "+ self.categoria
+        return self.nombre +" - "+ self.comida +" - "+ self.categoria
     
     class Meta:
         verbose_name = 'Alimento'

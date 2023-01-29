@@ -3,75 +3,52 @@
 {% load static %}
 
 {% block extrahead %}
-    {% include 'nutriplan/script_msj_alerta.html' %}
+{% include 'nutriplan/script_msj_alerta.html' %}
 {% endblock %}
 
 
 {% block content %}
-    <header>
-    </header>
+<div class="main px-5 py-3 text-center">
+    <div class="m-5">
+        <h2>Paso 1: Desayunos</h2>
+    </div>
 
-    <main>
+    <div class="row mx-auto">
         <div>
-            <h2>Paso 1: Desayunos</h2>
             <p>El desayuno es una de las comidas más importantes del día.</p>
             <p>Necesitas un buen desayuno para comenzar el día con energías.</p>
-            <p>Elige hasta 3 de tus alimentos favoritos para el desayuno.</p>
+        </div>
+    </div>
+    <div class="m-5 text-center">
+        <h3 style="color:white">Elige hasta 3 de tus alimentos favoritos para el desayuno.</h3>
+    </div>
+    <form action="/nutriplan/elegir-almuerzos-favoritos" method="POST">
+        {% csrf_token %}
 
+        {% for comida in COMIDA_CHOICES %}
+            {% if comida == 'Desayuno' %}
 
-            <form action="/nutriplan/elegir-almuerzos-favoritos" method="POST">
-                {% csrf_token %}
-
-                {% for comida in COMIDA_CHOICES %}
-                    {% if comida == 'Desayuno' %}
-                        <h3>{{comida}}</h3>
-                        <div id="checkboxgroup{{comida}}">
-                        {% for alimento in alimentos %}
-                            {% if alimento.comida == comida %}
-                            <label>
-                                <input type="checkbox" name="opciones{{comida}}" value="{{alimento.id}}" onclick="return onlyOneCheckBox{{comida}}()"> {{alimento.nombre}} <!-- {{alimento.id}} {{alimento.comida}} -->
-                            </label><br>
-                            {% endif %}
-                        {% endfor %}
-                        </div>
-                        <script type="text/javascript">
-                            onlyOneCheckBox{{comida}}()
-                        </script>
+                <div class="flex-container-pickfood ps-5" id="checkboxgroup{{comida}}" style="text-align: start;">
+                {% for alimento in alimentos %}
+                    {% if alimento.comida == comida %}
+                    <div class="flex-container-pickfood-item">
+                        <label style="color:white">
+                            <input type="checkbox" name="opciones{{comida}}" value="{{alimento.id}}" onclick="return onlyOneCheckBox{{comida}}()">                            {{alimento.nombre}}
+                        </label>
+                    </div>
                     {% endif %}
                 {% endfor %}
-
-                <input type="submit" value="Perfecto! Vamos al paso 2">
-            </form>
+                </div>
+                <script type="text/javascript">
+                    onlyOneCheckBox{{comida}}()
+                </script>
+            {% endif %}
+        {% endfor %}
+        <br>
+        <div class="m-5">
+            <input class="btn btn-light btn-lg" style="border-radius: 50px;" type="submit" value="Perfecto! Vamos al paso #2">
         </div>
+    </form>
+</div>
 
-        <!-- otra forma de contar checkboxes -->
-<!--         <div>
-                <span id="notvalid" style="color: red;"> </span>
-            </div>
-
-            <script type="text/javascript">
-
-                function myfun() {
-                    var a = document.getElementsByName('opcionesCena');
-                    var newvar = 0;
-                    var count;
-                    for(count = 0; count <a.length; count++){
-                        if(a[count].checked==true){
-                            newvar = newvar + 1;
-                        }
-                    }
-
-                    if(newvar>=5){
-                        document.getElementById('notvalid').innerHTML="**Please select only Four**"
-                        return false;
-                    }
-
-                    if(newvar<5){
-                        document.getElementById('notvalid').innerHTML=""
-                        return true;
-                    }
-                }
-                
-            </script> -->
-    </main>
 {% endblock %}

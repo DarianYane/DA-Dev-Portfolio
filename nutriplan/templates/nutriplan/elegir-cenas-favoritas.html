@@ -3,45 +3,53 @@
 {% load static %}
 
 {% block extrahead %}
-    {% include 'nutriplan/script_msj_alerta.html' %}
+{% include 'nutriplan/script_msj_alerta.html' %}
 {% endblock %}
 
 
 {% block content %}
-    <header>
-    </header>
+<div class="main px-5 py-3 text-center">
+    <div class="m-5">
+        <h2>Paso 4: Cenas</h2>
+    </div>
 
-    <main>
+    <div class="row mx-auto">
         <div>
-            <h2>Paso 4: Cenas</h2>
             <p>Nuestro cuerpo nos ha acompañado en nuestras tareas diarias, y se prepara para ir a descansar.</p>
             <p>Debemos entregarle los nutrientes necesarios para que pueda regenerarse durante la noche.</p>
-            <p>Elige hasta 3 de tus alimentos favoritos para la cena.</p>
-
-
-            <form action="/nutriplan/dieta-plan" method="POST">
-                {% csrf_token %}
-
-                {% for comida in COMIDA_CHOICES %}
-                    {% if comida == 'Cena' %}
-                        <h3>{{comida}}</h3>
-                        <div id="checkboxgroup{{comida}}">
-                        {% for alimento in alimentos %}
-                            {% if alimento.comida == comida %}
-                            <label>
-                                <input type="checkbox" name="opciones{{comida}}" value="{{alimento.id}}" onclick="return onlyOneCheckBox{{comida}}()"> {{alimento.nombre}} <!-- {{alimento.id}} {{alimento.comida}} -->
-                            </label><br>
-                            {% endif %}
-                        {% endfor %}
-                        </div>
-                        <script type="text/javascript">
-                            onlyOneCheckBox{{comida}}()
-                        </script>
-                    {% endif %}
-                {% endfor %}
-
-                <input type="submit" value="Has clic aquí para conocer tu dieta ideal">
-            </form>
         </div>
-    </main>
+    </div>
+    <div class="m-5 text-center">
+        <h3 style="color:white">Elige hasta 3 de tus alimentos favoritos para la cena.</h3>
+    </div>
+    <form action="/nutriplan/dieta-plan" method="POST">
+        {% csrf_token %}
+
+        {% for comida in COMIDA_CHOICES %}
+        {% if comida == 'Cena' %}
+
+        <div class="flex-container-pickfood ps-5" id="checkboxgroup{{comida}}" style="text-align: start;">
+            {% for alimento in alimentos %}
+            {% if alimento.comida == comida %}
+            <div class="flex-container-pickfood-item">
+                <label style="color:white">
+                    <input type="checkbox" name="opciones{{comida}}" value="{{alimento.id}}"
+                        onclick="return onlyOneCheckBox{{comida}}()"> {{alimento.nombre}}
+                </label>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <script type="text/javascript">
+                    onlyOneCheckBox{ { comida } } ()
+        </script>
+        {% endif %}
+        {% endfor %}
+        <br>
+        <div class="m-5">
+            <input class="btn btn-light btn-lg" style="border-radius: 50px;" type="submit"
+                value="Has clic aquí para conocer tu dieta ideal">
+        </div>
+    </form>
+</div>
 {% endblock %}

@@ -2,110 +2,60 @@
 
 {% load static %}
 
-{% block extrahead %}
-
-{% endblock %}
-
-
 {% block content %}
-    <header>
-    </header>
-
-    <main>
+<div class="main px-5 py-3">
+    <div class="m-5 text-center">
+        <h2>¡Felicitaciones por haber comenzado este viaje de transformación!</h2>
+    </div>
+    <div>
+        <p>
+            <img class="bullet" src="{% static 'assets/img/check-mark-button_2705.png' %}" alt="Green Chack Box"/> Tu índice metabólico basal (IMB) es de {{IMB}} kilo-calorías (Kcal).
+        </p>
+        <p>
+            <img class="bullet" src="{% static 'assets/img/check-mark-button_2705.png' %}" alt="Green Chack Box"/> Tus calorías de mantenimiento (CDM) son {{CDM}} kilo-calorías (Kcal).
+        </p>
+        <br>
+        <h2>Objetivo</h2>
+        <p>
+            <img src="{% static 'assets/img/arrow-icon.png' %}" alt="Green Chack Box" style="width: 35px; height: 25px;" /> <strong> Para {{target}} debes consumir {{CaloriasObjetivo}} kilo-calorías (Kcal) diarias.</strong>
+        </p>
+    </div>
+    <br>
+    <div>
+        <h2>Macronutrientes</h2>
+        <p>No todas las calorías son iguales. Por este motivo, debes lograr un balance en el consumo de proteínas, grasas, e hidratos de carbono.</p>
+        <p>Para alcanzar tu objetivo debes consumir diariamente la siguiente combinación de calorías:</p>
         <div>
-            <h2>¡Felicitaciones por haber comenzado este viaje de transformación!</h2>
-            <p>
-                Tu índice metabólico basal (IMB) es de {{IMB}} kilo-calorías (Kcal).
-            </p>
-            <p>
-                Tus calorías de mantenimiento (CDM) son {{CDM}} kilo-calorías (Kcal).
-            </p>
-            <p>
-                Para {{target}} debes consumir {{CaloriasObjetivo}} kilo-calorías (Kcal) diarias.
-            </p>
-        </div>
-        <div>
-            <h2>Macronutrientes</h2>
-            <p>No todas las calorías son iguales. Por este motivo, debes lograr un balance en el consumo de proteínas, grasas, e hidratos de carbono.</p>
-            <p>Para alcanzar tu objetivo debes consumir diariamente la siguiente combinación de calorías:</p>
-            <table>
+            <table class="table mx-auto my-5" id="nutritable">
                 <tr>
                     <th>Tipo</th>
                     <th>Gramos</th>
                 </tr>
                 <tr>
                     <td>Hidratos de Carbono</td>
-                    <td>{{hidratosObjetivo}}</td>
+                    <td style="text-align: center;">{{hidratosObjetivo}}</td>
                 </tr>
                 <tr>
                     <td>Proteínas</td>
-                    <td>{{proteinasObjetivo}}</td>
+                    <td style="text-align: center;">{{proteinasObjetivo}}</td>
                 </tr>
                 <tr>
                     <td>Grasas</td>
-                    <td>{{grasasObjetivo}}</td>
+                    <td style="text-align: center;">{{grasasObjetivo}}</td>
                 </tr>
             </table>
         </div>
-        <div>
-            <h2>Vamos a ayudarte a generar tu dieta ideal</h2>
-            <p>Elegirás hasta 3 de tus alimentos favoritos para cada comida.</p>
-            <p>A partir de ellos, generaremos una dieta semanal de 4 comidas diarias, que incluya tus alimentos favoritos, y cumpla con el objetivo calórico que acabamos de determinar.</p>
-
-            <form action="/nutriplan/elegir-desayunos-favoritos" method="POST">
-                {% csrf_token %}
-
-                <!-- {% for comida in COMIDA_CHOICES %}
-                    <h3>{{comida}}</h3>
-                    <div id="checkboxgroup{{comida}}">
-                    {% for alimento in alimentos %}
-                        {% if alimento.comida == comida %}
-                        <label>
-                            <input type="checkbox" name="opciones{{comida}}" value="{{alimento.id}}" onclick="return onlyOneCheckBox{{comida}}()"> {{alimento.nombre}}
-                        </label><br>
-                        {% endif %}
-                    {% endfor %}
-                    </div>
-                    <script type="text/javascript">
-                        onlyOneCheckBox{{comida}}()
-                    </script>
-
-                {% endfor %} -->
-
-                <input type="submit" value="¡Empecemos!">
-            </form>
-
+    </div>
+    <div>
+        <h2>Vamos a ayudarte a generar tu dieta ideal</h2>
+        <p>Elegirás hasta 3 de tus alimentos favoritos para cada comida.</p>
+        <p>A partir de ellos, generaremos una dieta semanal de 4 comidas diarias, que incluya tus alimentos favoritos, y cumpla con el objetivo calórico que acabamos de determinar.</p>
+    </div>
+    <form action="/nutriplan/elegir-desayunos-favoritos" method="POST">
+        {% csrf_token %}
+        <div class="container text-center my-5 mx-auto">
+        <input class="btn btn-light btn-lg" style="border-radius: 50px;" type="submit" value="¡Empecemos!">
         </div>
-
-        <!-- otra forma de contar checkboxes -->
-<!--         <div>
-                <span id="notvalid" style="color: red;"> </span>
-            </div>
-
-            <script type="text/javascript">
-
-                function myfun() {
-                    var a = document.getElementsByName('opcionesCena');
-                    var newvar = 0;
-                    var count;
-                    for(count = 0; count <a.length; count++){
-                        if(a[count].checked==true){
-                            newvar = newvar + 1;
-                        }
-                    }
-
-                    if(newvar>=5){
-                        document.getElementById('notvalid').innerHTML="**Please select only Four**"
-                        return false;
-                    }
-
-                    if(newvar<5){
-                        document.getElementById('notvalid').innerHTML=""
-                        return true;
-                    }
-                }
-                
-            </script> -->
-    </main>
+    </form>
 
 {% endblock %}

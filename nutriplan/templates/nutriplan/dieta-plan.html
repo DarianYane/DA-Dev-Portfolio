@@ -2,58 +2,60 @@
 
 {% load static %}
 
-{% block extrahead %}
-    <title>Nutriplan</title>
-{% endblock %}
-
-
 {% block content %}
-    <header>
-    </header>
-        <div>
-
-            {% for dia in dias %}
-            <h2>Día {{dia}}</h2>
-
-                {% for comida in COMIDA_CHOICES %}
-                <h4>{{comida}}</h4>
-
-                <table class="table table-success table-striped table-hover table-sm table-responsive">
-                <thead>
-                    <tr>
-                    <th scope="col">Alimento</th>
-                    <th scope="col">Porción (gramos)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for momentoDelDia, numeroDeDia in Dieta.items %}
-
-                        {% if momentoDelDia == comida %}
-
-                            {% for numeroDeDia, alimento in numeroDeDia.items %}
-
-                                {% if numeroDeDia == dia %}
-
-                                    {% for nombre, gramos in alimento.items %}
-                                    <tr>
-                                    <td>{{ nombre }}</td>
-                                    <td>{{ gramos }}</td>
-                                    </tr>
-                                    {% endfor %}
-
-                                {% endif %}
-                            
-                            {% endfor %}
-                        
-                        {% endif %}
-
-                    {% endfor %}
-                </tbody>
-                </table>
-                {% endfor %}
-
-            {% endfor %}
-
+    <div class="main px-5 py-3">
+        <div class="my-4">
+            <h1 class="mt-2">Felicitaciones!</h1>
+            <h4 style="color:white">Esta es la dieta ideal según tus preferencias y necesidades calóricas.</h4>
         </div>
-    </main>
+
+        {% for dia in dias %}
+        <h2 class="m-2">Día {{dia}}</h2>
+        <div class="flex-container-menu">
+            
+            {% for comida in COMIDA_CHOICES %}
+            <div class="flex-container-menu-item">
+                <h4 style="color:white">{{comida}}</h4>
+                <table class="table table-success table-striped table-hover table-sm table-responsive" id="menu">
+                    <thead>
+                        <tr>
+                        <th scope="col">Alimento</th>
+                        <th scope="col">Porción (gramos)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for momentoDelDia, numeroDeDia in Dieta.items %}
+
+                            {% if momentoDelDia == comida %}
+
+                                {% for numeroDeDia, alimento in numeroDeDia.items %}
+
+                                    {% if numeroDeDia == dia %}
+
+                                        {% for nombre, gramos in alimento.items %}
+                                        <tr>
+                                        <td>{{ nombre }}</td>
+                                        <td style="text-align: center;">{{ gramos }}</td>
+                                        </tr>
+                                        {% endfor %}
+
+                                    {% endif %}
+                                
+                                {% endfor %}
+                            
+                            {% endif %}
+
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+            <div style="text-align: center;" class="my-5">
+                <h4>Puedes imprimir tu dieta ideal haciendo clic en el siguiente botón.</h4>
+                <button class="btn btn-light btn-lg" style="border-radius: 50px;" onclick="window.print()">Imprimir</button>
+            </div>
+    </div>
+
 {% endblock %}

@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 """     title = models.CharField(max_length=150)
     subtitle = models.CharField(max_length=250, null=True, blank=True)
@@ -38,6 +38,14 @@ from django.db import models
 """     def get_absolute_url(self):
         return reverse('CreatePostView',) """
     
+"""         COMIDA_CHOICES = (
+        ('Desayuno', 'Desayuno'),
+        ('Almuerzo', 'Almuerzo'),
+        ('Merienda', 'Merienda'),
+        ('Cena', 'Cena'),
+    )
+    comida = models.CharField(verbose_name="Comida en la que se suele consumir", max_length=150, choices=COMIDA_CHOICES, default='Almuerzo') """
+    
 # Create your models here.
 # Student Model
 class Student(models.Model):
@@ -71,34 +79,76 @@ class Commission(models.Model):
     def __str__(self):
         return str(self.course_name) +" - "+ str(self.commission_number)
 
-""" class EvaluationCriteria(models.Model):
-    course_name
-    commission_number
-    Criteria_1
-    Criteria_2
-    Criteria_3
-    Criteria_4
-    Criteria_5
-    Criteria_6
-    Criteria_7
-    Criteria_8
-    Criteria_9
-    Max_points_Criteria_1
-    Max_points_Criteria_2
-    Max_points_Criteria_3
-    Max_points_Criteria_4
-    Max_points_Criteria_5
-    Max_points_Criteria_6
-    Max_points_Criteria_7
-    Max_points_Criteria_8
-    Max_points_Criteria_9
+class Tasks_to_Evaluate(models.Model):
+    title = models.CharField(max_length=100)
+    subtitle = models.CharField(max_length=150, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Task to Evaluate'
+        verbose_name_plural = 'Tasks to Evaluate'
+
+    def __str__(self):
+        return str(self.title) +" - "+ str(self.subtitle)
+
+class Terms_of_Delivery(models.Model):
+    comission = models.ForeignKey(Commission, on_delete=models.CASCADE)
+    number_of_delivery = models.IntegerField(validators=[MinValueValidator(0)], default=1)
+    start_date = models.DateField()
+    end_date = models.DateField()
+    Criteria_01 = models.ForeignKey(Tasks_to_Evaluate, on_delete=models.CASCADE, null=True, blank=True, related_name='grade.Terms_of_Delivery.Criteria_01+')
+    Max_points_Criteria_01 = models.IntegerField(null=True, blank=True, default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
+    Criteria_02 = models.ForeignKey(Tasks_to_Evaluate, on_delete=models.CASCADE, null=True, blank=True, related_name='grade.Terms_of_Delivery.Criteria_02+')
+    Max_points_Criteria_02 = models.IntegerField(null=True, blank=True, default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
+    Criteria_03 = models.ForeignKey(Tasks_to_Evaluate, on_delete=models.CASCADE, null=True, blank=True, related_name='grade.Terms_of_Delivery.Criteria_03+')
+    Max_points_Criteria_03 = models.IntegerField(null=True, blank=True, default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
+    Criteria_04 = models.ForeignKey(Tasks_to_Evaluate, on_delete=models.CASCADE, null=True, blank=True, related_name='grade.Terms_of_Delivery.Criteria_04+')
+    Max_points_Criteria_04 = models.IntegerField(null=True, blank=True, default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
+    Criteria_05 = models.ForeignKey(Tasks_to_Evaluate, on_delete=models.CASCADE, null=True, blank=True, related_name='grade.Terms_of_Delivery.Criteria_05+')
+    Max_points_Criteria_05 = models.IntegerField(null=True, blank=True, default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
+    Criteria_06 = models.ForeignKey(Tasks_to_Evaluate, on_delete=models.CASCADE, null=True, blank=True, related_name='grade.Terms_of_Delivery.Criteria_06+')
+    Max_points_Criteria_06 = models.IntegerField(null=True, blank=True, default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
+    Criteria_07 = models.ForeignKey(Tasks_to_Evaluate, on_delete=models.CASCADE, null=True, blank=True, related_name='grade.Terms_of_Delivery.Criteria_07+')
+    Max_points_Criteria_07 = models.IntegerField(null=True, blank=True, default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
+    Criteria_08 = models.ForeignKey(Tasks_to_Evaluate, on_delete=models.CASCADE, null=True, blank=True, related_name='grade.Terms_of_Delivery.Criteria_08+')
+    Max_points_Criteria_08 = models.IntegerField(null=True, blank=True, default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
+    Criteria_09 = models.ForeignKey(Tasks_to_Evaluate, on_delete=models.CASCADE, null=True, blank=True, related_name='grade.Terms_of_Delivery.Criteria_09+')
+    Max_points_Criteria_09 = models.IntegerField(null=True, blank=True, default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
+    Criteria_10 = models.ForeignKey(Tasks_to_Evaluate, on_delete=models.CASCADE, null=True, blank=True, related_name='grade.Terms_of_Delivery.Criteria_10+')
+    Max_points_Criteria_10 = models.IntegerField(null=True, blank=True, default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
+
+    class Meta:
+        verbose_name = 'Terms of Delivery'
+        verbose_name_plural = 'Terms of Delivery'
+
+    def __str__(self):
+        return "Delivery #"+ str(self.number_of_delivery) + " / " + str(self.comission) + " starting on " + str(self.start_date) + " and ending on " + str(self.end_date)
 
 
-class Delivery(models.Model):
-    course_name
-    commission_number
-    delivery_number
-    correction date """
+class Rating(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    terms_of_delivery = models.ForeignKey(Terms_of_Delivery, on_delete=models.CASCADE)
+    URL_delivery = models.URLField(blank=True, null=True)
+    correction_date = models.DateField(auto_now=False, auto_now_add=True)
+    criteria_01_score = models.IntegerField(default=25, validators=[MinValueValidator(0), MaxValueValidator(100)])
+    criteria_02_score = models.IntegerField(default=25, validators=[MinValueValidator(0), MaxValueValidator(100)])
+    criteria_03_score = models.IntegerField(default=25, validators=[MinValueValidator(0), MaxValueValidator(100)])
+    criteria_04_score = models.IntegerField(default=25, validators=[MinValueValidator(0), MaxValueValidator(100)])
+
+    total_score = models.IntegerField(default=100, validators=[MinValueValidator(0), MaxValueValidator(100)])
+    rating_choices = (
+        ('Óptimo', 'Óptimo'),
+        ('Correcto', 'Correcto'),
+        ('Bajo', 'Bajo'),
+    )
+    rating = models.CharField(verbose_name="Calificación final de la entrega: >= 80es 'Óptimo', entre 51 y 79 es 'Correcto', y menos o igual a 50 es 'Bajo'", max_length=50, choices=rating_choices, default='Óptimo')
+    comment = models.TextField(default="Hola ###, \n El trabajo está perfecto. \n Sólo como un detalle, te recomiendo que te acostumbres a dejar comentarios en el código explicando qué hace cada porción de código. \n Felicitaciones!")
     
+    class Meta:
+        verbose_name = 'Rating'
+        verbose_name_plural = 'Ratings'
+        ordering = ["-correction_date"]
 
+    def __str__(self):
+        return "Rating to "+ str(self.student) + " on " + str(self.correction_date) + " - Final RATING: " + str(self.rating) + " (" + str(self.total_score) + ")"
 

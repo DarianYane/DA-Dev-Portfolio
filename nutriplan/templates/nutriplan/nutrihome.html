@@ -2,106 +2,151 @@
 
 {% load static %}
 
-{% block extrahead %}
-
-{% endblock %}
-
-
 {% block content %}
-        <div class="main px-5 py-3">
-            <header>
-                <div class="m-5">
-                    <h1>
-                        Plan Nutricional y de Suplementación
-                    </h1>
-                </div>
-            </header>
-            <article>
-                <section>
-                    <div>
-                        <h2>¿Para qué sirve este sitio?</h2>
-                        <p>En esta página podrás calcular las calorías diarias que debes ingerir diariamente de acuerdo a tus caracteristicas y objetivos, y a partir de allí, generar una dieta balanceada acorde.</p>
-                    </div>
-                    {% include 'nutriplan/carousel.html' %}
-                    <div>
-                        <h2>¿Cómo funciona?</h2>
-                        <p>A partir de la informacion que proporciones, se calcularán diferentes indices que serán utilizados para determinar la dieta ideal para ti.</p>
-                    </div>
-                    <br>
-                    <div>
-                        <h2>Quiero empezar ¿Qué debo hacer?</h2>
-                        <p>Los pasos a seguir son:</p>
-                        <ol>
-                            <li>Debes proporcionar tus datos fisiológicos personales</li>
-                            <br>
-                            <li>Con esta información se calcula el <strong>Índice Metabólico Basal (IMB)</strong></li>
-                                <p>El índice metabólico basal (IMB) es la cantidad de energía que el cuerpo necesita para realizar sus actividades básicas, como respirar, digerir alimentos y mantener la temperatura corporal. Se calcula utilizando una fórmula que tiene en cuenta la edad, el peso, la estatura y el género de una persona.
-                                </p>
-                            <li>Debes proporcionar tu <strong>Rango de Actividad Física (RAF)</strong></li>
-                                <p>El rango de actividad física es una medida de cuánto ejercicio hace una persona a lo largo del día. Se utiliza para calcular las calorías de mantenimiento de una persona y para determinar su nivel de actividad física.
-                                Existen varios niveles de actividad física, que van desde sedentario (muy poco o ningún ejercicio) hasta muy activo (ejercicio intenso de manera regular).</p>
-                            <li>Con esta información se calculan las <strong>Calorías de Mantenimiento (CDM)</strong></li>
-                                <p>Las calorías de mantenimiento son la cantidad de calorías que necesita una persona para mantener su peso actual sin ganar ni perder peso. Esto puede variar de persona a persona y depende de factores como el tamaño del cuerpo, la actividad física, la edad, el metabolismo y el género.</p>
-                            <li>Debes proporcionar tu <strong>Objetivo a Alcanzar</strong></li>
-                                <p>Algunas personas buscan perder peso, mientras que otras buscan ganar masa muscular. Solo tú puedes indicarnos cuál es tu objetivo, y esto impactará directamente en la que será tu dieta ideal.</p>
-                        </ol>
-                    </div>
-                    <br>
-                    <div>
-                        <h1>¡Empecemos a ponerte en forma!</h1>
-                    </div>
-                </section>
-                <section>
-                    <div>
-                        <form action="nutriplan/cuantas-calorias-se-necesitan" method="POST">
-                            {% csrf_token %}
-                            <h2>
-                                Datos Personales
-                            </h2>
-                            <div style="color: white;">
-                                <label for="gender"><h5>Género:</h5></label><br>
-                                <input type="radio" id="gender" name="gender" value="hombre" required> Hombre<br>
-                                <input type="radio" id="gender" name="gender" value="mujer" required> Mujer<br>
-                            </div>
-                            <br>
-                            <div style="color: white;">
-                                <label for="age"><h5>Edad:</h5></label><br>
-                                <input type="number" id="age" name="age" min="15" max="120" required><br>
-                            </div>
-                            <br>
-                            <div style="color: white;">
-                                <label for="height"><h5>Altura (en centímetros):</h5></label><br>
-                                <input type="number" id="height" name="height" max="250" required><br>
-                            </div>
-                            <br>
-                            <div style="color: white;">
-                                <label for="weight"><h5>Peso (en kilogramos):</h5></label><br>
-                                <input type="number" id="weight" name="weight" min="30" required><br>
-                            </div>
-                            <br>
-
-                            <h2>Rango de Actividad Física (RAF)</h2>
-                            <div style="color: white;">
-                                <label for="raf"><h5>Seleccione el rango de actividad física actual:</h5></label><br>
-                                <input type="radio" id="raf" name="raf" value="sedentario" required> Sedentario: Hasta 1 estímulo físico por semana<br>
-                                <input type="radio" id="raf" name="raf" value="ligero" required> Ejercicio Ligero: Entre 2 y 3 estímulos físicos por semana<br>
-                                <input type="radio" id="raf" name="raf" value="moderado" required> Ejercicio Moderado: Entre 4 y 5 estímulos físicos por semana<br>
-                                <input type="radio" id="raf" name="raf" value="deportista" required> Deportista: 6 o más estímulos físicos por semana<br>
-                            </div>
-                            <br>
-
-                            <h2>Objetivo deseado</h2>
-                            <div style="color: white;">
-                                <label for="raf"><h5>Seleccione su objetivo:</h5></label><br>
-                                <input type="radio" id="objetivo" name="objetivo" value="adelgazar" required> Perder peso<br>
-                                <input type="radio" id="objetivo" name="objetivo" value="engordar" required> Ganar masa muscular<br>
-                            </div>
-                            <br>
-
-                            <input class="btn btn-light" type="submit" value="Calcular">
-                        </form>
-                    </div>
-                </section>
-            </article>
+<div class="main px-5 py-3">
+    <header>
+        <div class="m-5">
+            <h1>
+                Plan Nutricional y de Suplementación
+            </h1>
         </div>
+    </header>
+    <article>
+        <section>
+            <div>
+                <h2>¿Para qué sirve este sitio?</h2>
+                <p>En esta página podrás calcular las calorías que debes ingerir diariamente de acuerdo a tus características y objetivos, y a partir de allí, generar una dieta balanceada acorde.</p>
+            </div>
+            {% include 'nutriplan/carousel.html' %}
+            <div>
+                <h2>¿Cómo funciona?</h2>
+                <p>A partir de la informacion que proporciones, se calcularán diferentes índices que serán utilizados para determinar la dieta ideal para ti.</p>
+            </div>
+            <br>
+            <div>
+                <h2>Quiero empezar ¿Qué debo hacer?</h2>
+                <p>Los pasos a seguir son:</p>
+                <ol>
+                    <li>Debes proporcionar tus <strong>datos fisiológicos personales</strong></li>
+                    <br>
+                    <li>Con esta información se calcula el <strong>Índice Metabólico Basal (IMB)</strong></li>
+                        <p>El índice metabólico basal (IMB) es la cantidad de energía que el cuerpo necesita para realizar sus actividades básicas, como respirar, digerir alimentos y mantener la temperatura corporal. Se calcula utilizando una fórmula que tiene en cuenta la edad, el peso, la estatura y el género de una persona.
+                        </p>
+                    <li>Debes proporcionar tu <strong>Rango de Actividad Física (RAF)</strong></li>
+                        <p>El rango de actividad física es una medida de cuánto ejercicio hace una persona a lo largo del día. Se utiliza para calcular las calorías de mantenimiento de una persona y para determinar su nivel de actividad física.
+                        Existen varios niveles de actividad física, que van desde sedentario (muy poco o ningún ejercicio) hasta muy activo (ejercicio intenso de manera regular).</p>
+                    <li>Con esta información se calculan las <strong>Calorías de Mantenimiento (CDM)</strong></li>
+                        <p>Las calorías de mantenimiento son la cantidad de calorías que necesita una persona para mantener su peso actual sin ganar ni perder peso. Esto puede variar de persona a persona y depende de factores como el tamaño del cuerpo, la actividad física, la edad, el metabolismo y el género.</p>
+                    <li>Debes proporcionar tu <strong>Objetivo a Alcanzar</strong></li>
+                        <p>Algunas personas buscan perder peso, mientras que otras buscan ganar masa muscular. Solo tú puedes indicarnos cuál es tu objetivo, y esto impactará directamente en la que será tu dieta ideal.</p>
+                </ol>
+            </div>
+            <br>
+            <div class="mb-5 mt-3">
+                <h1>¡Empecemos a ponerte en forma!</h1>
+            </div>
+        </section>
+        <section>
+            <div class="container text-center">
+                <form action="nutriplan/cuantas-calorias-se-necesitan" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col m-3">
+                            <h2>1. Datos Personales</h2>
+                            <div class="container text-center">
+                                <div class="row">
+                                    <div class="col">
+                                        
+                                    </div>
+                                    <div class="col mt-2" style="text-align:start;">
+                                        <div style="color: white;">
+                                            <label for="gender">
+                                                <h5>Género:</h5>
+                                            </label><br>
+                                            &nbsp;<input type="radio" id="gender" name="gender" value="hombre" required> Hombre<br>
+                                            &nbsp;<input type="radio" id="gender" name="gender" value="mujer" required> Mujer<br>
+                                        </div>
+                                        <br>
+                                        <div style="color: white;">
+                                            <label for="age">
+                                                <h5>Edad:</h5>
+                                            </label><br>
+                                            <input type="number" id="age" name="age" min="15" max="120" required><br>
+                                        </div>
+                                        <br>
+                                        <div style="color: white;">
+                                            <label for="height">
+                                                <h5>Altura (en centímetros):</h5>
+                                            </label><br>
+                                            <input type="number" id="height" name="height" max="250" required><br>
+                                        </div>
+                                        <br>
+                                        <div style="color: white;">
+                                            <label for="weight">
+                                                <h5>Peso (en kilogramos):</h5>
+                                            </label><br>
+                                            <input type="number" id="weight" name="weight" min="30" required><br>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col m-3">
+                            <h2>2. Rango de Actividad Física (RAF)</h2>
+                            <div class="container text-center">
+                                <div class="row">
+                                    <div class="col mx-1 mt-3" style="text-align:start;">
+                                        <div style="color: white;">
+                                            <label for="raf">
+                                                <h5 class="mb-3">Seleccione el rango de actividad física actual:</h5>
+                                            </label>
+                                            <input type="radio" id="raf" name="raf" value="sedentario" required> Sedentario: Hasta 1 estímulo físico por
+                                            semana<br><br>
+                                            <input type="radio" id="raf" name="raf" value="ligero" required> Ejercicio Ligero: Entre 2 y 3 estímulos físicos por
+                                            semana<br><br>
+                                            <input type="radio" id="raf" name="raf" value="moderado" required> Ejercicio Moderado: Entre 4 y 5 estímulos físicos
+                                            por semana<br><br>
+                                            <input type="radio" id="raf" name="raf" value="deportista" required> Deportista: 6 o más estímulos físicos por
+                                            semana<br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col m-3">
+                            <h2>3. Objetivo deseado</h2>
+                            <div class="container text-center">
+                                <div class="row">
+                                    <div class="col">
+                            
+                                    </div>
+                                    <div class="col mt-4" style="text-align:start;">
+                                        <div style="color: white;">
+                                            <label for="gender">
+                                                <h5>Seleccione su objetivo:</h5>
+                                            </label><br>
+                                            <div style="min-width: 200px;">
+                                                &nbsp;<input class="mb-3" type="radio" id="objetivo" name="objetivo" value="adelgazar" required> Perder peso<br>
+                                                &nbsp;<input class="mb-3" type="radio" id="objetivo" name="objetivo" value="engordar" required> Ganar masa muscular<br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                            
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-5">
+                        <input class="btn btn-light btn-lg" type="submit" value="Calcular" style="border-radius: 50px;">
+                    </div>
+                </form>
+            </div>
+        </section>
+    </article>
+</div>
 {% endblock %}

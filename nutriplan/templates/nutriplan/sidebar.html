@@ -1,23 +1,31 @@
 {% load static %}
 <div class="sidebar">
-    <img class="rounded-circle bg-body m-4" style="border-color:#3c7e46; border-width: 3px; border-style: solid;" width="110" height="110" src="{% static 'assets/img/LOGO_NUTRIPLAN.png' %}" alt="Nutriplan Logo"/>
-    <br>
-    <h3 class="m-4">Índice Sticky sidebar</h3>
-    <ul class="nav flex-column">
-        <li>
-            <a href="{% url 'home' %}" class="nav-link" aria-current="page"><h5>Home</h5></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled">Disabled</a>
-        </li>
-    </ul>
+    <div style="width: 160px; margin: auto;">
+        <img class="rounded-circle bg-body my-5" style="border-color:#3c7e46; border-width: 3px; border-style: solid;" width="110" height="110" src="{% static 'assets/img/LOGO_NUTRIPLAN.png' %}" alt="Nutriplan Logo"/>
+        <h3 class="mt-2 mb-5">Comienza hoy a cuidar tu cuerpo</h3>
+        <ul class="nav flex-column">
+            <li>
+                <a href="{% url 'nutrihome' %}" class="nav-link" aria-current="page">
+                    <h5>NutriHome</h5>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Active</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled">Disabled</a>
+            </li>
+            <li>
+                <a href="{% url 'home' %}" class="position-absolute bottom-0 start-50 translate-middle-x nav-link" aria-current="page">
+                    <h5>Volver a la Página Principal</h5>
+                </a>
+            </li>
+        </ul>
+    </div>
 </div>

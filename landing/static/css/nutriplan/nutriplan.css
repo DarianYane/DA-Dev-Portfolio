@@ -13,6 +13,16 @@ h2 {
     font-size: 40px;
 }
 
+h3 {
+    font-family: 'Solitreo', cursive;
+    font-size: 30px;
+}
+
+h4 {
+    font-family: 'Solitreo', cursive;
+    font-size: 22px;
+}
+
 h5 {
     font-family: 'Solitreo', cursive;
 }
@@ -27,9 +37,10 @@ p {
 
 .main {
     width: 85%;
+    color: white;
 }
 
-.main h1, h2, p, ul, li {
+h1, h2, h3, h4, h5, h6, p, ul, li {
     color: white;
 }
 
@@ -47,10 +58,6 @@ p {
     -webkit-box-shadow: 6px 0px 19px -1px rgba(5, 43, 1, 1);
     -moz-box-shadow: 6px 0px 19px -1px rgba(5, 43, 1, 1);
     box-shadow: 6px 0px 19px -1px rgba(5, 43, 1, 1);
-}
-
-.sidebar a {
-    color: #315f38;
 }
 
 .alimentos {
@@ -80,4 +87,60 @@ p {
 .img-carousel {
     max-width: 100%;
     height: auto;
+}
+
+.bullet {
+    width: 22px;
+    height: 22px;
+}
+
+.table {
+    background-color: white;
+    width: 400px;
+}
+
+.flex-container-pickfood {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.flex-container-pickfood-item {
+    width: 250px;
+}
+
+.flex-container-menu {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+    justify-content:space-evenly;
+}
+
+.flex-container-menu-item {
+    margin: 10px 10px;
+}
+
+th, td {
+    color: #315f38;
+}
+
+td {
+    width: 200px;
+}
+
+th {
+    text-align: center;
+}
+
+#nutritable, #menu {
+    -webkit-box-shadow: 7px 6px 48px -7px rgba(2, 82, 7, 1);
+    -moz-box-shadow: 7px 6px 48px -7px rgba(2, 82, 7, 1);
+    box-shadow: 7px 6px 48px -7px rgba(2, 82, 7, 1);
+}
+
+.sidebar * {
+    color: #315f38;
+    font-weight: bold;
 }
