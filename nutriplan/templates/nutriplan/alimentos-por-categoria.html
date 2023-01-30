@@ -1,0 +1,43 @@
+{% extends 'nutriplan/aaa_base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="main px-5 py-3">
+    <div class="m-5 text-center">
+        <h2>
+            Lista de 
+            {% if Categoria_de_alimentos == "Cereales_Legumbres" %}
+                Cereales y Legumbres
+            {% else %}
+                {{Categoria_de_alimentos}}
+            {% endif %}
+        </h2>
+    </div>
+    <div>
+        <table class="table table-striped mx-auto my-5" style="width: auto" id="tabla-alimentos-por-categoria">
+            <tr>
+                <th>Nombre</th>
+                <th>Hidratos de carbono (gr)</th>
+                <th>Proteínas (gr)</th>
+                <th>Grasas (gr)</th>
+                <th>Calorías</th>
+                <th>Comida Sugerida</th>
+                <th>Porción (gr/ml)</th>
+            </tr>
+            {% for alimento in alimentos_por_categoria %}
+            <tr>
+                <td style="text-align: center; color: black">{{alimento.nombre}}</td>
+                <td style="text-align: center; color: black">{{alimento.hidratos}}</td>
+                <td style="text-align: center; color: black">{{alimento.proteinas}}</td>
+                <td style="text-align: center; color: black">{{alimento.grasas}}</td>
+                <td style="text-align: center; color: black">{{alimento.calorias}}</td>
+                <td style="text-align: center; color: black">{{alimento.comida}}</td>
+                <td style="text-align: center; color: black">{{alimento.porcion}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% include 'nutriplan/footer.html' %}
+</div>
+{% endblock %}

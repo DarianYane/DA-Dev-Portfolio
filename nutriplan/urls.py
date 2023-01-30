@@ -37,4 +37,9 @@ urlpatterns = [
         calcular_cenas,
         name="dieta-plan"
     ),
+    path(
+        "nutriplan/<str:categoria>",
+        alimentos_por_categoria,
+        name="alimentos-por-categoria"
+    )
 ]

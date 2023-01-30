@@ -1,29 +1,40 @@
 {% load static %}
 <div class="sidebar">
     <div style="width: 160px; margin: auto;">
-        <img class="rounded-circle bg-body my-5" style="border-color:#3c7e46; border-width: 3px; border-style: solid;" width="110" height="110" src="{% static 'assets/img/LOGO_NUTRIPLAN.png' %}" alt="Nutriplan Logo"/>
-        <h3 class="mt-2 mb-5">Comienza hoy a cuidar tu cuerpo</h3>
+        <img class="rounded-circle bg-body my-4" style="border-color:#3c7e46; border-width: 3px; border-style: solid;" width="105" height="105" src="{% static 'assets/img/LOGO_NUTRIPLAN.png' %}" alt="Nutriplan Logo"/>
+        <h4 class="mt-3 mb-5" style="color: #428b4d;">Comienza hoy a cuidar tu cuerpo</h4>
         <ul class="nav flex-column">
-            <li>
+            <li style="margin-bottom: -15px;">
                 <a href="{% url 'nutrihome' %}" class="nav-link" aria-current="page">
-                    <h5>NutriHome</h5>
+                    <h5><svg style="margin-top: -3px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-heart"
+                        viewBox="0 0 16 16">
+                        <path d="M8 6.982C9.664 5.309 13.825 8.236 8 12 2.175 8.236 6.336 5.309 8 6.982Z" />
+                        <path
+                            d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.707L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.646a.5.5 0 0 0 .708-.707L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
+                    </svg> NutriHome</h5>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Active</a>
+            <br>
+
+            {% for categoria in CATEGORIA_CHOICES %}
+            <li><a href="/nutriplan/{{categoria}}" class="nav-link">
+                    <h5>{% if categoria == "Cereales_Legumbres" %}
+                            Cereales y Legumbres
+                        {% else %}
+                            {{categoria}}
+                        {% endif %}
+                    </h5>
+                </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
-            </li>
+            {% endfor %}
+
             <li>
-                <a href="{% url 'home' %}" class="position-absolute bottom-0 start-50 translate-middle-x nav-link" aria-current="page">
-                    <h5>Volver a la Página Principal</h5>
+                <a href="{% url 'home' %}" class="position-absolute bottom-0 start-50 translate-middle-x nav-link" aria-current="page" >
+                    <h5 style="font-weight: normal;"><svg style="margin-top: -3px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-left-circle"
+                        viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
+                    </svg> Volver a la Página Principal</h5>
                 </a>
             </li>
         </ul>

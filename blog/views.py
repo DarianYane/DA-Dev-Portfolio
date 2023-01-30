@@ -66,7 +66,6 @@ def LikePost(request, pk):
     return HttpResponseRedirect(reverse('PostDetailView', args=[str(pk)]))
 
 def search(request):
-    print(1)
     print(request.GET)
     if request.GET['title_search']:
         queryset = request.GET['title_search']
@@ -75,7 +74,6 @@ def search(request):
         print(posts)
         
         if posts!=[]:
-            print(2)
             return render(request, "blog/search_result.html", {'posts': posts, 'search': queryset})
 
     else:

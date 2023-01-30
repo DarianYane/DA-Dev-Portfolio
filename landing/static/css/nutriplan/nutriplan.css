@@ -73,7 +73,7 @@ h1, h2, h3, h4, h5, h6, p, ul, li {
     height: 500px;
 }
 
-.nav-link{
+.nav-link {
     text-decoration: none;
     transition: transform 0.3s;
 }
@@ -134,7 +134,7 @@ th {
     text-align: center;
 }
 
-#nutritable, #menu {
+#nutritable, #menu, #tabla-alimentos-por-categoria {
     -webkit-box-shadow: 7px 6px 48px -7px rgba(2, 82, 7, 1);
     -moz-box-shadow: 7px 6px 48px -7px rgba(2, 82, 7, 1);
     box-shadow: 7px 6px 48px -7px rgba(2, 82, 7, 1);
@@ -143,4 +143,8 @@ th {
 .sidebar * {
     color: #315f38;
     font-weight: bold;
+}
+
+.footer {
+    color: white; !important
 }

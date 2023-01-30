@@ -11,6 +11,16 @@ COMIDA_CHOICES = (
     "Cena",
 )
 
+CATEGORIA_CHOICES = (
+    'Frutas',
+    'Verduras',
+    'Grasas',
+    'Cereales_Legumbres',
+    'Proteínas',
+    'Lacteos',
+    'Otros',
+)
+
 dias = range(1, 8)
 
 # Preparar la estructura para enviar en el context
@@ -25,7 +35,10 @@ for comida in COMIDA_CHOICES:
 # Create your views here.
 
 def nutrihome(request):
-    return render(request, "nutriplan/nutrihome.html")
+    context = {
+        "CATEGORIA_CHOICES": CATEGORIA_CHOICES,
+    }
+    return render(request, "nutriplan/nutrihome.html", context)
 
 
 def cuantas_calorias_se_necesitan(request):
@@ -88,12 +101,19 @@ def cuantas_calorias_se_necesitan(request):
         "grasasObjetivo": grasasObjetivo,
         "alimentos": Alimentos.objects.all(),
         "COMIDA_CHOICES": COMIDA_CHOICES,
+        "CATEGORIA_CHOICES": CATEGORIA_CHOICES,
     }
     
     return render(request, "nutriplan/cuantas-calorias-se-necesitan.html", context)
 
 
 def elegir_desayunos_favoritos(request):
+    Dieta = {}
+    for comida in COMIDA_CHOICES:
+        Dieta[comida] = {}
+        for d in dias:
+            Dieta[comida][d] = {}
+    
     print(Dieta)
     
     context = {
@@ -102,6 +122,7 @@ def elegir_desayunos_favoritos(request):
         "grasasObjetivo": grasasObjetivo,
         "alimentos": Alimentos.objects.all(),
         "COMIDA_CHOICES": COMIDA_CHOICES,
+        "CATEGORIA_CHOICES": CATEGORIA_CHOICES,
     }
     
     return render(request, "nutriplan/elegir-desayunos-favoritos.html", context)
@@ -261,6 +282,7 @@ def calcular_desayunos(request):
         "grasasObjetivo": grasasObjetivo,
         "alimentos": Alimentos.objects.all(),
         "COMIDA_CHOICES": COMIDA_CHOICES,
+        "CATEGORIA_CHOICES": CATEGORIA_CHOICES,
         "n_COMIDA_CHOICES": n_COMIDA_CHOICES,
     }
     
@@ -283,6 +305,7 @@ def calcular_almuerzos(request):
         "grasasObjetivo": grasasObjetivo,
         "alimentos": Alimentos.objects.all(),
         "COMIDA_CHOICES": COMIDA_CHOICES,
+        "CATEGORIA_CHOICES": CATEGORIA_CHOICES,
         "n_COMIDA_CHOICES": n_COMIDA_CHOICES,
     }
     
@@ -305,6 +328,7 @@ def calcular_meriendas(request):
         "grasasObjetivo": grasasObjetivo,
         "alimentos": Alimentos.objects.all(),
         "COMIDA_CHOICES": COMIDA_CHOICES,
+        "CATEGORIA_CHOICES": CATEGORIA_CHOICES,
         "n_COMIDA_CHOICES": n_COMIDA_CHOICES,
     }
     
@@ -327,10 +351,47 @@ def calcular_cenas(request):
         "grasasObjetivo": grasasObjetivo,
         "alimentos": Alimentos.objects.all(),
         "COMIDA_CHOICES": COMIDA_CHOICES,
-        #"n_COMIDA_CHOICES": n_COMIDA_CHOICES,
+        "CATEGORIA_CHOICES": CATEGORIA_CHOICES,
         "dias": dias,
         "Dieta": Dieta,
     }
     
     return render(request, "nutriplan/dieta-plan.html", context)
 
+def alimentos_por_categoria(request, categoria):
+    Categoria_de_alimentos = categoria
+    if categoria == "Proteínas":
+        Categoria_de_alimentos = "Proteinas"
+    elif Categoria_de_alimentos == "Cereales_Legumbres":
+            Categoria_de_alimentos = "Cereales y Legumbres"
+    else:
+        Categoria_de_alimentos = categoria
+    
+    print("Categoria DE alimentos es: ", Categoria_de_alimentos)
+    
+    queryset = Alimentos.objects.filter(categoria=Categoria_de_alimentos)
+    
+    alimentos_por_categoria = []
+    
+    for alimento in queryset:
+        datos_alimento = {
+            "id": alimento.id,
+            "nombre": alimento.nombre,
+            "hidratos": alimento.hidratos,
+            "proteinas": alimento.proteinas,
+            "grasas": alimento.grasas,
+            "calorias": alimento.calorias,
+            "comida": alimento.comida,
+            "porcion": alimento.porcion,
+        }
+        alimentos_por_categoria.append(datos_alimento)
+    
+    print(alimentos_por_categoria)
+    
+    context={
+        "CATEGORIA_CHOICES": CATEGORIA_CHOICES,
+        "alimentos_por_categoria": alimentos_por_categoria,
+        "Categoria_de_alimentos": Categoria_de_alimentos,
+    }
+    
+    return render(request, 'nutriplan/alimentos-por-categoria.html', context)
