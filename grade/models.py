@@ -54,6 +54,7 @@ class Student(models.Model):
     class Meta:
         verbose_name = 'Student'
         verbose_name_plural = 'Students'
+        ordering = ["-id"]
 
     def __str__(self):
         return self.name
@@ -120,6 +121,7 @@ class Terms_of_Delivery(models.Model):
     class Meta:
         verbose_name = 'Terms of Delivery'
         verbose_name_plural = 'Terms of Delivery'
+        ordering = ["-id"]
 
     def __str__(self):
         return "Delivery #"+ str(self.number_of_delivery) + " / " + str(self.comission) + " starting on " + str(self.start_date) + " and ending on " + str(self.end_date)
