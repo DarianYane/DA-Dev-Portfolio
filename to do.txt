@@ -1,6 +1,5 @@
 01. update my resume in static files (in english)
-02. Make an application to generate a personalized nutritional plan. (80% done, missing sidebar, adjust comidas)
-03. CSS at ***************************************************************
+
 04. Update README
 10. Comment the code
 43. Make the exercise routine or crypto project (like coingecko evaluating differences/distances between MC´s (like F1))
@@ -67,5 +66,3 @@
         Additionally, I intend to continue improving my English level, and learning about Machine Learning, Solidity and Artificial Intelligence.
 
 998. Make a video explaining how every project works, and showing and explaining a little the code
-
-1000 Comments in the blog

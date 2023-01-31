@@ -142,7 +142,7 @@ class Rating(models.Model):
         ('Bajo', 'Bajo'),
     )
     rating = models.CharField(verbose_name="Calificación final de la entrega: >= 80es 'Óptimo', entre 51 y 79 es 'Correcto', y menos o igual a 50 es 'Bajo'", max_length=50, choices=rating_choices, default='Óptimo')
-    comment = models.TextField(default="Hola ###, \n El trabajo está perfecto. \n Sólo como un detalle, te recomiendo que te acostumbres a dejar comentarios en el código explicando qué hace cada porción de código. \n Felicitaciones!")
+    comment = models.TextField(default="Hola ###,\nEl trabajo está perfecto.\nSólo como un detalle, te recomiendo que te acostumbres a dejar comentarios en el código explicando qué hace cada porción de código.\nFelicitaciones!")
     
     class Meta:
         verbose_name = 'Rating'

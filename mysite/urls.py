@@ -28,4 +28,5 @@ urlpatterns = [
     path('users/', include('django.contrib.auth.urls')), #contrib.auth is the autentication system
     path('users/', include('blogusers.urls')),
     path('', include('nutriplan.urls')),
+    path('', include('grade.urls')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

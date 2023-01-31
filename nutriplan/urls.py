@@ -38,8 +38,19 @@ urlpatterns = [
         name="dieta-plan"
     ),
     path(
+        "nutriplan/FAQ-ENG",
+        FAQENG,
+        name="FAQ-ENG"
+    ),
+    path(
+        "nutriplan/FAQ-ES",
+        FAQES,
+        name="FAQ-ES"
+    ),
+    path(
         "nutriplan/<str:categoria>",
         alimentos_por_categoria,
         name="alimentos-por-categoria"
-    )
+    ),
+    
 ]

@@ -395,3 +395,15 @@ def alimentos_por_categoria(request, categoria):
     }
     
     return render(request, 'nutriplan/alimentos-por-categoria.html', context)
+
+def FAQENG(request):
+    context = {
+        "CATEGORIA_CHOICES": CATEGORIA_CHOICES,
+    }
+    return render(request, 'nutriplan/FAQ-ENG.html', context)
+
+def FAQES(request):
+    context = {
+        "CATEGORIA_CHOICES": CATEGORIA_CHOICES,
+    }
+    return render(request, 'nutriplan/FAQ-ES.html', context)

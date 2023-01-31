@@ -1,0 +1,61 @@
+{% extends 'nutriplan/aaa_base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="main px-5 py-3">
+    <header>
+        <div class="m-5">
+            <h1>
+                FAQ
+            </h1>
+        </div>
+    </header>
+    <article>
+        <section>
+            <div class="m-5 pb-1">
+                <h2>¿Para qué sirve esta aplicación?</h2>
+                <p>Esta aplicación permite generar un plan de dieta semanal con cuatro comidas diarias, considerando las características fisiológicos, los objetivos, y preferencias alimenticias de cada individuo.</p>
+            </div>
+            <div class="m-5 pb-1">
+                <h2>¿Cómo funiciona?</h2>
+                <p>La aplicación te va guiando a través de una serie de pasos donde se te solicitará información.</p>
+                <p>En una primera instancia se solicitan los datos fisiológicos de la persona. Luego se solicita un rango de actividad física para saber el nivel de actividad/sedentarismo de la persona. Por último, se pide indicar si el objetivo es ganar masa muscular, o perder peso.</p>
+                <p>Con esta informacion se calcula el índice metabólico basal y las calorías de mantenimiento, las cuales se ajustan según el objetivo deseado para calcular las calorías que se deben consumir diariamente.</p>
+                <p>Estas calorías se reparten entre hidratos de carbono, proteínas y grasas para establecer una dieta balanceada objetivo.</p>
+                <p>En los siguientes pasos se solicita al individuo seleccionar algunos de sus alimentos favoritos para que la dieta sea lo más atractiva y personalizada posible. Estos alimentos son considerados para ser incluidos en la dieta de forma preferencial. En caso de que el usuario no seleccoine ningún alimento como favorito, la aplicación seleccionará alimentos al azar.</p>
+                <p>Una vez seleccionados los alimentos favoritos, la aplicacion selecciona en forma aleatoria el resto de los alimentos, y utiliza la función SOLVE de NUMPY para resolver un sistema de ecuaciones que satisfaga las condicoines de la dieta objetivo. Si por algún motivo el proceso devuelve un error, vuelve a seleccionar otro grupo de alimentos hasta encontrar una respuesta satisfactoria.</p>
+                <p>Por último, se presenta la dieta semanal. Si el usuario está conforme, puede imprimir el menú. Y si no lo está, puede repetir el proceso hasta encontrar una solución con la que se encuentre satisfecho.</p>
+            </div>
+            <div class="m-5 pb-1">
+                <h2>¿Qué problema resuelve Nutriplan?</h2>
+                <p>Nutriplan permite generar dietas personalizadas rápidamente. Además, su sistema aleatorio de seleccón de alimentos evita que la persona abandone la dieta por ser monótona. ¡Se puede generar una nueva dieta cada semana!</p>
+            </div>
+            <div class="m-5 pb-1">
+                <h2>¿Cómo surge la idea de Nutriplan?</h2>
+                <p>Hace algunos años yo trabajaba vendiendo Excels personalizados como freelance.</p>
+                <p>En una ocasión un nutricionista me pidió que le hiciera un Excel qeu cumpliera las funciones mencionadas anteriormente, para poder generar dietas para sus pacientes.</p>
+                <p>Luego de cumplir con el trabajo, se me ocurrió que podía haber un mercado para este producto y comencé a venderlo a través de MercadoLibre.com. Al día de hoy ya he vendido más de 10. La diferencia entre el Excel y Nutriplan es que en el Excel todos los alimentos son seleccoinados manualmente.</p>
+            </div>
+            <div class="m-5 pb-1">
+                <h2>¿Por qué incluyo Nutriplan en mi portfolio?</h2>
+                <p>Creo que un proyecto como Nutriplan tiene varias características que demuestran mis habilidades con Python y sus librerías.</p>
+                <p>Además de utilizar una barra de navegación, fue una buena ocasión para colocar un carrousel con imágenes, utilizar distintos tipos de datos en los modelos, utilizar formularios con distintos tipos de datos, utilizar alertas si se seleccionan más de 3 alimentos favoritos por comida, utilizar variables aleatorias y utilizar NUMPY.</p>
+                <p>Sin embargo, el principal motivo por el cual incluí a Nutriplan, es porque resuelve un problema REAL y hasta se podría pensar en su uso comercial.</p>
+            </div>
+            <div class="m-5 pb-1">
+                <h2>¿Por qué Nutriplan está en español?</h2>
+                <p>Porque el listado de alimentos utilizado como fuente de información está en español (el Excel original está en español). Por tal motivo, y debido a que el resto de los proyectos está en inglés, pensé que tener un proyecto en español podía ser una buena idea.</p>
+            </div>
+            <div class="m-5 p-3 text-center mx-auto" style="max-width: 800px; border: 2px; border-color: green; background-color: white; border-radius: 20px;">
+                <h2 style="color: green;">¿Te gustó Nutriplan?</h2>
+                <h3 style="color: green;">Si es así, no dudes en contactarme para que podamos coordinar una entrevista.</h3>
+                <h3 style="color: green;">Nutriplan es solo una muestra de lo que puedo hacer.</h3>
+                <h3 style="color: green;">Cuando me incorpore a tu empresa, ¡con seguridad realizaremos proyectos aún más espectaculares!</h3>
+                <h3 style="color: green;">🖅 Haz <a href="/#Contact">clic aquí</a> para contactarme.</h3>
+            </div>
+        </section>
+    </article>
+    {% include 'nutriplan/footer.html' %}
+</div>
+{% endblock %}
