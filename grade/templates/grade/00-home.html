@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    Accesos
-    <a href="{% url 'new-student' %}">Create a New Student</a>
-    <a href="{% url 'new-rating' %}">Create a New Rating</a>
+    <div style="display: flex; align-items: center; justify-content: center; height: 100vh; flex-direction: column; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+        <h3 style="margin: 12px; margin-top: -60px;">Accesos</h3>
+        <div style="margin: 12px;">
+            <a style="border: 1px solid blue; padding: 5px; text-decoration-line: none; border-radius: 7px;"
+                href="{% url 'new-student' %}">Create a New Student</a>
+        </div>
+        <div style="margin: 12px;">
+            <a style="border: 1px solid blue; padding: 5px; text-decoration-line: none; border-radius: 7px;"
+                href="{% url 'new-rating' %}">Create a New Rating</a>
+        </div>
+    </div>
 </body>
+
 </html>
