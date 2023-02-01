@@ -6,13 +6,10 @@ class StudentForm(ModelForm):
         model = Student
         fields = '__all__'
         labels = {
-            'name': ('Enter the name of the student you want to register: ')
+            'name': ('Enter the name of the student you want to register')
         }
 
 class RatingForm(ModelForm):
     class Meta:
         model = Rating
         fields = '__all__'
-        """ labels = {
-            'name': ('Enter the name of the student you want to register: ')
-        } """
