@@ -1,5 +1,3 @@
-01. update my resume in static files (in english)
-
 04. Update README
 10. Comment the code
 43. Make the exercise routine or crypto project (like coingecko evaluating differences/distances between MC´s (like F1))
