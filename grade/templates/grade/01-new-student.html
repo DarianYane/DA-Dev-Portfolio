@@ -7,22 +7,22 @@
     <title>Document</title>
 </head>
 <body>
-    <div
-        style="display: flex; align-items: center; justify-content: center; height: 100vh; flex-direction: column; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+    <div style="display: flex; align-items: center; justify-content: center; height: 100vh; flex-direction: column; font-family: Verdana, Geneva, Tahoma, sans-serif;">
         <h3 style="margin: 12px; margin-top: -60px;">Create a New Student</h3>
         <div style="margin: 12px; text-align: center;">
             <form action="{% url 'new-student' %}" method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <input type="submit" value="Submit">
+                <input style="border: 1px solid blue; padding: 5px; text-decoration-line: none; border-radius: 7px;" type="submit" value="Submit">
             </form>
         </div>
         <div style="margin-top: 20px;">
-            <a href="{% url 'grade-home' %}"><button type="submit">Home</button></a>
+            <p>
+            <h3><a style="border: 1px solid blue; padding: 5px; text-decoration-line: none; border-radius: 7px; font-family: Verdana, Geneva, Tahoma, sans-serif;"
+                    href="{% url 'grade-home' %}" type="submit">Home</a></h3>
+            </p>
         </div>
     </div>
-    
-
     
 </body>
 </html>

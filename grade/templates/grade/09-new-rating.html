@@ -7,27 +7,33 @@
     <title>Document</title>
 </head>
 <body>
-    <div style="display: flex; justify-content: space-evenly;">
-        <div>
-            Criteria
-            <p style="visibility: hidden;">.</p>
-            <p style="visibility: hidden;">.</p>
-            <p style="visibility: hidden;">.</p>
-            {% for i in tasks %}
-                <p>{{i}}</p>
-            {% endfor %}
+    <div style="display: flex; justify-content: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+        <div style="display: flex; justify-content: space-evenly; margin: 60px;">
+            <div>
+                <h3>Criterias</h3>
+                <p style="visibility: hidden;">.</p>
+                <p style="visibility: hidden;">.</p>
+                <p style="visibility: hidden;">.</p>
+                {% for i in tasks %}
+                    <p>{{i}}</p>
+                {% endfor %}
+            </div>
         </div>
-        <div>
-            Create a New Rating
-            <form action="{% url 'new-rating' %}" method="POST">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" value="Submit">
-            </form>
-            <p>
-                <a href="{% url 'grade-home' %}"><button  type="submit">Home</button></a>
-            </p>
+        <div style="display: flex; justify-content: space-evenly; margin: 60px;">
+            <div>
+                <h3>Create a New Rating</h3>
+                <form action="{% url 'new-rating' %}" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input style="border: 1px solid blue; padding: 5px; text-decoration-line: none; border-radius: 7px;" type="submit" value="Submit">
+                </form>
+            </div>
         </div>
+    </div>
+    <div style="text-align: center;">
+        <p>
+            <h3><a style="border: 1px solid blue; padding: 5px; text-decoration-line: none; border-radius: 7px; font-family: Verdana, Geneva, Tahoma, sans-serif;" href="{% url 'grade-home' %}" type="submit">Home</a></h3>
+        </p>
     </div>
 </body>
 </html>
