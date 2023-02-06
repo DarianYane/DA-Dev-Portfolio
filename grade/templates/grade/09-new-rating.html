@@ -1,39 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
 </head>
+
 <body>
-    <div style="display: flex; justify-content: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">
-        <div style="display: flex; justify-content: space-evenly; margin: 60px;">
-            <div>
-                <h3>Criterias</h3>
-                <p style="visibility: hidden;">.</p>
-                <p style="visibility: hidden;">.</p>
-                <p style="visibility: hidden;">.</p>
-                {% for i in tasks %}
-                    <p>{{i}}</p>
-                {% endfor %}
+    <header>
+        <!-- place navbar here -->
+    </header>
+    <main>
+        <div style="display: flex; justify-content: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+            <div style="display: flex; justify-content: space-evenly; margin: 60px;">
+                <div>
+                    <h3>Criterias</h3>
+                    <p style="visibility: hidden;">.</p>
+
+                    {% for criteria in criterias %}
+                    <p>
+                        <h3>{{criteria.title}}</h3>
+                        <h5>{{criteria.subtitle}}</h5>
+                        {{criteria.description}}
+                    </p>
+                    {% endfor %}
+
+                </div>
+            </div>
+            <div style="display: flex; justify-content: space-evenly; margin: 60px;">
+                <div>
+                    <h3>Create a New Rating</h3>
+                    <form action="{% url 'new-rating' %}" method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <input class="btn btn-primary" type="submit" value="Submit">
+                    </form>
+                </div>
             </div>
         </div>
-        <div style="display: flex; justify-content: space-evenly; margin: 60px;">
-            <div>
-                <h3>Create a New Rating</h3>
-                <form action="{% url 'new-rating' %}" method="POST">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <input style="border: 1px solid blue; padding: 5px; text-decoration-line: none; border-radius: 7px;" type="submit" value="Submit">
-                </form>
-            </div>
+        <div style="text-align: center;">
+            <p>
+                <a style="border: 1px solid blue; padding: 5px; text-decoration-line: none; border-radius: 7px; font-family: Verdana, Geneva, Tahoma, sans-serif;"
+                    href="{% url 'grade-home' %}" type="submit">Home</a>
+            </p>
         </div>
-    </div>
-    <div style="text-align: center;">
-        <p>
-            <h3><a style="border: 1px solid blue; padding: 5px; text-decoration-line: none; border-radius: 7px; font-family: Verdana, Geneva, Tahoma, sans-serif;" href="{% url 'grade-home' %}" type="submit">Home</a></h3>
-        </p>
-    </div>
+
+    </main>
+    <footer>
+        <!-- place footer here -->
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+        </script>
 </body>
+
 </html>
+
+

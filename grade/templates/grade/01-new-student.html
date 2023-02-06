@@ -1,28 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+{% extends 'grade/000-base.html' %}
+
+{% load static %}
+
+{% block content %}
+
 <body>
-    <div style="display: flex; align-items: center; justify-content: center; height: 100vh; flex-direction: column; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+    <div
+        style="display: flex; align-items: center; justify-content: center; height: 100vh; flex-direction: column; font-family: Verdana, Geneva, Tahoma, sans-serif;">
         <h3 style="margin: 12px; margin-top: -60px;">Create a New Student</h3>
         <div style="margin: 12px; text-align: center;">
             <form action="{% url 'new-student' %}" method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <input style="border: 1px solid blue; padding: 5px; text-decoration-line: none; border-radius: 7px;" type="submit" value="Submit">
+                <input class="btn btn-primary" type="submit" value="Submit">
             </form>
         </div>
-        <div style="margin-top: 20px;">
+        <div style="margin-top: 40px;">
             <p>
-            <h3><a style="border: 1px solid blue; padding: 5px; text-decoration-line: none; border-radius: 7px; font-family: Verdana, Geneva, Tahoma, sans-serif;"
-                    href="{% url 'grade-home' %}" type="submit">Home</a></h3>
+            <a style="border: 1px solid blue; padding: 5px; text-decoration-line: none; border-radius: 7px; font-family: Verdana, Geneva, Tahoma, sans-serif;" href="{% url 'grade-home' %}" type="submit">Home</a>
             </p>
         </div>
     </div>
-    
 </body>
-</html>
+
+{% endblock %}

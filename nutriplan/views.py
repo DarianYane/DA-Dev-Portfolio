@@ -367,7 +367,6 @@ def alimentos_por_categoria(request, categoria):
     else:
         Categoria_de_alimentos = categoria
     
-    print("Categoria DE alimentos es: ", Categoria_de_alimentos)
     
     queryset = Alimentos.objects.filter(categoria=Categoria_de_alimentos)
     
@@ -386,7 +385,6 @@ def alimentos_por_categoria(request, categoria):
         }
         alimentos_por_categoria.append(datos_alimento)
     
-    print(alimentos_por_categoria)
     
     context={
         "CATEGORIA_CHOICES": CATEGORIA_CHOICES,

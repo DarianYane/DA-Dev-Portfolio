@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from django.shortcuts import render, redirect, reverse
 from grade.forms import StudentForm, RatingForm
-from grade.models import Terms_of_Delivery, Tasks_to_Evaluate
+from grade.models import Terms_of_Delivery, Tasks_to_Evaluate, Student
 
 
 # Create your views here.
@@ -14,27 +15,22 @@ def new_Student(request):
 
     if request.method == "POST":
         form = StudentForm(request.POST)
+        
         if form.is_valid():
-            form.save()
-            return redirect("new-rating")
+            #form.save()
+            return redirect(reverse("new_Rating_for_Student", args=[request.POST['name']]))
 
     context = {"form": form}
 
     return render(request, "grade/01-new-student.html", context)
 
-    """ context={
-        
-    }
-    return render(request,'grade/01-new-student.html', context) """
-
-
 def new_Rating(request):
     
-    tasks = Tasks_to_Evaluate.objects.all()
-    for i in tasks:
-        print(i)
+    criterias = list(Tasks_to_Evaluate.objects.all())
+    criterias = criterias[-3:]
     
-    form = RatingForm()
+    delivery_id=len(Terms_of_Delivery.objects.all())
+    form = RatingForm(initial={'terms_of_delivery': delivery_id})
     
     if request.method == "POST":
         form = RatingForm(request.POST)
@@ -44,7 +40,30 @@ def new_Rating(request):
 
     context = {
         "form": form,
-        "tasks": tasks,
+        "criterias": criterias,
+        }
+
+    return render(request, "grade/09-new-rating.html", context)
+
+def new_Rating_for_Student(request, name):
+    
+    criterias = list(Tasks_to_Evaluate.objects.all())
+    criterias = criterias[-3:]
+    
+    name_id=len(Student.objects.all())
+    delivery_id=len(Terms_of_Delivery.objects.all())
+    form = RatingForm(initial={'student': name_id, 'terms_of_delivery': delivery_id})
+    print(form)
+    
+    if request.method == "POST":
+        form = RatingForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("new-student")
+
+    context = {
+        "form": form,
+        "criterias": criterias,
         }
 
     return render(request, "grade/09-new-rating.html", context)

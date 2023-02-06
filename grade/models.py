@@ -59,6 +59,7 @@ class Student(models.Model):
     def __str__(self):
         return self.name
 
+
 class Course(models.Model):
     course_name = models.CharField(max_length=50, unique = True)
     
@@ -68,6 +69,7 @@ class Course(models.Model):
 
     def __str__(self):
         return self.course_name
+
 
 class Commission(models.Model):
     course_name = models.ForeignKey(Course, on_delete=models.CASCADE)
@@ -79,6 +81,7 @@ class Commission(models.Model):
 
     def __str__(self):
         return str(self.course_name) +" - "+ str(self.commission_number)
+
 
 class Tasks_to_Evaluate(models.Model):
     title = models.CharField(max_length=100)
@@ -92,9 +95,12 @@ class Tasks_to_Evaluate(models.Model):
     def __str__(self):
         return str(self.title) +" - "+ str(self.subtitle)
 
+
 class Terms_of_Delivery(models.Model):
     comission = models.ForeignKey(Commission, on_delete=models.CASCADE)
     number_of_delivery = models.IntegerField(validators=[MinValueValidator(0)], default=1)
+    instructions = models.TextField(null=True, blank=True)
+    objectives = models.TextField(null=True, blank=True)
     start_date = models.DateField()
     end_date = models.DateField()
     Criteria_01 = models.ForeignKey(Tasks_to_Evaluate, on_delete=models.CASCADE, null=True, blank=True, related_name='grade.Terms_of_Delivery.Criteria_01+')
@@ -138,12 +144,15 @@ class Rating(models.Model):
     criteria_04_score = models.IntegerField(default=25, validators=[MinValueValidator(0), MaxValueValidator(100)])
 
     total_score = models.IntegerField(default=100, validators=[MinValueValidator(0), MaxValueValidator(100)])
+    
     rating_choices = (
         ('Óptimo', 'Óptimo'),
         ('Correcto', 'Correcto'),
         ('Bajo', 'Bajo'),
     )
+    
     rating = models.CharField(verbose_name="Calificación final de la entrega: >= 80es 'Óptimo', entre 51 y 79 es 'Correcto', y menos o igual a 50 es 'Bajo'", max_length=50, choices=rating_choices, default='Óptimo')
+    
     comment = models.TextField(default="Hola ###,\nEl trabajo está perfecto.\nSólo como un detalle, te recomiendo que te acostumbres a dejar comentarios en el código explicando qué hace cada porción de código.\nFelicitaciones!")
     
     class Meta:
