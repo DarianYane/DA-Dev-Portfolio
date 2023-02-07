@@ -6,14 +6,28 @@
 
 <body>
     <div style="display: flex; align-items: center; justify-content: center; height: 100vh; flex-direction: column; font-family: Verdana, Geneva, Tahoma, sans-serif;">
-        <h3 style="margin: 12px; margin-top: -60px;">Accesos</h3>
+        <h3 style="margin: 12px; margin-top: -60px;">Access</h3>
         <div style="margin: 12px;">
-            <a style="border: 1px solid blue; padding: 5px; text-decoration-line: none; border-radius: 7px;"
-                href="{% url 'new-student' %}">Create a New Student</a>
+            <a class="btn btn-outline-primary" href="{% url 'new-student' %}">Create a New Student</a>
         </div>
         <div style="margin: 12px;">
-            <a style="border: 1px solid blue; padding: 5px; text-decoration-line: none; border-radius: 7px;"
-                href="{% url 'new-rating' %}">Create a New Rating</a>
+            <a class="btn btn-outline-primary" href="{% url 'new-rating' %}">Create a New Rating</a>
+        </div>
+        <div style="border: 1px solid blue; text-decoration-line: none; border-radius: 7px; margin: 12px;" class="px-3">
+            <label for="exampleDataList" class="form-label m-3" style="color: green;">Search by student</label>
+            <form action="{% url 'test' %}" method="POST">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                    <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search..." name="student"
+                        aria-describedby="button-addon2">
+                    <button class="btn btn-outline-primary" type="submit" id="button-addon2">Search</button>
+                </div>
+                <datalist id="datalistOptions">
+                    {% for student in students %}
+                        <option value="{{student}}">
+                    {% endfor %}
+                </datalist>
+            </form>
         </div>
     </div>
 </body>

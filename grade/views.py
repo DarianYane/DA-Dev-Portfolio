@@ -6,7 +6,10 @@ from grade.models import Terms_of_Delivery, Tasks_to_Evaluate, Student
 
 # Create your views here.
 def grade_Home(request):
-    context = {}
+    students = Student.objects.all()
+    context = {
+        'students': students,
+    }
     return render(request, "grade/00-home.html", context)
 
 
@@ -17,7 +20,7 @@ def new_Student(request):
         form = StudentForm(request.POST)
         
         if form.is_valid():
-            #form.save()
+            form.save()
             return redirect(reverse("new_Rating_for_Student", args=[request.POST['name']]))
 
     context = {"form": form}
@@ -67,3 +70,8 @@ def new_Rating_for_Student(request, name):
         }
 
     return render(request, "grade/09-new-rating.html", context)
+
+def test(request):
+    post = request.POST
+    print(post)
+    return redirect("new-student")
