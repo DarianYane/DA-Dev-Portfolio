@@ -18,38 +18,66 @@
 
 {% block content %}
     <!-- Header-->
-    <header class="masthead d-flex align-items-center">
+    <header class="masthead d-flex align-items-center" style="height: auto;">
         <div class="container mt-3 px-4 px-lg-5 text-center">
             <!-- Masthead Avatar Image-->
             <img class="rounded-circle shadow p-1 bg-body mb-4" width="250" height="250" src="{% static 'assets/img/profile-pic.png' %}" alt="Profile picture"/>
             <!-- Masthead Heading-->
             <h1 class="mb-3">Darian Yane</h1>
             <!-- Masthead Subheading-->
-            <h2 class="mb-3"><em>Junior Python Developer</em></h2>
-            <h5 class="mb-5"><em>Degree in Economics and MBA</em></h5>
-                <div class="row gx-0 align-items-center">
-                    <div class="col-lg-2 "></div>
-                    <div class="col-lg-2 ">
-                        <div class="logo-python p-1 mb-4">
-                            <img class="p-1 bg-body mb-4" width="120" height="120" src="{% static 'assets/img/python-logo.png' %}" alt="Python logo"/>
-                        </div>
+            <h2 class="mb-3" style="font-size: 50px; color: orange;"><em>Data Analyst</em></h2>
+            <h2 class="mb-3" style="color: orange;"><em>Python Developer</em></h2>
+            <h2 class="mb-5" style="font-size: 35px;"><em>Degree in Economics and MBA</em></h2>
+            <div class="row align-items-center" style="justify-content: center;">
+                <div class="col-lg-2 mx-5" >
+                    <div class="logo-python p-1 mb-4">
+                        <img class="p-1 bg-body mb-4" width="120" height="120" src="{% static 'assets/img/landing/python-logo.png' %}" alt="Python logo">
                     </div>
-                    <div class="col-lg-1 "></div>
-                    <div class="col-lg-2">
-                        <div class="logo-django p-1 mb-4">
-                            <img class="p-1 bg-body mb-4" width="140" height="130" src="{% static 'assets/img/django-logo.png' %}" alt="Django logo"/>
-                        </div>
-                    </div>
-                    <div class="col-lg-1 "></div>
-                    <div class="col-lg-2">
-                        <div class="logo-bootstrap p-1 mb-4">
-                            <img class="p-1 bg-body mb-4" width="150" height="150" src="{% static 'assets/img/bootstrap-logo.png' %}" alt="Bootstrap logo"/>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 "></div>
                 </div>
+                <div class="col-lg-2 mx-5">
+                    <div class="logo-SQL p-1 mb-4" style="margin-left: -5px;">
+                        <img class="p-1 bg-body mb-4" width="200" height="120" src="{% static 'assets/img/landing/SQL-logo.png' %}"
+                            alt="SQL logo" />
+                    </div>
+                </div>
+                <div class="col-lg-2 mx-5">
+                    <div class="logo-django p-1 mb-4" style="margin-top: 10px; margin-left: -50px;">
+                        <img class="p-1 bg-body mb-4" width="140" height="120" src="{% static 'assets/img/landing/django-logo.png' %}" alt="Django logo"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center" style="justify-content: space-around; scale: 0.7;" >
+                <!-- <div class="col-lg-2 "></div> -->
+                <div class="col-lg-2" >
+                    <div class="logo-python p-1 mb-4">
+                        <img class="p-1 bg-body mb-4" width="120" height="120"
+                            src="{% static 'assets/img/landing/numpy-logo.png' %}" alt="Numpy logo" />
+                    </div>
+                </div>
+                <!-- <div class="col-lg-1 "></div> -->
+                <div class="col-lg-2">
+                    <div class="logo-pandas p-1 mb-4" style="margin-top: 10px;">
+                        <img class="p-1 bg-body mb-4" width="180" height="150" src="{% static 'assets/img/landing/pandas-logo.png' %}"
+                            alt="Pandas logo" />
+                    </div>
+                </div>
+                <!-- <div class="col-lg-1 "></div> -->
+                <div class="col-lg-2">
+                    <div class="logo-power-bi p-1 mb-4" style="margin-top: 10px;">
+                        <img class="p-1 bg-body mb-4" width="140" height="150"
+                            src="{% static 'assets/img/landing/power-bi-logo.png' %}" alt="Power Bi logo" />
+                    </div>
+                </div>
+                <!-- <div class="col-lg-1 "></div> -->
+                <div class="col-lg-2">
+                    <div class="logo-pandas p-1 mb-4" style="margin-top: 30px; margin-left: -50px;">
+                        <img class="p-1 bg-body mb-4" width="300" height="70" src="{% static 'assets/img/landing/matplotlib-logo.webp' %}"
+                            alt="Matplotlib logo" />
+                    </div>
+                </div>
+                <!-- <div class="col-lg-2 "></div> -->
+            </div>
             <p><a class="btn btn-success btn-xl active fs-5" href="#Reasons_for_hiring_me" id="btn-scaled">Reasons for hiring me</a></p>
-            
         </div>
     </header>
     <!-- Reasons for hiring me-->
@@ -62,7 +90,7 @@
                         <h2 class="mb-5">Hire Me</h2>
                     </div>
                     <p class="lead mb-3 text-white" style="font-size: 30px">
-                        My knowledge of <strong>Python, Django, Bootstrap, Economics, Finance and Statistics</strong>, added to my extensive work experience in all types of companies and teams, make <strong>my incorporation extremely fluid and effective</strong>.
+                        My knowledge of <strong>Python, SQL, Django, Numpy, Pandas, PowerBI, Economics, Finance and Statistics</strong>, added to my extensive work experience in all types of companies and teams, make <strong>my incorporation extremely fluid and effective</strong>.
                     </p>
                     <br>
 

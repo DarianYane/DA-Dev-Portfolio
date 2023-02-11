@@ -2893,6 +2893,18 @@ footer.footer .social-link:hover {
   filter: drop-shadow(0px 0px 30px DodgerBlue);
 }
 
+.logo-SQL img {
+  filter: drop-shadow(0px 0px 20px orange);
+}
+
+.logo-pandas img {
+  filter: drop-shadow(0px 0px 10px white);
+}
+
+.logo-power-bi img {
+  filter: drop-shadow(0px 0px 10px gold);
+}
+
 .arrow {
   line-height: 400px;
   margin: 0px auto;
@@ -2911,7 +2923,7 @@ footer.footer .social-link:hover {
   height: auto;
   padding-top: 4rem;
   padding-bottom: 8rem;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../assets/img/Background.jpg");
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../assets/img/landing/Background.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
