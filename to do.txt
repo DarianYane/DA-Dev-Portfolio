@@ -1,6 +1,7 @@
-04. Update README
-05. View para editar ratings
-10. Comment the code
+15. View para editar ratings (grade)
+    Buttons for saving and routing to different locations
+16. Upload Grade
+    17. Update README
 43. Make the exercise routine or crypto project (like coingecko evaluating differences/distances between MC´s (like F1))
 44. Login to nutrition and exercise projects
 Move the portfolio to React
@@ -22,7 +23,7 @@ Move the portfolio to React
         I am looking for a company that gives me an opportunity to demonstrate my skills and knowledge, and I offer my absolute commitment to be able to collaborate with whatever the company and the team needs.
         In the medium term, I want to continue learning about machine learning, artificial intelligence and blockchain programming.
 
-(Looking for resumes or readmes of people who know python and django)
+    (Looking for resumes or readmes of people who know python and django)
 
     Education
         Python at Coderhouse

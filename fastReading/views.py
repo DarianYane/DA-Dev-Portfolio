@@ -10,8 +10,10 @@ from django.views import View
 from django.http import HttpResponse
 
 # Create your views here.
+
+#Upload the file to be optimized
 def upload(request):
-    """ Upload the original pdf  """
+    """Upload the original pdf"""
     if request.method == 'POST' and request.FILES['myfile']: # myfile is the file in the form
         myfile = request.FILES['myfile']
         fs = FileSystemStorage() # we generate the FileSystemStorage object here
@@ -21,20 +23,22 @@ def upload(request):
         print(filename)
     return render(request, "fastReading/upload.html")
 
+#Example file for optimization
 def wipuf(request):
     global filename # this is the variable that I am going to optimize in the other view, that's why I make it global
     filename = "What_Is_Python_Used_For_-_A_Beginners_Guide.pdf" # we save the file with the name of the file, and the second parameter is the file itself
     return redirect(f2_bolded)
 
-
+# Optimize the uploaded PDF
 def f2_bolded(request):
-	# Optimize the uploaded PDF
     global b_text
     b_text = ""
     count = 0
-    print(filename)
+    #print(filename)
+    
+    #Upload the file to be optimized
     file = "media/"+filename
-    print(file)
+    #print(file)
     reader = PdfReader(file)
     number_of_pages = len(reader.pages)
     text = ""
@@ -42,7 +46,7 @@ def f2_bolded(request):
         page = reader.pages[x]
         text += page.extract_text()
 
-	# The following process can still be optimized
+	#Logic to determine which characters should be bold, and which should not. (The following process can still be optimized)
     letters = "qwertyuiopasdfghjklñzxcvbnmáéíóú"
     numbers = "0123456789"
     finals = ".?!"
@@ -100,7 +104,7 @@ def f2_bolded(request):
     context = {'b_text': b_text}
     return render(request,"fastReading/optimized.html",context)
 
-
+#Create the optimized PDF file
 def render_to_pdf(template_src, context_dict={}):
 	""" Create the optimized PDF file """
 	template = get_template(template_src)
@@ -111,7 +115,7 @@ def render_to_pdf(template_src, context_dict={}):
 		return HttpResponse(result.getvalue(), content_type='application/pdf')
 	return None
 
-
+#Automaticly downloads  the optimized text to a new PDF file
 class DownloadPDF(View):
 	""" Automaticly downloads  the optimized text to a new PDF file """
 	def get(self, request, *args, **kwargs):

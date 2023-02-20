@@ -1,51 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 
-"""     title = models.CharField(max_length=150)
-    subtitle = models.CharField(max_length=250, null=True, blank=True)
-    story = RichTextField()
-    image = models.ImageField(null=True, blank=True, upload_to="Posts/images/")
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    created = models.DateField(auto_now=False, auto_now_add=True)
-    updated = models.DateField(auto_now=True, auto_now_add=False)
-    category = models.CharField(max_length=150, default = 'uncategorized')
-    likes = models.ManyToManyField(User, related_name='blog_entries', blank=True)
-
-    class Meta:
-        verbose_name = 'Post'
-        verbose_name_plural = 'Posts'
-
-    def __str__(self):
-        return self.title +" - Created by "+ str(self.author) """
-
-"""     def get_absolute_url(self):
-        return reverse('BlogListView',)
-    
-    def sum_likes (self):
-        return self.likes.count() """
-
-# Category Model
-""" class Category(models.Model):
-    name = models.CharField(max_length=150, unique=True)
-
-    class Meta:
-        verbose_name = 'Category'
-        verbose_name_plural = 'Categories'
-
-    def __str__(self):
-        return self.name """
-
-"""     def get_absolute_url(self):
-        return reverse('CreatePostView',) """
-    
-"""         COMIDA_CHOICES = (
-        ('Desayuno', 'Desayuno'),
-        ('Almuerzo', 'Almuerzo'),
-        ('Merienda', 'Merienda'),
-        ('Cena', 'Cena'),
-    )
-    comida = models.CharField(verbose_name="Comida en la que se suele consumir", max_length=150, choices=COMIDA_CHOICES, default='Almuerzo') """
-    
 # Create your models here.
 # Student Model
 class Student(models.Model):
@@ -59,7 +14,7 @@ class Student(models.Model):
     def __str__(self):
         return self.name
 
-
+# Course Model
 class Course(models.Model):
     course_name = models.CharField(max_length=50, unique = True)
     
@@ -70,7 +25,7 @@ class Course(models.Model):
     def __str__(self):
         return self.course_name
 
-
+#Commission related to the subject being taught
 class Commission(models.Model):
     course_name = models.ForeignKey(Course, on_delete=models.CASCADE)
     commission_number = models.IntegerField(unique = True)
@@ -82,7 +37,7 @@ class Commission(models.Model):
     def __str__(self):
         return str(self.course_name) +" - "+ str(self.commission_number)
 
-
+#Create tasks that can be reused in different deliverables of different commissions.
 class Tasks_to_Evaluate(models.Model):
     title = models.CharField(max_length=100)
     subtitle = models.CharField(max_length=150, null=True, blank=True)
@@ -95,7 +50,7 @@ class Tasks_to_Evaluate(models.Model):
     def __str__(self):
         return str(self.title) +" - "+ str(self.subtitle)
 
-
+#List of tasks to be fulfilled in each delivery
 class Terms_of_Delivery(models.Model):
     comission = models.ForeignKey(Commission, on_delete=models.CASCADE)
     number_of_delivery = models.IntegerField(validators=[MinValueValidator(0)], default=1)
@@ -132,7 +87,7 @@ class Terms_of_Delivery(models.Model):
     def __str__(self):
         return "Delivery #"+ str(self.number_of_delivery) + " / " + str(self.comission) + " starting on " + str(self.start_date) + " and ending on " + str(self.end_date)
 
-
+#Evaluation of each delivery
 class Rating(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     terms_of_delivery = models.ForeignKey(Terms_of_Delivery, on_delete=models.CASCADE)

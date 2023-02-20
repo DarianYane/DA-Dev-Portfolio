@@ -6,21 +6,15 @@ from landing.models import Task
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.template.loader import render_to_string
-from django.http import HttpResponse
 
 
 # Create your views here.
-"""
-def home(request):
-    return render(request,"landing/index.html")
-    """
-
-
+#Task list for the roadmap
 class Tasks_lists(ListView):
     queryset = Task.objects.all()
     context_object_name = "Tasks"
 
-# For the contact form
+#Submission of contact form
 def sendEmail(request):
     if request.method == "POST":
         template = render_to_string('landing/email_template.html', {

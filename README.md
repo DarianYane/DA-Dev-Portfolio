@@ -6,8 +6,9 @@ Through this portfolio you will be able to know my skills and you will get all t
 - [Table of Contents](#table-of-contents)
 - [What is included in this portfolio](#what-is-included-in-this-portfolio)
   - [Reasons for hiring me](#reasons-for-hiring-me)
-  - [My projects](#my-projects)
-	  - [Fast-Reading](#fast-reading)
+  - [My projects](#nutriplan)
+	  - [Nutriplan](#fast-reading)
+    - [Fast-Reading](#fast-reading)
 	  - [Travel Blog](#travel-blog)
   - [About me](#about-me)
   - [Personal Roadmap](#personal-roadmap)
@@ -21,7 +22,7 @@ Through this portfolio you will be able to know my skills and you will get all t
     - [Can I register and create a travel blog post?](#can-i-register-and-create-a-travel-blog-post?)
     - [How can I contact you?](#how-can-i-contact-you?)
     - [How is this project done?](#how-is-this-project-done?)
- 
+- [Updates](#updates)
 
 # What is included in this portfolio?
 I made this portfolio in order to get a job. You can see the deployed version at www.darianyane.com
@@ -35,6 +36,28 @@ Here you will find the reasons why you should hire me as soon as possible.
 ## My projects
 In this section you will find the access to the different projects I have worked on. You will find a text modifier to optimize reading and a travel blog (with CRUD, user management, etc.) among other projects.
 
+### Fast-Reading
+This application allows you to generate a weekly diet plan with four meals a day, considering the physiological characteristics, objectives, and food preferences of each individual.
+
+The application guides you through a series of steps where you will be asked for information.
+
+In the first instance, the physiological data of the person is requested. Then a range of physical activity is requested to know the level of activity/sedentariness of the person. Finally, it is asked to indicate whether the is to gain muscle mass or to lose weight.
+
+This information is used to calculate the basal metabolic rate and maintenance calories, which are adjusted according to the desired goal to calculate the calories to be consumed daily.
+
+These calories are divided between carbohydrates, proteins and fats to establish a balanced target diet.
+
+In the following steps, the individual is asked to select some of his or her favorite foods to make the diet as attractive and personalized as possible. These foods are considered to be preferentially included in the diet. In case the user does not select any food as a favorite, the application will select foods at random.
+
+Once the favorite foods are selected, the application randomly selects the rest of the foods, and uses NUMPY's SOLVE function to solve a system of equations that satisfies the conditions of the target diet. If for some reason the process returns an error, it reselects another food group until a satisfactory answer is found.
+
+Finally, the weekly diet is presented. If the user is satisfied, he can print the menu. If they are not, they can repeat the process until they find a solution with which they are satisfied.
+
+Nutriplan allows you to generate personalized diets quickly. In addition, its randomized food selection system prevents the person from abandoning the diet because it is monotonous; a new diet can be generated every week!
+
+<p align="center">
+<a><img src="https://www.darianyane.com/static/assets/img/readme/nutrihome.jpg" style="width: 400px; height: 400px;" width="400" height="400" /></a>
+</p>
 
 ### Fast-Reading
 This application receives a .pdf and places the first two characters of each word in "bold" to make the text easier to read.
@@ -44,7 +67,7 @@ Fast-Reading facilitates the reading process by guiding the eyes through text wi
 Below is a screenshot demonstrating how the aplication works.
 
 <p align="center">
-<a><img src="https://www.darianyane.com/static/assets/img/after.jpg" style="width: 400px; height: 400px;" width="400" height="400" /></a>
+<a><img src="https://www.darianyane.com/static/assets/img/readme/fastreading-after.jpg" style="width: 400px; height: 400px;" width="400" height="400" /></a>
 </p>
 
 
@@ -54,6 +77,9 @@ To optimize a file you do not need to download or install anything. You can do i
 ### Travel Blog
 This travel blog is an improved version of the final work I did for my Python course at Coderhouse. It includes a CRUD for the posts and a user management system.
 
+<p align="center">
+<a><img src="https://www.darianyane.com/static/assets/img/readme/travel-blog-preview.jpg" style="width: 400px; height: 400px;" width="400" height="400" /></a>
+</p>
 
 ## About me
 In this section you will find a description of my knowledge, experiences and objectives. You can also download my CV.
@@ -108,3 +134,13 @@ You can do it from [here](https://www.darianyane.com/#Contact)
 #### How is this project done?
 This project is made with Python, Django, Bootstrap, and is deployed on Railway.
 To make this README I also used https://stackedit.io
+
+
+# Updates
+
+
+#### January 2023
+Nutriplan
+
+#### February 2023
+Code commented

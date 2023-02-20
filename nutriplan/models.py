@@ -1,6 +1,7 @@
 from django.db import models
 
 # Create your models here.
+#Food characteristics
 class Alimentos(models.Model):
     nombre=models.CharField(verbose_name="Nombre del alimento", max_length=100, unique=True)
     CATEGORIA_CHOICES = (
