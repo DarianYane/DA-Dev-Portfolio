@@ -56,7 +56,7 @@ Finally, the weekly diet is presented. If the user is satisfied, he can print th
 Nutriplan allows you to generate personalized diets quickly. In addition, its randomized food selection system prevents the person from abandoning the diet because it is monotonous; a new diet can be generated every week!
 
 <p align="center">
-<a><img src="https://www.darianyane.com/static/assets/img/readme/nutrihome.jpg" style="width: 400px; height: 400px;" width="400" height="400" /></a>
+<a><img src="https://github.com/DarianYane/DA-Dev-Portfolio/blob/main/landing/static/assets/img/readme/nutrihome.jpg" style="width: 400px; height: 400px;" width="400" height="400" /></a>
 </p>
 
 ### Fast-Reading
@@ -67,7 +67,7 @@ Fast-Reading facilitates the reading process by guiding the eyes through text wi
 Below is a screenshot demonstrating how the aplication works.
 
 <p align="center">
-<a><img src="https://www.darianyane.com/static/assets/img/readme/fastreading-after.jpg" style="width: 400px; height: 400px;" width="400" height="400" /></a>
+<a><img src="https://github.com/DarianYane/DA-Dev-Portfolio/blob/main/landing/static/assets/img/readme/fastreading-after.jpg" style="width: 400px; height: 400px;" width="400" height="400" /></a>
 </p>
 
 
@@ -78,7 +78,7 @@ To optimize a file you do not need to download or install anything. You can do i
 This travel blog is an improved version of the final work I did for my Python course at Coderhouse. It includes a CRUD for the posts and a user management system.
 
 <p align="center">
-<a><img src="https://www.darianyane.com/static/assets/img/readme/travel-blog-preview.jpg" style="width: 400px; height: 400px;" width="400" height="400" /></a>
+<a><img src="https://github.com/DarianYane/DA-Dev-Portfolio/blob/main/landing/static/assets/img/readme/travel-blog-preview.jpg" style="width: 400px; height: 400px;" width="400" height="400" /></a>
 </p>
 
 ## About me
