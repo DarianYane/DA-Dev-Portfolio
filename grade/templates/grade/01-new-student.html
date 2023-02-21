@@ -12,12 +12,18 @@
             <form action="{% url 'new-student' %}" method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <input class="btn btn-primary" type="submit" value="Submit">
+
+                {% if user.is_authenticated %}
+                    <input class="btn btn-primary" type="submit" value="Submit">
+                {% else %}
+                    <input class="btn btn-primary disabled" type="submit" value="Submit">
+                {% endif %}
+
             </form>
         </div>
         <div style="margin-top: 40px;">
             <p>
-            <a style="border: 1px solid blue; padding: 5px; text-decoration-line: none; border-radius: 7px; font-family: Verdana, Geneva, Tahoma, sans-serif;" href="{% url 'grade-home' %}" type="submit">Home</a>
+                <a style="border: 1px solid blue; padding: 5px; text-decoration-line: none; border-radius: 7px; font-family: Verdana, Geneva, Tahoma, sans-serif;" href="{% url 'grade-home' %}" type="submit">Home</a>
             </p>
         </div>
         {% include 'grade/99-footer.html' %}

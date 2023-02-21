@@ -41,15 +41,29 @@
                         {% csrf_token %}
                         {{ form.as_p }}
                         <div style="text-align: center; margin-top: 20px;">
-                            <p>
-                                <input class="btn btn-primary" type="submit" value="Submit and Create a New Student" name="buttonto">
-                            </p>
-                            <p>
-                                <input class="btn btn-primary" type="submit" value="Submit and Create a New Rating" name="buttonto">
-                            </p>
-                            <p>
-                                <input class="btn btn-primary" type="submit" value="Submit and Back to Home" name="buttonto">
-                            </p>
+
+                            {% if user.is_authenticated %}
+                                <p>
+                                    <input class="btn btn-primary" type="submit" value="Submit and Create a New Student" name="buttonto">
+                                </p>
+                                <p>
+                                    <input class="btn btn-primary" type="submit" value="Submit and Create a New Rating" name="buttonto">
+                                </p>
+                                <p>
+                                    <input class="btn btn-primary" type="submit" value="Submit and Back to Home" name="buttonto">
+                                </p>
+                            {% else %}
+                                <p>
+                                    <input class="btn btn-primary disabled" type="submit" value="Submit and Create a New Student" name="buttonto">
+                                </p>
+                                <p>
+                                    <input class="btn btn-primary disabled" type="submit" value="Submit and Create a New Rating" name="buttonto">
+                                </p>
+                                <p>
+                                    <input class="btn btn-primary disabled" type="submit" value="Submit and Back to Home" name="buttonto">
+                                </p>
+                            {% endif %}
+
                         </div>
                     </form>
                 </div>
