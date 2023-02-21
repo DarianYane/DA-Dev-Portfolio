@@ -77,17 +77,13 @@ def LikePost(request, pk):
 
 #Search by post title
 def search(request):
-    print(request.GET)
     if request.GET['title_search']:
-        queryset = request.GET['title_search']
-        print(queryset)    
+        queryset = request.GET['title_search']   
         posts = Post.objects.filter(title__icontains=queryset).all()
-        print(posts)
         
         if posts!=[]:
             return render(request, "blog/search_result.html", {'posts': posts, 'search': queryset})
 
     else:
         queryset = '(No search performed)'
-        print(queryset)
         return render(request, 'blog/search_result.html', {'search': queryset})

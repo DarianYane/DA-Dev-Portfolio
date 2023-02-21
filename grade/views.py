@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from grade.forms import StudentForm, RatingForm
-from grade.models import Terms_of_Delivery, Tasks_to_Evaluate, Student
+from grade.models import Terms_of_Delivery, Tasks_to_Evaluate, Student, Rating
 
 # Create your views here.
 #Student roster
@@ -79,7 +79,20 @@ def new_Rating_for_Student(request, name):
 
     return render(request, "grade/09-new-rating.html", context)
 
-def test(request):
-    post = request.POST
-    print(post)
-    return redirect("new-student")
+#Search by student
+def student_Search(request):    
+    if request.GET['student_search']:
+        queryset = request.GET['student_search']
+        #Filter by selected name
+        selected_student = Student.objects.filter(name=queryset)
+        for i in selected_student:
+            #Get the id of the selected name
+            ratings = Rating.objects.filter(student_id=i.id)
+            if ratings!=[]:
+                return render(request, 'grade/20-student_search_result.html', {'ratings': ratings, 'wanted_student': queryset})
+    else:
+        #If a valid search is not performed
+        queryset = '(No search performed)'
+        print(queryset)
+        return render(request, 'grade/20-student_search_result.html', {'search': queryset})
+    return redirect('grade-home')
