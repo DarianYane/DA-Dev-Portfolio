@@ -40,7 +40,17 @@
                     <form action="{% url 'new-rating' %}" method="POST">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <input class="btn btn-primary" type="submit" value="Submit">
+                        <div style="text-align: center; margin-top: 20px;">
+                            <p>
+                                <input class="btn btn-primary" type="submit" value="Submit and Create a New Student" name="buttonto">
+                            </p>
+                            <p>
+                                <input class="btn btn-primary" type="submit" value="Submit and Create a New Rating" name="buttonto">
+                            </p>
+                            <p>
+                                <input class="btn btn-primary" type="submit" value="Submit and Back to Home" name="buttonto">
+                            </p>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -51,7 +61,7 @@
                     href="{% url 'grade-home' %}" type="submit">Home</a>
             </p>
         </div>
-
+        {% include 'grade/99-footer.html' %}
     </main>
     <footer>
         <!-- place footer here -->

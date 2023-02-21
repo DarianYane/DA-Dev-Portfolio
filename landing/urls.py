@@ -3,6 +3,7 @@ from fastReading.views import upload
 from aboutme.views import aboutmehome
 from blog.views import BlogListView
 from nutriplan.views import nutrihome
+from grade.views import grade_Home
 from landing import views
 
 
@@ -12,6 +13,7 @@ urlpatterns = [
     path('', views.Tasks_lists.as_view(), name="home"),
     path('blog', BlogListView.as_view(), name="BlogListView"),
     path('nutriplan', nutrihome, name="nutrihome"),
+    path("grade", grade_Home, name="grade-home"),
 
     # COntact Form
     path('send_email/', views.sendEmail, name="send_email"),

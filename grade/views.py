@@ -28,23 +28,32 @@ def new_Student(request):
 
 #Create a generic rating
 def new_Rating(request):
+    post=request.POST.get('buttonto')
+    #List the criteria for delivery
     criterias = list(Tasks_to_Evaluate.objects.all())
     criterias = criterias[-3:]
     
     delivery_id=len(Terms_of_Delivery.objects.all())
     form = RatingForm(initial={'terms_of_delivery': delivery_id})
-    
+    #Depending on the button pressed when submitting the form, it redirects to a different page.
     if request.method == "POST":
         form = RatingForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("new-student")
+            if post == 'Submit and Create a New Student':
+                print('to New Student')
+                return redirect("new-student")
+            if post == 'Submit and Create a New Rating':
+                print('to New Rating')
+                return redirect("new-rating")
+            if post == 'Submit and Back to Home':
+                print('to Home')
+                return redirect("grade-home")
 
     context = {
         "form": form,
         "criterias": criterias,
         }
-
     return render(request, "grade/09-new-rating.html", context)
 
 #Create a rating after creating a student
@@ -69,3 +78,8 @@ def new_Rating_for_Student(request, name):
         }
 
     return render(request, "grade/09-new-rating.html", context)
+
+def test(request):
+    post = request.POST
+    print(post)
+    return redirect("new-student")

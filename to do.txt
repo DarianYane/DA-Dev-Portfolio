@@ -1,5 +1,5 @@
 15. View para editar ratings (grade)
-    Buttons for saving and routing to different locations
+    
 16. Upload Grade
     17. Update README
 43. Make the exercise routine or crypto project (like coingecko evaluating differences/distances between MC´s (like F1))
