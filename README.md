@@ -6,8 +6,8 @@ Through this portfolio you will be able to know my skills and you will get all t
 - [Table of Contents](#table-of-contents)
 - [What is included in this portfolio](#what-is-included-in-this-portfolio)
   - [Reasons for hiring me](#reasons-for-hiring-me)
-  - [My projects](#nutriplan)
-	  - [Nutriplan](#fast-reading)
+  - [My projects](#my-projects)
+	  - [Nutriplan](#nutriplan)
     - [Fast-Reading](#fast-reading)
 	  - [Travel Blog](#travel-blog)
   - [About me](#about-me)
@@ -36,7 +36,7 @@ Here you will find the reasons why you should hire me as soon as possible.
 ## My projects
 In this section you will find the access to the different projects I have worked on. You will find a text modifier to optimize reading and a travel blog (with CRUD, user management, etc.) among other projects.
 
-### Fast-Reading
+### Nutriplan
 This application allows you to generate a weekly diet plan with four meals a day, considering the physiological characteristics, objectives, and food preferences of each individual.
 
 The application guides you through a series of steps where you will be asked for information.
