@@ -8,6 +8,7 @@ Through this portfolio you will be able to know my skills and you will get all t
   - [Reasons for hiring me](#reasons-for-hiring-me)
   - [My projects](#my-projects)
     - [Nutriplan](#nutriplan)
+    - [Grade](#grade)
     - [Fast-Reading](#fast-reading)
     - [Travel Blog](#travel-blog)
   - [About me](#about-me)
@@ -56,7 +57,18 @@ Finally, the weekly diet is presented. If the user is satisfied, he can print th
 Nutriplan allows you to generate personalized diets quickly. In addition, its randomized food selection system prevents the person from abandoning the diet because it is monotonous; a new diet can be generated every week!
 
 <p align="center">
-<a><img src="https://github.com/DarianYane/DA-Dev-Portfolio/blob/main/landing/static/assets/img/readme/nutrihome.jpg" style="width: 740px; height: 400px;" width="400" height="400" /></a>
+<a><img src="https://github.com/DarianYane/DA-Dev-Portfolio/blob/main/landing/static/assets/img/readme/nutrihome.jpg" style="width: 740px; height: 400px;"/></a>
+</p>
+
+### Grade (under construction)
+Application to keep track and monitor the corrections that a teacher makes on the delivery of the work of their students.
+
+The teacher can create students, create ratings, and search for students from the main page in order to edit their ratings.
+
+To be able to make modifications and access sensitive information you must be registered on the site.
+
+<p align="center">
+<a><img src="https://github.com/DarianYane/DA-Dev-Portfolio/blob/main/landing/static/assets/img/readme/grade-preview.jpg" style="width: 537px; height: 545px;"/></a>
 </p>
 
 ### Fast-Reading
@@ -67,7 +79,7 @@ Fast-Reading facilitates the reading process by guiding the eyes through text wi
 Below is a screenshot demonstrating how the aplication works.
 
 <p align="center">
-<a><img src="https://github.com/DarianYane/DA-Dev-Portfolio/blob/main/landing/static/assets/img/readme/fastreading-after.jpg" style="width: 400px; height: 400px;" width="400" height="400" /></a>
+<a><img src="https://github.com/DarianYane/DA-Dev-Portfolio/blob/main/landing/static/assets/img/readme/fastreading-after.jpg" style="width: 400px; height: 400px;"/></a>
 </p>
 
 
@@ -78,7 +90,7 @@ To optimize a file you do not need to download or install anything. You can do i
 This travel blog is an improved version of the final work I did for my Python course at Coderhouse. It includes a CRUD for the posts and a user management system.
 
 <p align="center">
-<a><img src="https://github.com/DarianYane/DA-Dev-Portfolio/blob/main/landing/static/assets/img/readme/travel-blog-preview.jpg" style="width: 836px; height: 400px;" width="400" height="400" /></a>
+<a><img src="https://github.com/DarianYane/DA-Dev-Portfolio/blob/main/landing/static/assets/img/readme/travel-blog-preview.jpg" style="width: 836px; height: 400px;"/></a>
 </p>
 
 ## About me
@@ -96,11 +108,11 @@ Do you want to contact me? You can do it from [here](https://www.darianyane.com/
 ## My networks
 These are my social networks, my Linkedin, and the form so you can contact me.
 <p align="center">
-<a href="https://www.linkedin.com/in/darian-yane/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/3536/3536505.png" style="width: 54px; height: 54px;" width="54" height="54" /></a>
-<a href="https://www.youtube.com/c/DarianInvierte" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/2111/2111748.png" style="width: 54px; height: 54px;" width="54" height="54" /></a>
-<a href="https://twitter.com/DarianInvierte"><img src="https://cdn-icons-png.flaticon.com/128/3670/3670211.png" style="width: 54px; height: 54px;" width="54" height="54" /></a>
-<a href="https://github.com/DarianYane" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/536/536452.png" style="width: 54px; height: 54px;" width="54" height="54" /></a>
-<a href="https://www.darianyane.com/#Contact" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/609/609386.png" style="width: 54px; height: 54px;" width="54" height="54" /></a>
+<a href="https://www.linkedin.com/in/darian-yane/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/3536/3536505.png" style="width: 54px; height: 54px;"/></a>
+<a href="https://www.youtube.com/c/DarianInvierte" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/2111/2111748.png" style="width: 54px; height: 54px;"/></a>
+<a href="https://twitter.com/DarianInvierte"><img src="https://cdn-icons-png.flaticon.com/128/3670/3670211.png" style="width: 54px; height: 54px;"/></a>
+<a href="https://github.com/DarianYane" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/536/536452.png" style="width: 54px; height: 54px;"/></a>
+<a href="https://www.darianyane.com/#Contact" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/609/609386.png" style="width: 54px; height: 54px;"/></a>
 </p>
 
 
