@@ -21,11 +21,7 @@
 
             </form>
         </div>
-        <div style="margin-top: 40px;">
-            <p>
-                <a style="border: 1px solid blue; padding: 5px; text-decoration-line: none; border-radius: 7px; font-family: Verdana, Geneva, Tahoma, sans-serif;" href="{% url 'grade-home' %}" type="submit">Home</a>
-            </p>
-        </div>
+        {% include 'grade/98-back-home-button.html' %}
         {% include 'grade/99-footer.html' %}
     </div>
 </body>

@@ -1,0 +1,39 @@
+{% extends 'grade/000-base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<body>
+    <div style="display: flex; align-items: center; justify-content: center; height: 100vh; flex-direction: column; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+        {% if search == "(No search performed)" %}
+            <div>
+                <br>
+                <h3>To perform a search you must enter some data.</h3>
+                <br>
+                <h3>Please try again.</h3>
+            </div>
+        {% else %}
+            {% if wanted_student %}
+                    <h2>These are the evaluations of {{wanted_student}}:</h2>
+                    <p>
+                        {% for rating in ratings %}
+                        <p>{{rating}}</p>
+                        {% endfor %}
+                    </p>
+            {% else %}
+                <div>
+                    <br>
+                    <h3>No matches were found.</h3>
+                    <br>
+                    <h3>Please try again.</h3>
+                </div>
+            {% endif %}
+        {% endif %}
+        
+        {% include 'grade/98-back-home-button.html' %}
+        {% include 'grade/99-footer.html' %}
+        
+    </div>
+
+{% endblock %}
