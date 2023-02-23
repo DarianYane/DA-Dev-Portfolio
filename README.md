@@ -7,6 +7,7 @@ Through this portfolio you will be able to know my skills and you will get all t
 - [What is included in this portfolio](#what-is-included-in-this-portfolio)
   - [Reasons for hiring me](#reasons-for-hiring-me)
   - [My projects](#my-projects)
+    - [SQL Cleaning Data Project](#SQL-cleaning-data-project)
     - [Nutriplan](#nutriplan)
     - [Grade](#grade)
     - [Fast-Reading](#fast-reading)
@@ -36,6 +37,24 @@ Here you will find the reasons why you should hire me as soon as possible.
 
 ## My projects
 In this section you will find the access to the different projects I have worked on. You will find a text modifier to optimize reading and a travel blog (with CRUD, user management, etc.) among other projects.
+
+### SQL Cleaning Data Project
+In this project you receive an excel file with information that needs to be cleaned (data with errors, NULL, duplicates, etc).
+
+Through the use of SQL, the data is cleaned so that later it can be processed correctly.
+
+The objective is to take a list of property sales and clean up the information using SQL code.
+
+#### What improvements have been made?
+During the optimization process, the following improvements were made:
+
+- Addition of new fields
+- Complete missing data (NULL)
+- Separation of data in different columns
+- Correct data format
+- Grouping of categories
+- Duplicate removal
+- Elimination of unnecessary columns
 
 ### Nutriplan
 This application allows you to generate a weekly diet plan with four meals a day, considering the physiological characteristics, objectives, and food preferences of each individual.
@@ -150,10 +169,10 @@ To make this README I also used https://stackedit.io
 
 # Updates
 
-
 #### January 2023
-Nutriplan
+* Nutriplan
 
 #### February 2023
-Code commented
-Buttons for "save and go" to different locations (Grade)
+* Code commented
+* Buttons for "save and go" to different locations (Grade)
+* SQL Cleaning Data Project

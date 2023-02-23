@@ -1,0 +1,197 @@
+{% extends 'landing/base.html' %}
+
+{% load static %}
+
+{% block extrahead %}
+<head>
+    <style>
+        #btn-scaled {
+            transition: transform 0.3s;
+        }
+
+        #btn-scaled:hover {
+            transform: scale(1.2);
+        }
+    </style>
+    <title>SQL Cleaning Data Project</title>
+</head>
+{%endblock%}  
+
+
+<div class="d-flex justify-content-center align-items-center text-center mt-5">
+    <p class="text-white">Do you want to see the code of this project? <a
+            href="https://github.com/DarianYane/Dev-Portfolio" target="_blank"><img id="btn-scaled" width="40"
+                height="40" src="{% static 'assets/img/Github-Icon-V7.png' %}" alt="Github-Icon" /></a></p>
+</div>
+
+{% block content %}
+<section class="content-section bg-primary ">
+    <div class="container px-4 px-lg-5 text-center">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-10">
+                <div class="content-section-heading text-center">
+                    <h1 style="font-size: 90px" class="mb-5 pb-5"><strong>SQL Cleaning Data Project</strong></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content">
+            <div class="col-lg-12">
+                <div class="content-section-heading">
+                    <h4 class="text-secondary mb-1">Do you want to see the Github repository? <a href="https://github.com/DarianYane/SQLCleaningDataProject" target="_blank"><img width="40" height="40"
+                            src="{% static 'assets/img/Github-Icon-V7.png' %}" alt="Github-Icon" /></a></h4>
+                </div>
+                <p class="lead mb-5 text-white">
+                    You can see it by clicking <a class="text-white" href="https://github.com/DarianYane/SQLCleaningDataProject" target="_blank">here</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content">
+            <div class="col-lg-12">
+                <div class="content-section-heading">
+                    <h4 class="text-secondary mb-1">What is SQL Cleaning Data Project?</h4>
+                </div>
+                <p class="lead mb-2 text-white">
+                    In this project you receive an excel file with information that needs to be cleaned (data with errors, NULL, duplicates, etc).
+                </p>
+                <p class="lead mb-5 text-white">
+                    Through the use of SQL, the data is cleaned so that later it can be processed correctly.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content">
+            <div class="col">
+                <div class="content-section-heading">
+                    <h4 class="text-secondary mb-1">Scope</h4>
+                </div>
+                <p class="lead mb-5 text-white">
+                    Take a list of property sales and clean up the information using SQL code.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content">
+            <div class="col">
+                <div class="content-section-heading">
+                    <h4 class="text-secondary mb-1">What improvements have been made?</h4>
+                </div>
+                <p class="lead mb-2 text-white">
+                    During the optimization process, the following improvements were made:
+                    <ul>
+                        <li>Addition of new fields</li>
+                        <li>Complete missing data (NULL)</li>
+                        <li>Separation of data in different columns</li>
+                        <li>Correct data format</li>
+                        <li>Grouping of categories</li>
+                        <li>Duplicate removal</li>
+                        <li>Elimination of unnecessary columns</li>
+                    </ul>
+                </p>
+                <div class="lead mb-5">
+                    <p class="text-white">
+                        In general, the main characteristics were:
+                    </p>
+                    <div class="d-flex align-items-center" style="justify-content: space-around;">
+                        <div class="text-center">
+                            <div class="p-1 mb-2">
+                                <p><h2>Before</h2></p>
+                                <div class="text-white">
+                                    <br>56478 lines
+                                    <br>Severall NULL
+                                    <br>Duplicates
+                                    <br>Unnecesary columns
+                                    <br>Grouped data
+                                    <br>Incorrect data types
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="p-1 mb-2">
+                                <p><h2>After</h2></p>
+                                <div class="text-white">
+                                    <br>56373 lines
+                                    <br>Only irreplaceable nulls
+                                    <br>No duplicates
+                                    <br>Only the relevant columns
+                                    <br>Ungrouped information
+                                    <br>Corrected data types
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content">
+            <div class="col">
+                <div class="content-section-heading">
+                    <h4 class="text-secondary mb-1">What are the steps in the cleaning process?</h4>
+                </div>
+                <p class="lead mb-2">
+                    <ol class="lead mb-2 text-white">
+                        <li>Download the dataset</li>
+                        <li>Run SQL Server Management Studio and connect to server</li>
+                        <li>Create a new database named SQLCleaningDataProject</li>
+                        <li>Right click / tasks / import data</li>
+                        <li>In the drop-down menu, select Microsoft Excel</li>
+                        <li>Browse</li>
+                        <li>Select the Excel file</li>
+                        <li>Next</li>
+                        <li>Select "Microsoft OLE DB Provider for SQL Server"</li>
+                        <li>Next</li>
+                        <li>Select Sheet1</li>
+                        <li>Next</li>
+                        <li>Finish</li>
+                        <li>Finish</li>
+                        <li>Close</li>
+                        <li>Go to SQL Server Management Studio</li>
+                        <li>Select the database created</li>
+                        <li>Tables</li>
+                        <br>
+                        <h5>Preliminary analysis</h5>
+                        <li>Rename the table to CityHouses if necessary</li>
+                        <li>Right click / Select top 1000 rows (to see what's in the table)</li>
+                        <br>
+                        <h5>Optimizing the data</h5>
+                        <li>Delete the ID column (using ALTER TABLE and DROP COLUMN)</li>
+                        <li>Some PropertyAddress are NULL. If your ParceID repeats with another SaleDate, and that repeated ParcelID has an
+                        address, replacethe nulls with the corresponding PropertyAddress. (using AS, JOIN, ON, AND, <>, WHERE, NULL, ISNULL,
+                            UPDATE, and SET)</li>
+                        <li>Separate the property address data (using ALTER TABLE, ADD, SUBSTRING, CHARINDEX, AS, LEN, UPDATE, SET, and DROP COLUMN) into:
+                            <ul>
+                                <li>Address (Street + Number)</li>
+                                <li>City</li>
+                            </ul>
+                        </li>
+                        <li>Change the format of the sale date (using CONVERT, ALTER TABLE, ADD, UPDATE SET and DROP COLUMN)</li>
+                        <li>Separate the address data of the property owner (using ALTER TABLE, ADD, PARSENAME, REPLACE, UPDATE, SET, and DROP COLUMN) into:
+                            <ul>
+                                <li>Address (Street + Number)</li>
+                                <li>City</li>
+                                <li>State</li>
+                            </ul>
+                        </li>
+                        <li>Replace "Y" with "Yes" and "N" with "No" (ysando GROUP BY, UPDATE, SET, CASE, WHEN, THEN and ELSE)</li>
+                        <li>Remove duplicates (using WITH (CTE) AS, ROW_NUMBER, OVER, PARTITION BY, ORDER BY, DELETE and WHERE).</li>
+                    </ol>
+                </p>
+                <p class="lead mb-5 text-white">
+
+                </p>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

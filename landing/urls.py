@@ -15,6 +15,8 @@ urlpatterns = [
     path('nutriplan', nutrihome, name="nutrihome"),
     path("grade", grade_Home, name="grade-home"),
 
-    # COntact Form
+    # Contact Form
     path('send_email/', views.sendEmail, name="send_email"),
+    # Landing SQL Cleaning Project
+    path('sql-cleaning-data/', views.sql_cleaning_data, name="SQLCleaning"),
 ]

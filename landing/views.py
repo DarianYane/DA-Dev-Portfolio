@@ -31,3 +31,7 @@ def sendEmail(request):
         email.fail_silently = False
         email.send()
     return render(request,'landing/email_sent.html')
+
+#SQl Cleaning Data Project
+def sql_cleaning_data(request):
+    return render(request,'landing/zz-sql-cleaning.html')
