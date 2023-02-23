@@ -60,7 +60,7 @@ Nutriplan allows you to generate personalized diets quickly. In addition, its ra
 <a><img src="https://github.com/DarianYane/DA-Dev-Portfolio/blob/main/landing/static/assets/img/readme/nutrihome.jpg" style="width: 740px; height: 400px;"/></a>
 </p>
 
-### Grade (under construction)
+### Grade
 Application to keep track and monitor the corrections that a teacher makes on the delivery of the work of their students.
 
 The teacher can create students, create ratings, and search for students from the main page in order to edit their ratings.

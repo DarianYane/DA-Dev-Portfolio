@@ -1,6 +1,4 @@
-15. View para editar ratings (grade)
-    16. Put the links to edit
-17. Update README (grade)
+
 43. Make the exercise routine or crypto project (like coingecko evaluating differences/distances between MC´s (like F1))
 44. Login to nutrition and exercise projects
 Move the portfolio to React

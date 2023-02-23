@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.urls import reverse
 
 # Create your models here.
 # Student Model
@@ -106,7 +107,7 @@ class Rating(models.Model):
         ('Bajo', 'Bajo'),
     )
     
-    rating = models.CharField(verbose_name="Calificación final de la entrega: >= 80es 'Óptimo', entre 51 y 79 es 'Correcto', y menos o igual a 50 es 'Bajo'", max_length=50, choices=rating_choices, default='Óptimo')
+    rating = models.CharField(verbose_name="Calificación final de la entrega: >= 80 es 'Óptimo', entre 51 y 79 es 'Correcto', y menos o igual a 50 es 'Bajo'", max_length=50, choices=rating_choices, default='Óptimo')
     
     comment = models.TextField(default="Hola ###,\nEl trabajo está perfecto.\nSólo como un detalle, te recomiendo que te acostumbres a dejar comentarios en el código explicando qué hace cada porción de código.\nFelicitaciones!")
     
@@ -117,4 +118,7 @@ class Rating(models.Model):
 
     def __str__(self):
         return "Rating to "+ str(self.student) + " on " + str(self.correction_date) + " - Final RATING: " + str(self.rating) + " (" + str(self.total_score) + ")"
+    
+    def get_absolute_url(self):
+        return reverse('grade-home',)
 

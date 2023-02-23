@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect, reverse
+from django.views.generic import UpdateView
+from .forms import UpdateRatingForm #UpdatePostForm
 from grade.forms import StudentForm, RatingForm
 from grade.models import Terms_of_Delivery, Tasks_to_Evaluate, Student, Rating
 
@@ -96,3 +98,9 @@ def student_Search(request):
         print(queryset)
         return render(request, 'grade/20-student_search_result.html', {'search': queryset})
     return redirect('grade-home')
+ 
+#Update a rating
+class UpdateRatingView(UpdateView):
+    model = Rating
+    form_class = UpdateRatingForm
+    template_name = "grade/25-edit-rating.html"

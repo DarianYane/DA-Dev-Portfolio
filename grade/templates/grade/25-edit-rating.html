@@ -1,0 +1,30 @@
+{% extends 'grade/000-base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<body>
+    <div style="display: flex; align-items: center; justify-content: center; height: 100vh; flex-direction: column; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+        <h3 style="margin: 12px;">Edit the Rating</h3>
+
+        {% if user.is_authenticated %}
+            <div class="row align-items-center">
+                <div class="col-5 form-group" style="width: 860px;">
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.media }}
+                        {{form.as_p}}
+                        <br>
+                        <input class="btn btn-success" type="submit" value="Update">
+                    </form>
+                </div>
+            </div>
+        {% endif %}
+        {% include 'grade/98-back-home-button.html' %}
+    </div>
+    
+    {% include 'grade/99-footer.html' %}
+</body>
+
+{% endblock %}

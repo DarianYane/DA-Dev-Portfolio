@@ -18,7 +18,12 @@
                     <h2>These are the evaluations of {{wanted_student}}:</h2>
                     <p>
                         {% for rating in ratings %}
-                        <p>{{rating}}</p>
+                        <p>
+                            {{rating}}
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'UpdateRatingView' rating.pk %}">Edit</a>
+                            {% endif %}
+                        </p>
                         {% endfor %}
                     </p>
             {% else %}
