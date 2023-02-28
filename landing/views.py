@@ -35,3 +35,7 @@ def sendEmail(request):
 #SQl Cleaning Data Project
 def sql_cleaning_data(request):
     return render(request,'landing/zz-sql-cleaning.html')
+
+#Tableau Happiness Indicators Project
+def happiness_indicators(request):
+    return render(request,'landing/zz-happiness-indicators.html')

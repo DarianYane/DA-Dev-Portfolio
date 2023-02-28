@@ -19,4 +19,5 @@ urlpatterns = [
     path('send_email/', views.sendEmail, name="send_email"),
     # Landing SQL Cleaning Project
     path('sql-cleaning-data/', views.sql_cleaning_data, name="SQLCleaning"),
+    path('happiness-indicators/', views.happiness_indicators, name="HappinessIndicators"),
 ]

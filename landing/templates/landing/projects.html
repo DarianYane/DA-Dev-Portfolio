@@ -4,28 +4,30 @@
 <div class="container px-4 px-lg-5">
     <div class="row gx-0">
         <div class="col-lg-6">
+            <a class="portfolio-item" href="{% url 'HappinessIndicators' %}">
+                <div class="caption">
+                    <div class="caption-content">
+                        <h3>Happiness Indicators</h3>
+                        <p class="mb-0">Through Tableau, I analyzed the reasons that make people happy. (February 2023)</p>
+                    </div>
+                </div>
+                <img class="img-fluid" src="{% static 'assets/img/landing/happiness.jpg' %}"
+                    alt="Happy Family" />
+            </a>
+        </div>
+        <div class="col-lg-6">
             <!-- <a class="portfolio-item" href="https://github.com/DarianYane/SQLCleaningDataProject" target="_blank"> -->
             <a class="portfolio-item" href="{% url 'SQLCleaning' %}">
                 <div class="caption">
                     <div class="caption-content">
                         <h3>SQL Cleaning Data Project</h3>
-                        <p class="mb-0">In this project we receive a list of data with errors, NULL, duplicates, etc; which are cleaned so that they can be
-                        processed later.</p>
+                        <p class="mb-0">In this project we receive a list of data with errors, NULL, duplicates, etc; which are
+                            cleaned so that they can be
+                            processed later. (February 2023)</p>
                     </div>
                 </div>
-                <img class="img-fluid" src="{% static 'assets/img/landing/Data-Cleaning-orange.png' %}" alt="Food Heart Shape"/>
-            </a>
-        </div>
-        <div class="col-lg-6">
-            <a class="portfolio-item" href="https://github.com/DarianYane/SQLCleaningDataProject">
-                <div class="caption">
-                    <div class="caption-content">
-                        <h3>(Coming Soon)</h3>
-                        <p class="mb-0"></p>
-                    </div>
-                </div>
-                <img class="img-fluid" src="{% static 'assets/img/landing/Data-Cleaning.png' %}"
-                    alt="Food Heart Shape" />
+                <img class="img-fluid" src="{% static 'assets/img/landing/Data-Cleaning-orange.jpg' %}"
+                    alt="Broom of numbers in orange color" />
             </a>
         </div>
 
