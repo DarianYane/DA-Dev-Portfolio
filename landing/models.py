@@ -5,7 +5,7 @@ from django.db import models
 class Task(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
-    year = models.IntegerField(verbose_name='Year expected to be completed:', default=2022)
+    year = models.IntegerField(verbose_name='Year expected to be completed:', default=2023)
     is_completed = models.BooleanField(default=False, verbose_name='Has this task been completed?')
 
     def __str__(self):
