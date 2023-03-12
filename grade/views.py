@@ -33,7 +33,7 @@ def new_Rating(request):
     post=request.POST.get('buttonto')
     #List the criteria for delivery
     criterias = list(Tasks_to_Evaluate.objects.all())
-    criterias = criterias[-3:]
+    criterias = criterias[-1:]
     
     delivery_id=len(Terms_of_Delivery.objects.all())
     form = RatingForm(initial={'terms_of_delivery': delivery_id})
