@@ -1,0 +1,7 @@
+1. Install Django REST Framework (pip install djangorestframework)
+2. Create the application "apidecc" (python manage.py startapp apidecc)
+3. Add "apidecc" and "rest_framework" in INSTALLED APPS in setings.py of the project 
+4. Create the models
+5.
+6.
+

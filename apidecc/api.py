@@ -1,4 +1,4 @@
-from .models import Job
+from apidecc.models import Job
 from rest_framework import viewsets, permissions
 from .serializers import JobSerializer
 

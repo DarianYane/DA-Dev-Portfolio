@@ -29,5 +29,5 @@ urlpatterns = [
     path('users/', include('blogusers.urls')),
     path('', include('nutriplan.urls')),
     path('', include('grade.urls')),
-    path('api/', include('apidecc.urls'))
+    path('apidecc/', include('apidecc.urls'))
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
