@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "whitenoise.runserver_nostatic",
+    "rest_framework",
 
     "landing",
     "fastReading",
@@ -50,7 +51,8 @@ INSTALLED_APPS = [
     "blogusers",
     "ckeditor",
     "nutriplan",
-    "grade"
+    "grade",
+    "apidecc"
 ]
 
 MIDDLEWARE = [

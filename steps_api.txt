@@ -1,0 +1,10 @@
+1. Install Django REST Framework (pip install djangorestframework)
+2. Create the application "apidecc" (python manage.py startapp apidecc)
+3. Add "apidecc" and "rest_framework" in INSTALLED APPS in setings.py of the project 
+4. Create the models (+makemigrations +migrate)
+5.Create the endpoints
+    a. Create serializers.py (to transform the models into JSON)
+    b. Create api.py (to generate the ViewSets)
+    c. Create urls.py (to create the routes that the customer can consult)
+    d. Include apidecc.urls in the urlpatterns of the project
+
