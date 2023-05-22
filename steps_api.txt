@@ -8,7 +8,8 @@
     c. Create urls.py (to create the routes that the customer can consult)
     d. Include apidecc.urls in the urlpatterns of the project
 
-Upload CRV
+Upload CRV data
+(for each Model)
 6. Through the "action" decorator, create the endpoint "upload_data" in api.py
     a. The file is first stored and then read to populate the data.
     b. Create a ContentFile object with the file contents
@@ -20,5 +21,5 @@ Upload CRV
 
 
 Endpoints:
-- To upload CSV Jobs file:
+- To upload CSV data:
 http://127.0.0.1:8000/apidecc/api/jobs/upload_data/
