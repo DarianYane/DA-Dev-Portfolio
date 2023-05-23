@@ -107,9 +107,8 @@ class HiredEmployeeViewSet(viewsets.ModelViewSet):
 
         return Response("Successfully upload the data")
     
-    # To provide the number of employees hired for each job and department in 2021 divided by quarter
-    @action(detail=False, methods=['GET'])
-    def employees_by_job_department_quarter_json(self, request):
+    # To provide the number of employees hired for each job and department divided by quarter, order by department and job
+    def get_employee_data_by_quarter(self):
         # Perform the database query to retrieve the desired data
         data = HiredEmployee.objects \
             .annotate(quarter=ExtractQuarter('datetime')) \
@@ -117,49 +116,27 @@ class HiredEmployeeViewSet(viewsets.ModelViewSet):
             .annotate(count=Count('id')) \
             .order_by('department__department', 'job__job')
 
-        # Transform the query results into the desired output format
+        # Build the result dictionary with the desired output format
         result = {}
         for item in data:
             department = item['department__department']
             job = item['job__job']
             quarter = f"Q{item['quarter']}"
             count = item['count']
-
-            if department not in result:
-                result[department] = {}
-
-            if job not in result[department]:
-                result[department][job] = {}
-
-            result[department][job][quarter] = count
-
-        return Response(result)
+            # Using setdefault to create nested dictionaries as needed
+            result.setdefault(department, {}).setdefault(job, {})[quarter] = count
+        return result
+    
+    @action(detail=False, methods=['GET'])
+    def employees_by_job_department_quarter_json(self, request):
+        # Call the get_employee_data_by_quarter method to retrieve the data
+        data = self.get_employee_data_by_quarter()
+        # Return the data as a JSON response
+        return Response(data)
     
     @action(detail=False, methods=['GET'])
     def employees_by_job_department_quarter_on_table(self, request):
-        # Perform the database query to retrieve the desired data
-        data = HiredEmployee.objects \
-            .filter(datetime__year=2021) \
-            .annotate(quarter=ExtractQuarter('datetime')) \
-            .values('department__department', 'job__job', 'quarter') \
-            .annotate(count=Count('id')) \
-            .order_by('department__department', 'job__job')
-
-        # Transform the query results into the desired output format
-        result = {}
-        for item in data:
-            department = item['department__department']
-            job = item['job__job']
-            quarter = f"Q{item['quarter']}"
-            count = item['count']
-
-            if department not in result:
-                result[department] = {}
-
-            if job not in result[department]:
-                result[department][job] = {}
-
-            result[department][job][quarter] = count
-
-        # Pass the result to the template for rendering
-        return render(request, 'employees_by_quarter.html', {'data': result})
+        # Call the get_employee_data_by_quarter method to retrieve the data
+        data = self.get_employee_data_by_quarter()
+        # Render the 'employees_by_quarter.html' template with the data and return the rendered HTML page
+        return render(request, 'employees_by_quarter.html', {'data': data})

@@ -18,10 +18,30 @@ Upload CSV data
     e. Read data from each row of the CSV file
     f. Creates instances in the database using bulk_create
 
-**********TODO: Explain SQL searches************
-
 Endpoints:
 - To upload CSV data:
 http://darianyane.com/apidecc/api/jobs/upload_data/
 http://darianyane.com/apidecc/api/departments/upload_data/
 http://darianyane.com/apidecc/api/hired-employees/upload_data/
+
+**********TODO: Explain SQL searches************
+
+The SQL code equivalent to the 'get_employee_data_by_quarter' function in the context of the apidecc_hiredemployee table is as follows:
+
+SELECT
+    apidecc_hiredemployee.department,
+    apidecc_hiredemployee.job,
+    EXTRACT(QUARTER FROM apidecc_hiredemployee.datetime) AS quarter,
+    COUNT(apidecc_hiredemployee.id) AS count
+FROM
+    apidecc_hiredemployee
+GROUP BY
+    apidecc_hiredemployee.department,
+    apidecc_hiredemployee.job,
+    quarter
+ORDER BY
+    apidecc_hiredemployee.department,
+    apidecc_hiredemployee.job;
+
+Explanation:
+This SQL code queries the apidecc_hiredemployee table and performs the same grouping and counting operations as the original function. The result will include the columns department, job, quarter (extracted from the datetime field), and count. The data will be sorted by department and job in ascending order.
