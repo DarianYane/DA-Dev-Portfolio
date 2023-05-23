@@ -14,7 +14,7 @@ fs = FileSystemStorage(location='tmp/')
 # for SQL call
 from django.db.models import Count
 from django.db.models.functions import ExtractQuarter
-from django.http import JsonResponse
+from django.shortcuts import render
 
 # ViewSets
 class DepartmentViewSet(viewsets.ModelViewSet):
@@ -109,7 +109,7 @@ class HiredEmployeeViewSet(viewsets.ModelViewSet):
     
     # To provide the number of employees hired for each job and department in 2021 divided by quarter
     @action(detail=False, methods=['GET'])
-    def employees_by_job_department_quarter(self, request):
+    def employees_by_job_department_quarter_json(self, request):
         # Perform the database query to retrieve the desired data
         data = HiredEmployee.objects \
             .annotate(quarter=ExtractQuarter('datetime')) \
@@ -134,3 +134,32 @@ class HiredEmployeeViewSet(viewsets.ModelViewSet):
             result[department][job][quarter] = count
 
         return Response(result)
+    
+    @action(detail=False, methods=['GET'])
+    def employees_by_job_department_quarter_on_table(self, request):
+        # Perform the database query to retrieve the desired data
+        data = HiredEmployee.objects \
+            .filter(datetime__year=2021) \
+            .annotate(quarter=ExtractQuarter('datetime')) \
+            .values('department__department', 'job__job', 'quarter') \
+            .annotate(count=Count('id')) \
+            .order_by('department__department', 'job__job')
+
+        # Transform the query results into the desired output format
+        result = {}
+        for item in data:
+            department = item['department__department']
+            job = item['job__job']
+            quarter = f"Q{item['quarter']}"
+            count = item['count']
+
+            if department not in result:
+                result[department] = {}
+
+            if job not in result[department]:
+                result[department][job] = {}
+
+            result[department][job][quarter] = count
+
+        # Pass the result to the template for rendering
+        return render(request, 'employees_by_quarter.html', {'data': result})

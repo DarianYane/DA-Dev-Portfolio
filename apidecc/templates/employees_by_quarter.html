@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        .back-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-button button {
+            padding: 8px 16px;
+            font-size: 14px;
+            background-color: #f2f2f2;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Department</th>
+                <th>Job</th>
+                <th>Q1</th>
+                <th>Q2</th>
+                <th>Q3</th>
+                <th>Q4</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for department, jobs in data.items %}
+            {% for job, quarters in jobs.items %}
+            <tr>
+                <td>{{ department }}</td>
+                <td>{{ job }}</td>
+                <td>{{ quarters.Q1|default_if_none:'0' }}</td>
+                <td>{{ quarters.Q2|default_if_none:'0' }}</td>
+                <td>{{ quarters.Q3|default_if_none:'0' }}</td>
+                <td>{{ quarters.Q4|default_if_none:'0' }}</td>
+            </tr>
+            {% endfor %}
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="6" class="back-button">
+                    <button onclick="goBack()">Go Back</button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+
+</html>
