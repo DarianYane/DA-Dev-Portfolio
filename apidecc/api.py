@@ -2,7 +2,7 @@ from apidecc.models import Job, Department, HiredEmployee
 from rest_framework import viewsets, permissions
 from .serializers import JobSerializer, DepartmentSerializer, HiredEmployeeSerializer
 
-#for CSV import
+# for CSV import
 import csv
 from django.core.files.base import ContentFile
 from django.core.files.storage import FileSystemStorage
@@ -11,6 +11,12 @@ from rest_framework.response import Response
 
 fs = FileSystemStorage(location='tmp/')
 
+# for SQL call
+from django.db.models import Count
+from django.db.models.functions import ExtractQuarter
+from django.http import JsonResponse
+
+# ViewSets
 class DepartmentViewSet(viewsets.ModelViewSet):
     queryset = Department.objects.all()
     permission_classes = [permissions.AllowAny]
@@ -100,3 +106,31 @@ class HiredEmployeeViewSet(viewsets.ModelViewSet):
         HiredEmployee.objects.bulk_create(hired_employee_list)
 
         return Response("Successfully upload the data")
+    
+    # To provide the number of employees hired for each job and department in 2021 divided by quarter
+    @action(detail=False, methods=['GET'])
+    def employees_by_job_department_quarter(self, request):
+        # Perform the database query to retrieve the desired data
+        data = HiredEmployee.objects \
+            .annotate(quarter=ExtractQuarter('datetime')) \
+            .values('department__department', 'job__job', 'quarter') \
+            .annotate(count=Count('id')) \
+            .order_by('department__department', 'job__job')
+
+        # Transform the query results into the desired output format
+        result = {}
+        for item in data:
+            department = item['department__department']
+            job = item['job__job']
+            quarter = f"Q{item['quarter']}"
+            count = item['count']
+
+            if department not in result:
+                result[department] = {}
+
+            if job not in result[department]:
+                result[department][job] = {}
+
+            result[department][job][quarter] = count
+
+        return Response(result)

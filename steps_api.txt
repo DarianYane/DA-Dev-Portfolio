@@ -18,7 +18,7 @@ Upload CSV data
     e. Read data from each row of the CSV file
     f. Creates instances in the database using bulk_create
 
-
+**********TODO: Explain SQL searches************
 
 Endpoints:
 - To upload CSV data:
