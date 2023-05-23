@@ -56,6 +56,35 @@ During the optimization process, the following improvements were made:
 - Duplicate removal
 - Elimination of unnecessary columns
 
+### Happiness Indicators
+The aim of this work is to determine which are the characteristics of people who consider themselves happier and less happy than the average.
+
+#### What was the process performed?
+Data preparation
+* Download the dataset.
+* Analyzed the data to identify the candidate columns to be relevant.
+* Performed the necessary transformations/cleaning before importing the data into Tableau.
+
+Data analysis
+* Compared the different fields with the corresponding number of happy people. In general I did not take absolute numbers because the sample was not uniform, and I used percentages within each sample category.
+* When analyzing each parameter, I determined if there were relevant differences within the groups that deserved to be discussed later.
+
+Presentation of results
+* Generated several Dashboards to show which were the characteristics of the happiest and unhappiest people.
+
+<p align="center">
+<a><img src="https://github.com/DarianYane/DA-Dev-Portfolio/blob/main/landing/static/assets/img/landing/Dashboard-Happiness1.png" style="width: 740px; height: 1341px;"/></a>
+</p>
+
+<p align="center">
+<a><img src="https://github.com/DarianYane/DA-Dev-Portfolio/blob/main/landing/static/assets/img/landing/Dashboard-Happiness2.png" style="width: 740px; height: 1688px;"/></a>
+</p>
+
+### SQL Cleaning Data Project
+In this project you receive an excel file with information that needs to be cleaned (data with errors, NULL, duplicates, etc).
+
+Through the use of SQL, the data is cleaned so that later it can be processed correctly.
+
 ### Nutriplan
 This application allows you to generate a weekly diet plan with four meals a day, considering the physiological characteristics, objectives, and food preferences of each individual.
 
@@ -168,6 +197,13 @@ To make this README I also used https://stackedit.io
 
 
 # Updates
+
+#### May 2023
+* Human Resources API (with massive generation of instances through CSV files)
+
+#### February 2023
+* Happiness Indicators
+* SQL Cleaning Data Project
 
 #### January 2023
 * Nutriplan
