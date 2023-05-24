@@ -7,6 +7,7 @@ This Human Resources API allows managing departments, job positions, and hired e
 - [Models](#models)
 - [Endpoints](#endpoints)
   - [Importing data from CSV](#importing-data-from-csv)
+  - [SQL Queries](#sql-queries)
 - [Serializers](#serializers)
 - [License](#license)
 
@@ -41,7 +42,38 @@ For each model, an additional endpoint called `upload_data` is provided to impor
 - For departments: `/api/departments/upload_data/`
 - For hired employees: `/api/hired-employees/upload_data/`
 
-It is expected to send a CSV file with the "file" field in the POST request to import the corresponding data.
+It is expected to send a CSV file named "file" in the POST request to import the corresponding data.
+
+### SQL Queries
+
+1) Number of employees hired for each job and department divided by quarter. The table must be ordered alphabetically by department and job.
+
+Solution:
+
+SELECT
+    apidecc_hiredemployee.department,
+    apidecc_hiredemployee.job,
+    EXTRACT(QUARTER FROM apidecc_hiredemployee.datetime) AS quarter,
+    COUNT(apidecc_hiredemployee.id) AS count
+FROM
+    apidecc_hiredemployee
+GROUP BY
+    apidecc_hiredemployee.department,
+    apidecc_hiredemployee.job,
+    quarter
+ORDER BY
+    apidecc_hiredemployee.department,
+    apidecc_hiredemployee.job;
+
+- in table format: `/api/hired-employees/employees_by_job_department_quarter_on_table/`
+- in API format:`/api/hired-employees/employees_by_job_department_quarter_json/?format=api`
+- in JSON format:`http://darianyane.com/apidecc/api/hired-employees/employees_by_job_department_quarter_json/?format=json`
+
+2) List of ids, name and number of employees hired of each department that hired more employees than the mean of employees hired for all the departments, ordered by the number of employees hired (descending).
+
+Solution:
+
+
 
 ## Serializers
 

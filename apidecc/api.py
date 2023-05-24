@@ -12,9 +12,11 @@ from rest_framework.response import Response
 fs = FileSystemStorage(location='tmp/')
 
 # for SQL call
-from django.db.models import Count
+from django.db.models import Count, Avg
 from django.db.models.functions import ExtractQuarter
 from django.shortcuts import render
+
+from django.db import connection
 
 # ViewSets
 class DepartmentViewSet(viewsets.ModelViewSet):
@@ -46,6 +48,44 @@ class DepartmentViewSet(viewsets.ModelViewSet):
         Department.objects.bulk_create(department_list)
 
         return Response("Successfully upload the data")
+    
+    @action(detail=False, methods=['GET'])
+    def departments_hiring_above_mean(self, request):
+        # Define the SQL query
+        query = '''
+            SELECT d.id, d.department, COUNT(he.id) as num_hires
+            FROM apidecc_department d
+            INNER JOIN apidecc_hiredemployee he ON d.id = he.department_id
+            WHERE he.datetime >= '2021-01-01' AND he.datetime < '2022-01-01'
+            GROUP BY d.id, d.department
+            HAVING COUNT(he.id) > (
+                SELECT AVG(num_hires) as mean_hires
+                FROM (
+                    SELECT COUNT(id) as num_hires
+                    FROM apidecc_hiredemployee
+                    WHERE datetime >= '2021-01-01' AND datetime < '2022-01-01'
+                    GROUP BY department_id
+                ) as subquery
+            )
+            ORDER BY num_hires DESC
+        '''
+
+        # Execute the SQL query
+        with connection.cursor() as cursor:
+            cursor.execute(query)
+            results = cursor.fetchall()
+
+        # Prepare the response data
+        data = []
+        for row in results:
+            department = {
+                'id': row[0],
+                'department': row[1],
+                'num_hires': row[2],
+            }
+            data.append(department)
+
+        return Response(data)
 
 class JobViewSet(viewsets.ModelViewSet):
     queryset = Job.objects.all()
