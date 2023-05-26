@@ -15,4 +15,3 @@ class HiredEmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = HiredEmployee
         fields = ('id', 'name', 'datetime', 'department_id', 'job_id')
-
