@@ -14,10 +14,10 @@ urlpatterns = [
     path('blog', BlogListView.as_view(), name="BlogListView"),
     path('nutriplan', nutrihome, name="nutrihome"),
     path("grade", grade_Home, name="grade-home"),
-
     # Contact Form
     path('send_email/', views.sendEmail, name="send_email"),
-    # Landing SQL Cleaning Project
+    
     path('sql-cleaning-data/', views.sql_cleaning_data, name="SQLCleaning"),
     path('happiness-indicators/', views.happiness_indicators, name="HappinessIndicators"),
+    path('real-API-project/', views.real_API_project, name="RealAPI"),
 ]
