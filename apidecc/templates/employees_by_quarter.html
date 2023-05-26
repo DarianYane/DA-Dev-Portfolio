@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin-top: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            text-align: left;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #01c22b;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        .back-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-button button {
+            padding: 8px 16px;
+            font-size: 14px;
+            background-color: #f2f2f2;
+            border: none;
+            cursor: pointer;
+        }
+
+        .sql-code {
+            margin-top: 20px;
+            font-family: "Courier New", Courier, monospace;
+        }
+
+        .sql-code span.reserved {
+            color: #e83e8c;
+            font-weight: bold;
+        }
+
+        .sql-code span.keyword {
+            color: #007bff;
+            font-weight: bold;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Employee Data by Quarter</h1>
+        <h2>Metrics Report</h2>
+        <p>This table represents the number of employees hired for each department and job, divided by quarter, and ordered alphabetically by department and job.
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Department</th>
+                    <th>Job</th>
+                    <th>Q1</th>
+                    <th>Q2</th>
+                    <th>Q3</th>
+                    <th>Q4</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for department, jobs in data.items %}
+                {% for job, quarters in jobs.items %}
+                <tr>
+                    <td>{{ department }}</td>
+                    <td>{{ job }}</td>
+                    <td>{{ quarters.Q1|default_if_none:'0' }}</td>
+                    <td>{{ quarters.Q2|default_if_none:'0' }}</td>
+                    <td>{{ quarters.Q3|default_if_none:'0' }}</td>
+                    <td>{{ quarters.Q4|default_if_none:'0' }}</td>
+                </tr>
+                {% endfor %}
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+
+        <p>To obtain this table using SQL, you can use the following code:</p>
+        <pre class="sql-code">
+            <code>
+                <span class="reserved">SELECT</span>
+                    apidecc_hiredemployee.department,
+                    apidecc_hiredemployee.job,
+                    <span class="reserved">EXTRACT</span>(<span class="keyword">QUARTER</span> FROM apidecc_hiredemployee.datetime) AS quarter,
+                    <span class="reserved">COUNT</span>(apidecc_hiredemployee.id) AS count
+                <span class="reserved">FROM</span>
+                    apidecc_hiredemployee
+                <span class="reserved">GROUP BY</span>
+                    apidecc_hiredemployee.department,
+                    apidecc_hiredemployee.job,
+                    quarter
+                <span class="reserved">ORDER BY</span>
+                    apidecc_hiredemployee.department,
+                    apidecc_hiredemployee.job;
+            </code>
+        </pre>
+
+        <div class="back-button">
+            <button onclick="goBack()">Go Back</button>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+
+</html>
