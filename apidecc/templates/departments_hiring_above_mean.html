@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin-top: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            text-align: left;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #01c22b;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        .back-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-button button {
+            padding: 8px 16px;
+            font-size: 14px;
+            background-color: #f2f2f2;
+            border: none;
+            cursor: pointer;
+        }
+
+        .sql-code {
+            margin-top: 20px;
+            font-family: "Courier New", Courier, monospace;
+        }
+
+        .sql-code span.reserved {
+            color: #e83e8c;
+            font-weight: bold;
+        }
+
+        .sql-code span.keyword {
+            color: #007bff;
+            font-weight: bold;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Departments Hiring Above Mean</h1>
+        <h2>Metrics Report</h2>
+        <p>This table represents the list of ids, name and number of employees hired of each department that hired more employees than the mean of employees hired in 2021 for all the departments, ordered by the number of employees hired (descending).
+        </p>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Department</th>
+                <th>Number of Employees Hired</th>
+            </tr>
+            {% for department in departments %}
+            <tr>
+                <td>{{ department.id }}</td>
+                <td>{{ department.department }}</td>
+                <td>{{ department.num_hires }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+
+        <p>To obtain this table using SQL, you can use the following code:</p>
+        <pre class="sql-code">
+            <code>
+                <span class="reserved">SELECT</span>
+                    d.id, d.department, COUNT(he.id) as num_hires
+                <span class="reserved">FROM</span>
+                    apidecc_department d
+                <span class="reserved">INNER JOIN</span>
+                    apidecc_hiredemployee he <span class="reserved">ON</span> d.id = he.department_id
+                <span class="reserved">WHERE</span>
+                    he.datetime >= '2021-01-01' AND he.datetime < '2022-01-01'
+                <span class="reserved">GROUP BY</span>
+                    d.id, d.department
+                <span class="reserved">HAVING</span>
+                    COUNT(he.id) > (
+                        <span class="reserved">SELECT</span> AVG(num_hires) as mean_hires
+                        <span class="reserved">FROM</span> (
+                            <span class="reserved">SELECT</span> COUNT(id) as num_hires
+                            <span class="reserved">FROM</span> apidecc_hiredemployee
+                            <span class="reserved">WHERE</span> datetime >= '2021-01-01' AND datetime < '2022-01-01'
+                            <span class="reserved">GROUP BY</span> department_id
+                        ) <span class="reserved">as subquery</span>
+                    )
+                <span class="reserved">ORDER BY</span>
+                    num_hires DESC
+            </code>
+        </pre>
+
+        <div class="back-button">
+            <button onclick="goBack()">Go Back</button>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+
+</html>

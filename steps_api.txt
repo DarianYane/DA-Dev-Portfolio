@@ -54,35 +54,44 @@ This SQL code queries the apidecc_hiredemployee table and performs the same grou
 
 - To GET the list of ids, name and number of employees hired of each department that hired more employees than the mean of employees hired for all the departments, ordered by the number of employees hired (descending).
     - in table format:
-
+    http://darianyane.com/apidecc/api/departments/departments_hiring_above_mean_on_table/?format=api
     - in API format:
-    http://darianyane.com/apidecc/api/departments/departments_hiring_above_mean/
+    http://darianyane.com/apidecc/api/departments/departments_hiring_above_mean_json/?format=api
     - in JSON format:
-    http://darianyane.com/apidecc/api/departments/departments_hiring_above_mean/?format=json
+    http://darianyane.com/apidecc/api/departments/departments_hiring_above_mean_json/?format=json
 
 
 
 The SQL code equivalent to the 'departments_hiring_above_mean' function is as follows:
 
-SELECT d.id, d.department, COUNT(he.id) AS num_hires
-FROM Department d
-JOIN HiredEmployee he ON d.id = he.department_id
-WHERE YEAR(he.datetime) = 2021
-GROUP BY d.id, d.department
+SELECT 
+    d.id, 
+    d.department, 
+    COUNT(he.id) as num_hires
+FROM 
+    apidecc_department d
+INNER JOIN 
+    apidecc_hiredemployee he ON d.id = he.department_id
+WHERE 
+    he.datetime >= '2021-01-01' AND he.datetime < '2022-01-01'
+GROUP BY 
+    d.id, d.department
 HAVING COUNT(he.id) > (
-    SELECT AVG(num_hires)
+    SELECT AVG(num_hires) as mean_hires
     FROM (
-        SELECT COUNT(id) AS num_hires
-        FROM HiredEmployee
-        WHERE YEAR(datetime) = 2021
+        SELECT COUNT(id) as num_hires
+        FROM apidecc_hiredemployee
+        WHERE datetime >= '2021-01-01' AND datetime < '2022-01-01'
         GROUP BY department_id
-    ) AS subquery
+    ) as subquery
 )
-ORDER BY num_hires DESC;
+ORDER BY num_hires DESC
 
 Explanation:
-- The query joins the Department table with the HiredEmployee table based on the department ID.
-- The WHERE clause filters the records to include only those from the year 2021.
-- The GROUP BY clause groups the records by department ID and department name.
-- The HAVING clause filters the groups to include only those with a number of hires greater than the average number of hires in 2021.
-- The ORDER BY clause orders the result by the number of hires in descending order.
+This SQL code retrieves data from two tables, apidecc_department and apidecc_hiredemployee, and applies some filters and aggregations to get the desired result:
+- SELECT d.id, d.department, COUNT(he.id) as num_hires: This selects the id and department columns from the apidecc_department table and the count of id column from the apidecc_hiredemployee table, and aliases it as num_hires.
+- FROM apidecc_department d INNER JOIN apidecc_hiredemployee he ON d.id = he.department_id: This specifies the tables being used and joins them based on the id in the apidecc_department table and department_id in the apidecc_hiredemployee table.
+- WHERE he.datetime >= '2021-01-01' AND he.datetime < '2022-01-01': This sets the condition for the datetime column in the apidecc_hiredemployee table to be within the specified date range.
+- GROUP BY d.id, d.department: This groups the result by the id and department columns from the apidecc_department table.
+- HAVING COUNT(he.id) > (SELECT AVG(num_hires) as mean_hires FROM (SELECT COUNT(id) as num_hires FROM apidecc_hiredemployee WHERE datetime >= '2021-01-01' AND datetime < '2022-01-01' GROUP BY department_id) as subquery): This filters the grouped result by only including rows where the count of id column from the apidecc_hiredemployee table is greater than the average count of num_hires calculated in the subquery.
+- ORDER BY num_hires DESC: This sorts the result in descending order based on the num_hires column.

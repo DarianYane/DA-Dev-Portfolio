@@ -30,17 +30,17 @@ The API has the following models:
 
 The API provides the following endpoints:
 
-- `/api/jobs/`: endpoint to manage job positions.
-- `/api/departments/`: endpoint to manage departments.
-- `/api/hired-employees/`: endpoint to manage hired employees.
+- `/apidecc/api/jobs/`: endpoint to manage job positions.
+- `/apidecc/api/departments/`: endpoint to manage departments.
+- `/apidecc/api/hired-employees/`: endpoint to manage hired employees.
 
 ### Importing data from CSV
 
 For each model, an additional endpoint called `upload_data` is provided to import data from a CSV file.
 
-- For job positions: `/api/jobs/upload_data/`
-- For departments: `/api/departments/upload_data/`
-- For hired employees: `/api/hired-employees/upload_data/`
+- For job positions: `/apidecc/api/jobs/upload_data/`
+- For departments: `/apidecc/api/departments/upload_data/`
+- For hired employees: `/apidecc/api/hired-employees/upload_data/`
 
 It is expected to send a CSV file named "file" in the POST request to import the corresponding data.
 
@@ -65,15 +65,40 @@ ORDER BY
     apidecc_hiredemployee.department,
     apidecc_hiredemployee.job;
 
-- in table format: `/api/hired-employees/employees_by_job_department_quarter_on_table/`
-- in API format:`/api/hired-employees/employees_by_job_department_quarter_json/?format=api`
-- in JSON format:`http://darianyane.com/apidecc/api/hired-employees/employees_by_job_department_quarter_json/?format=json`
+- in table format: `/apidecc/api/hired-employees/employees_by_job_department_quarter_on_table/`
+- in API format:`/apidecc/api/hired-employees/employees_by_job_department_quarter_json/?format=api`
+- in JSON format:`/apidecc/api/hired-employees/employees_by_job_department_quarter_json/?format=json`
 
 2) List of ids, name and number of employees hired of each department that hired more employees than the mean of employees hired for all the departments, ordered by the number of employees hired (descending).
 
 Solution:
 
+SELECT 
+    d.id, 
+    d.department, 
+    COUNT(he.id) as num_hires
+FROM 
+    apidecc_department d
+INNER JOIN 
+    apidecc_hiredemployee he ON d.id = he.department_id
+WHERE 
+    he.datetime >= '2021-01-01' AND he.datetime < '2022-01-01'
+GROUP BY 
+    d.id, d.department
+HAVING COUNT(he.id) > (
+    SELECT AVG(num_hires) as mean_hires
+    FROM (
+        SELECT COUNT(id) as num_hires
+        FROM apidecc_hiredemployee
+        WHERE datetime >= '2021-01-01' AND datetime < '2022-01-01'
+        GROUP BY department_id
+    ) as subquery
+)
+ORDER BY num_hires DESC
 
+- in table format: `/apidecc/api/departments/departments_hiring_above_mean_on_table/?format=api`
+- in API format:`/apidecc/api/departments/departments_hiring_above_mean_json/?format=api`
+- in JSON format:`/apidecc/api/departments/departments_hiring_above_mean_json/?format=json`
 
 ## Serializers
 

@@ -11,11 +11,11 @@ from rest_framework.response import Response
 
 fs = FileSystemStorage(location='tmp/')
 
-# for SQL call
-from django.db.models import Count, Avg
+# for SQL1 call
+from django.db.models import Count
 from django.db.models.functions import ExtractQuarter
 from django.shortcuts import render
-
+# for SQL2 call
 from django.db import connection
 
 # ViewSets
@@ -49,8 +49,7 @@ class DepartmentViewSet(viewsets.ModelViewSet):
 
         return Response("Successfully upload the data")
     
-    @action(detail=False, methods=['GET'])
-    def departments_hiring_above_mean(self, request):
+    def departments_hiring_above_mean(self):
         # Define the SQL query
         query = '''
             SELECT d.id, d.department, COUNT(he.id) as num_hires
@@ -85,7 +84,21 @@ class DepartmentViewSet(viewsets.ModelViewSet):
             }
             data.append(department)
 
+        return data
+    
+    @action(detail=False, methods=['GET'])
+    def departments_hiring_above_mean_json(self, request):
+        # Call the departments_hiring_above_mean method to retrieve the data
+        data = self.departments_hiring_above_mean()
+        # Return the data as a JSON response
         return Response(data)
+    
+    @action(detail=False, methods=['GET'])
+    def departments_hiring_above_mean_on_table(self, request):
+        # Call the departments_hiring_above_mean method to retrieve the data
+        data = self.departments_hiring_above_mean()
+        # Render the 'departments_hiring_above_mean.html' template with the data and return the rendered HTML page
+        return render(request, 'departments_hiring_above_mean.html', {'departments': data})
 
 class JobViewSet(viewsets.ModelViewSet):
     queryset = Job.objects.all()
