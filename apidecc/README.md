@@ -51,19 +51,19 @@ It is expected to send a CSV file named "file" in the POST request to import the
 Solution:
 
 SELECT<br>
-    \tapidecc_hiredemployee.department,<br>
-    \tapidecc_hiredemployee.job,<br>
-    \tEXTRACT(QUARTER FROM apidecc_hiredemployee.datetime) AS quarter,<br>
-    \tCOUNT(apidecc_hiredemployee.id) AS count<br>
+    apidecc_hiredemployee.department,<br>
+    apidecc_hiredemployee.job,<br>
+    EXTRACT(QUARTER FROM apidecc_hiredemployee.datetime) AS quarter,<br>
+    COUNT(apidecc_hiredemployee.id) AS count<br>
 FROM<br>
-    \tapidecc_hiredemployee<br>
+    apidecc_hiredemployee<br>
 GROUP BY<br>
-    \tapidecc_hiredemployee.department,<br>
-    \tapidecc_hiredemployee.job,<br>
-    \tquarter<br>
+    apidecc_hiredemployee.department,<br>
+    apidecc_hiredemployee.job,<br>
+    quarter<br>
 ORDER BY<br>
-    \tapidecc_hiredemployee.department,<br>
-    \tapidecc_hiredemployee.job;<br>
+    apidecc_hiredemployee.department,<br>
+    apidecc_hiredemployee.job;<br>
 
 - in table format: `/apidecc/api/hired-employees/employees_by_job_department_quarter_on_table/`
 - in API format:`/apidecc/api/hired-employees/employees_by_job_department_quarter_json/?format=api`
