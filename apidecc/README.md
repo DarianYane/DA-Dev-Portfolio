@@ -51,19 +51,19 @@ It is expected to send a CSV file named "file" in the POST request to import the
 Solution:
 
 SELECT<br>
-    apidecc_hiredemployee.department,<br>
-    apidecc_hiredemployee.job,<br>
-    EXTRACT(QUARTER FROM apidecc_hiredemployee.datetime) AS quarter,<br>
-    COUNT(apidecc_hiredemployee.id) AS count<br>
+    \tapidecc_hiredemployee.department,<br>
+    \tapidecc_hiredemployee.job,<br>
+    \tEXTRACT(QUARTER FROM apidecc_hiredemployee.datetime) AS quarter,<br>
+    \tCOUNT(apidecc_hiredemployee.id) AS count<br>
 FROM<br>
-    apidecc_hiredemployee<br>
+    \tapidecc_hiredemployee<br>
 GROUP BY<br>
-    apidecc_hiredemployee.department,<br>
-    apidecc_hiredemployee.job,<br>
-    quarter<br>
+    \tapidecc_hiredemployee.department,<br>
+    \tapidecc_hiredemployee.job,<br>
+    \tquarter<br>
 ORDER BY<br>
-    apidecc_hiredemployee.department,<br>
-    apidecc_hiredemployee.job;<br>
+    \tapidecc_hiredemployee.department,<br>
+    \tapidecc_hiredemployee.job;<br>
 
 - in table format: `/apidecc/api/hired-employees/employees_by_job_department_quarter_on_table/`
 - in API format:`/apidecc/api/hired-employees/employees_by_job_department_quarter_json/?format=api`
@@ -74,25 +74,25 @@ ORDER BY<br>
 Solution:
 
 SELECT <br>
-    d.id, <br>
-    d.department, <br>
-    COUNT(he.id) as num_hires<br>
+    \td.id, <br>
+    \td.department, <br>
+    \tCOUNT(he.id) as num_hires<br>
 FROM <br>
-    apidecc_department d<br>
+    \tapidecc_department d<br>
 INNER JOIN <br>
-    apidecc_hiredemployee he ON d.id = he.department_id<br>
+    \tapidecc_hiredemployee he ON d.id = he.department_id<br>
 WHERE <br>
-    he.datetime >= '2021-01-01' AND he.datetime < '2022-01-01'<br>
+    \the.datetime >= '2021-01-01' AND he.datetime < '2022-01-01'<br>
 GROUP BY <br>
-    d.id, d.department<br>
+    \td.id, d.department<br>
 HAVING COUNT(he.id) > (<br>
-    SELECT AVG(num_hires) as mean_hires<br>
-    FROM (<br>
-        SELECT COUNT(id) as num_hires<br>
-        FROM apidecc_hiredemployee<br>
-        WHERE datetime >= '2021-01-01' AND datetime < '2022-01-01'<br>
-        GROUP BY department_id<br>
-    ) as subquery<br>
+    \tSELECT AVG(num_hires) as mean_hires<br>
+    \tFROM (<br>
+        \t\tSELECT COUNT(id) as num_hires<br>
+        \t\tFROM apidecc_hiredemployee<br>
+        \t\tWHERE datetime >= '2021-01-01' AND datetime < '2022-01-01'<br>
+        \t\tGROUP BY department_id<br>
+    \t) as subquery<br>
 )<br>
 ORDER BY num_hires DESC<br>
 
