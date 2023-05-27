@@ -56,16 +56,8 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-lg-10">
                 <div class="content-section-heading text-center mb-5">
-                    <h1 style="font-size: 60px"><strong>Real API - Employee Management System</strong></h1>
-                    <!-- <p class="lead mb-2 pb-4 text-white">
-                        Through Tableau, I analyzed the reasons that make people happy.
-                    </p> -->
-                    <!-- <a href="https://www.darianyane.com/static/assets/img/landing/Dashboard-Happiness1.png" target="_blank">
-                        <img class="img-fluid mb-5 pb-2" src="{% static 'assets/img/landing/Dashboard-Happiness1.png' %}" alt="Dashboard-Happiness1"/>
-                    </a>
-                    <a href="https://www.darianyane.com/static/assets/img/landing/Dashboard-Happiness2.png" target="_blank">
-                        <img class="img-fluid mb-5 pb-2" src="{% static 'assets/img/landing/Dashboard-Happiness2.png' %}" alt="Dashboard-Happiness2" />
-                    </a> -->
+                    <h1 class="mb-5" style="font-size: 60px"><strong>Real API Project - Employee Management System</strong></h1>
+                    <img class="img-fluid mb-2" src="{% static 'assets/img/landing/API-Project.jpg' %}" alt="Dashboard-Happiness1"/>
                 </div>
             </div>
         </div>
@@ -76,11 +68,15 @@
                 <div class="content-section-heading">
                     <h4 class="text-secondary mb-1">Overview</h4>
                 </div>
-                <p class="lead mb-5 text-white">
+                <p class="lead text-white">
                     The Employee Management System is a web-based application that allows companies to manage their employee data,
                     departments, and hiring activities. It provides functionality to add, edit, and delete employees, as well as
                     track department information and hiring metrics. The system is built using Django, a Python web framework, and
-                    utilizes a PostgreSQL database for data storage.
+                    utilizes a SQLite database for data storage.
+                </p>
+                <p class="lead mb-5 text-white">
+                    You can access the API graphical interface <a class="text-white" href="https://darianyane.com/apidecc/"
+                        target="_blank">here</a>.
                 </p>
             </div>
         </div>
@@ -92,9 +88,7 @@
                     <h4 class="text-secondary mb-1">What is the aim of this work?</h4>
                 </div>
                 <p class="lead mb-5 text-white">
-                    The aim of this work is to determine which are the characteristics of people who consider themselves
-                    happier and less
-                    happy than the average.
+                    The objective of this job is to demonstrate my API and SQL skills to fill a Data Engineer position.
                 </p>
             </div>
         </div>
@@ -106,11 +100,12 @@
                     <h4 class="text-secondary mb-1">Why did I do this job?
                     </h4>
                 </div>
+                <p class="lead text-white">
+                    This job was requested by a multinational company as a technical challenge to fill a Senior Data Engineer position.
+                </p>
                 <p class="lead mb-5 text-white">
-                    I did this work to demonstrate my skills as a data analyst and in the use of Tableau. It can be found on
-                    my <a href="https://github.com/DarianYane/HappinessIndicators" class="text-white"
-                        target="_blank">Github</a> and in my portfolio at <a class="text-white"
-                        href="https://www.darianyane.com/" target="_blank">darianyane.com</a>.
+                    The challenge consisted of a mandatory and an optional part. Among the mandatory items, it was requested to generate an
+                    API to perform massive data upload (more than 1000 lines) through CSV files, and to perform 2 complex queries.
                 </p>
             </div>
         </div>
@@ -125,14 +120,12 @@
                     <ul class="lead mb-5 text-white">
                         <li>Employee management: Add, edit, and delete employee records with details such as name, job, department, and
                             hire date.</li>
-                        <li>Department management: View and update department information, including department name and location.</li>
+                        <li>Same features for departments and jobs</li>
+                        <li>Uploading of new data can be done via API forms or by sending CSV files.</li>
                         <li>Hiring metrics: Generate reports on employee hiring activity, such as the number of employees hired by
                             department and quarter.</li>
                         <li>API integration: Expose API endpoints to interact with the system programmatically.</li>
-                        <li>Data validation: Implement data validation rules to ensure the accuracy and integrity of the stored
-                            information.</li>
-                        <li>Error handling and logging: Handle and log errors to facilitate troubleshooting and system maintenance.</li>
-                        <li>Automated tests: Develop automated tests to verify the functionality and stability of the system.</li>
+                        <li>Data can be retrieved in 3 different formats: JSON through the API GUI, pure JSON, or tables within an HTML.</li>
                     </ul>
                 </p>
             </div>
@@ -146,8 +139,9 @@
                 </div>
                 <p class="lead text-white">The database schema consists of two main tables:</p>
                 <ul class="lead mb-5 text-white">
-                    <li><strong>Employee:</strong> Stores employee information such as name, job, department, and hire date.</li>
-                    <li><strong>Department:</strong> Stores department details including department name and location.</li>
+                    <li><strong>Employee:</strong> Stores employee information such as name, job, department, id and hire date.</li>
+                    <li><strong>Department:</strong> Stores department details including department name and id.</li>
+                    <li><strong>Job:</strong> Stores job details including job name and id.</li>
                 </ul>
             </div>
         </div>
@@ -166,24 +160,34 @@
                         <th>Request Method</th>
                     </tr>
                     <tr>
-                        <td>/api/employees</td>
+                        <td>/api/hired-employees</td>
                         <td class="text-white">Retrieve a list of all employees or create a new employee record.</td>
-                        <td>GET, POST</td>
+                        <td>GET, POST, HEAD, OPTIONS</td>
                     </tr>
                     <tr>
-                        <td>/api/employees/{id}</td>
+                        <td>/api/hired-employees/{id}</td>
                         <td class="text-white">Retrieve, update, or delete an employee record with the specified ID.</td>
-                        <td>GET, PUT, DELETE</td>
+                        <td>GET, PUT, PATCH, DELETE, HEAD, OPTIONS</td>
                     </tr>
                     <tr>
                         <td>/api/departments</td>
                         <td class="text-white">Retrieve a list of all departments or create a new department record.</td>
-                        <td>GET, POST</td>
+                        <td>GET, POST, HEAD, OPTIONS</td>
                     </tr>
                     <tr>
                         <td>/api/departments/{id}</td>
                         <td class="text-white">Retrieve, update, or delete a department record with the specified ID.</td>
-                        <td>GET, PUT, DELETE</td>
+                        <td>GET, PUT, PATCH, DELETE, HEAD, OPTIONS</td>
+                    </tr>
+                    <tr>
+                        <td>/api/jobs</td>
+                        <td class="text-white">Retrieve a list of all jobs or create a new job record.</td>
+                        <td>GET, POST, HEAD, OPTIONS</td>
+                    </tr>
+                    <tr>
+                        <td>/api/jobs/{id}</td>
+                        <td class="text-white">Retrieve, update, or delete a jobs record with the specified ID.</td>
+                        <td>GET, PUT, PATCH, DELETE, HEAD, OPTIONS</td>
                     </tr>
                 </table>
             </div>
@@ -196,8 +200,8 @@
                     <h4 class="text-secondary mb-1">Which tool was used?</h4>
                 </div>
                 <p class="lead mb-5 text-white">
-                    I used Tableau <a class="text-white" href="https://www.tableau.com/"
-                        target="_blank">(https://www.tableau.com/)</a>
+                    I used Django REST Framework inside a Django Project <a class="text-white" href="https://www.django-rest-framework.org/"
+                        target="_blank">(https://www.django-rest-framework.org/)</a>
                 </p>
             </div>
         </div>
@@ -231,90 +235,5 @@
             </div>
         </div>
     </div>
-
-    <!-- <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content">
-            <div class="col">
-                <div class="content-section-heading">
-                    <h4 class="text-secondary mb-1">What are the main conclusions of the work?</h4>
-                </div>
-                <p class="lead mb-2">
-                    <h5 class="lead text-white">Irrelevant characteristics</h5>
-                    <ul class="lead mb-2 text-white">
-                        <li>The relationship between very happy, pretty happy, and not too happy remains uniform between 1994 and 2006 for the
-                        sample (probably from the United States) selected.</li>
-                        <li>Being divorced does not change the level of happiness.</li>
-                        <li>Having teenage children does not change the level of happiness.</li>
-                        <li>There is no difference in happiness between women and non-women.</li>
-                    </ul>
-                    <div class="content-section-heading text-center my-5">
-                        <img class="img-fluid pb-2" src="{% static 'assets/img/landing/Non-relevant variables.jpg' %}"
-                            alt="Non-relevant variables" />
-                    </div>
-                    <h5 class="lead text-white">Relevant characteristics</h5>
-                    <ul class="lead mb-2 text-white">
-                        <li>In general, for all segmentations, the group of "pretty happy" people is between 55% and 59%.</li>
-                    </ul>
-                    <h5 class="lead text-white" style="font-size: 18px">Income</h5>
-                    <ul class="lead mb-2 text-white">
-                        <li>There is a positive correlation between income and happiness.</li>
-                        <li>Among the not too happy people, those with the highest income are the smallest group.</li>
-                        <li>Pretty happy people occupy the same proportion for each income group.</li>
-                        <li>The proportion of very happy people is higher in the highest income group.</li>
-                    </ul>
-                    <div class="content-section-heading text-center my-5">
-                        <img class="img-fluid pb-2" src="{% static 'assets/img/landing/Income and Guns.jpg' %}"
-                            alt="Income and Guns Tableau" />
-                    </div>
-                    <h5 class="lead text-white" style="font-size: 18px">Guns</h5>
-                    <ul class="lead mb-2 text-white">
-                        <li>There is a positive relationship between income and gun ownership, although it is not possible to determine which is the
-                        cause and which is the consequence. New data are yet to be collected.</li>
-                        <li>The proportion of very happy people is higher in the group that owns guns.</li>
-                    </ul>
-                    <h5 class="lead text-white" style="font-size: 18px">Employment Status and Education</h5>
-                    <ul class="lead mb-2 text-white">
-                        <li>People with more years of education tend to be happier.</li>
-                        Comment: For the group of people with 4 years of study I observed a high proportion of very happy people, a very low
-                        proportion of pretty people, and a high proportion of not too happy people. This may be due to a problem with the sample
-                        (small sample size or biased sample). It is recommended that more data be obtained before drawing conclusions.
-                        <li>People who are retired, stay at home, or work full time tend to be happier.</li>
-                        <li>The least happy groups are laid-off, unemployed, and temporarily unemployed workers.</li>
-                    </ul>
-                    <div class="content-section-heading text-center my-5">
-                        <img class="img-fluid pb-2" src="{% static 'assets/img/landing/Education Working Status and TV hours.jpg' %}"
-                            alt="Work Education TV hours Tableau" />
-                    </div>
-                    <h5 class="lead text-white" style="font-size: 18px">Television Hours</h5>
-                    <ul class="lead mb-2 text-white">
-                        <li>There is an inverse relation between happiness and hours of television consumed daily.</li>
-                        <li>However, the exception is the group that does not consume television. The happiest are those who consume between 1 and 2
-                        hours per day.</li>
-                    </ul>
-                    <h5 class="lead text-white" style="font-size: 18px">Race and Gender</h5>
-                    <ul class="lead mb-2 text-white">
-                        <li>Black people are less happy than non-black people.</li>
-                        <li>Black women are less happy than non-black women.</li>
-                    </ul>
-                    <div class="content-section-heading text-center my-5">
-                        <img class="img-fluid pb-2" src="{% static 'assets/img/landing/Race and Gender.jpg' %}"
-                            alt="Race and Gender Tableau" />
-                    </div>
-                    <h5 class="lead text-white" style="font-size: 18px">Children</h5>
-                    <p class="text-white">Having children makes people happier, especially when the children are young.</p>
-                    <ul class="lead mb-2 text-white">
-                        <li>People with 3 or more teenage children tend to be very happy, or not very happy. There is a trend toward extremes.</li>
-                        <li>Among people with babies, those with 2 or 3 children are very happy in a higher proportion than the rest.</li>
-                        <li>The least happy groups are those with no children.</li>
-                    </ul>
-                    <div class="content-section-heading text-center my-5">
-                        <img class="img-fluid pb-2" src="{% static 'assets/img/landing/Children.jpg' %}"
-                            alt="Children Tableau" />
-                    </div>
-
-                </p>
-            </div>
-        </div>
-    </div> -->
 </section>
 {% endblock %}
