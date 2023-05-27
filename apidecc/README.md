@@ -50,20 +50,20 @@ It is expected to send a CSV file named "file" in the POST request to import the
 
 Solution:
 
-SELECT
-    apidecc_hiredemployee.department,
-    apidecc_hiredemployee.job,
-    EXTRACT(QUARTER FROM apidecc_hiredemployee.datetime) AS quarter,
-    COUNT(apidecc_hiredemployee.id) AS count
-FROM
-    apidecc_hiredemployee
-GROUP BY
-    apidecc_hiredemployee.department,
-    apidecc_hiredemployee.job,
-    quarter
-ORDER BY
-    apidecc_hiredemployee.department,
-    apidecc_hiredemployee.job;
+SELECT<br>
+    apidecc_hiredemployee.department,<br>
+    apidecc_hiredemployee.job,<br>
+    EXTRACT(QUARTER FROM apidecc_hiredemployee.datetime) AS quarter,<br>
+    COUNT(apidecc_hiredemployee.id) AS count<br>
+FROM<br>
+    apidecc_hiredemployee<br>
+GROUP BY<br>
+    apidecc_hiredemployee.department,<br>
+    apidecc_hiredemployee.job,<br>
+    quarter<br>
+ORDER BY<br>
+    apidecc_hiredemployee.department,<br>
+    apidecc_hiredemployee.job;<br>
 
 - in table format: `/apidecc/api/hired-employees/employees_by_job_department_quarter_on_table/`
 - in API format:`/apidecc/api/hired-employees/employees_by_job_department_quarter_json/?format=api`
@@ -73,28 +73,28 @@ ORDER BY
 
 Solution:
 
-SELECT 
-    d.id, 
-    d.department, 
-    COUNT(he.id) as num_hires
-FROM 
-    apidecc_department d
-INNER JOIN 
-    apidecc_hiredemployee he ON d.id = he.department_id
-WHERE 
-    he.datetime >= '2021-01-01' AND he.datetime < '2022-01-01'
-GROUP BY 
-    d.id, d.department
-HAVING COUNT(he.id) > (
-    SELECT AVG(num_hires) as mean_hires
-    FROM (
-        SELECT COUNT(id) as num_hires
-        FROM apidecc_hiredemployee
-        WHERE datetime >= '2021-01-01' AND datetime < '2022-01-01'
-        GROUP BY department_id
-    ) as subquery
-)
-ORDER BY num_hires DESC
+SELECT <br>
+    d.id, <br>
+    d.department, <br>
+    COUNT(he.id) as num_hires<br>
+FROM <br>
+    apidecc_department d<br>
+INNER JOIN <br>
+    apidecc_hiredemployee he ON d.id = he.department_id<br>
+WHERE <br>
+    he.datetime >= '2021-01-01' AND he.datetime < '2022-01-01'<br>
+GROUP BY <br>
+    d.id, d.department<br>
+HAVING COUNT(he.id) > (<br>
+    SELECT AVG(num_hires) as mean_hires<br>
+    FROM (<br>
+        SELECT COUNT(id) as num_hires<br>
+        FROM apidecc_hiredemployee<br>
+        WHERE datetime >= '2021-01-01' AND datetime < '2022-01-01'<br>
+        GROUP BY department_id<br>
+    ) as subquery<br>
+)<br>
+ORDER BY num_hires DESC<br>
 
 - in table format: `/apidecc/api/departments/departments_hiring_above_mean_on_table/?format=api`
 - in API format:`/apidecc/api/departments/departments_hiring_above_mean_json/?format=api`

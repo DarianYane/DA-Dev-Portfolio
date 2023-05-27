@@ -1,0 +1,239 @@
+{% extends 'landing/base.html' %}
+
+{% load static %}
+
+{% block extrahead %}
+<head>
+    <style>
+        #btn-scaled {
+            transition: transform 0.3s;
+        }
+
+        #btn-scaled:hover {
+            transform: scale(1.2);
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 30px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        table {
+            margin-top: 30px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #2d2ba8;
+        }
+
+    </style>
+    <title>Real API - Employee Management System</title>
+</head>
+{%endblock%}  
+
+{% block content %}
+<section class="content-section bg-primary ">
+    <div class="container px-4 px-lg-5 text-center">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-10">
+                <div class="content-section-heading text-center mb-5">
+                    <h1 class="mb-5" style="font-size: 60px"><strong>Real API Project - Employee Management System</strong></h1>
+                    <img class="img-fluid mb-2" src="{% static 'assets/img/landing/API-Project.jpg' %}" alt="Dashboard-Happiness1"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content">
+            <div class="col-lg-12">
+                <div class="content-section-heading">
+                    <h4 class="text-secondary mb-1">Overview</h4>
+                </div>
+                <p class="lead text-white">
+                    The Employee Management System is a web-based application that allows companies to manage their employee data,
+                    departments, and hiring activities. It provides functionality to add, edit, and delete employees, as well as
+                    track department information and hiring metrics. The system is built using Django, a Python web framework, and
+                    utilizes a SQLite database for data storage.
+                </p>
+                <p class="lead mb-5 text-white">
+                    You can access the API graphical interface <a class="text-white" href="https://darianyane.com/apidecc/"
+                        target="_blank">here</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content">
+            <div class="col-lg-12">
+                <div class="content-section-heading">
+                    <h4 class="text-secondary mb-1">What is the aim of this work?</h4>
+                </div>
+                <p class="lead mb-5 text-white">
+                    The objective of this job is to demonstrate my API and SQL skills to fill a Data Engineer position.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content">
+            <div class="col">
+                <div class="content-section-heading">
+                    <h4 class="text-secondary mb-1">Why did I do this job?
+                    </h4>
+                </div>
+                <p class="lead text-white">
+                    This job was requested by a multinational company as a technical challenge to fill a Senior Data Engineer position.
+                </p>
+                <p class="lead mb-5 text-white">
+                    The challenge consisted of a mandatory and an optional part. Among the mandatory items, it was requested to generate an
+                    API to perform massive data upload (more than 1000 lines) through CSV files, and to perform 2 complex queries.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content">
+            <div class="col-lg-12">
+                <div class="content-section-heading">
+                    <h4 class="text-secondary mb-1">Features</h4>
+                </div>
+                <p>
+                    <ul class="lead mb-5 text-white">
+                        <li>Employee management: Add, edit, and delete employee records with details such as name, job, department, and
+                            hire date.</li>
+                        <li>Same features for departments and jobs</li>
+                        <li>Uploading of new data can be done via API forms or by sending CSV files.</li>
+                        <li>Hiring metrics: Generate reports on employee hiring activity, such as the number of employees hired by
+                            department and quarter.</li>
+                        <li>API integration: Expose API endpoints to interact with the system programmatically.</li>
+                        <li>Data can be retrieved in 3 different formats: JSON through the API GUI, pure JSON, or tables within an HTML.</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content">
+            <div class="col-lg-12">
+                <div class="content-section-heading">
+                    <h4 class="text-secondary mb-1">Database Schema</h4>
+                </div>
+                <p class="lead text-white">The database schema consists of two main tables:</p>
+                <ul class="lead mb-5 text-white">
+                    <li><strong>Employee:</strong> Stores employee information such as name, job, department, id and hire date.</li>
+                    <li><strong>Department:</strong> Stores department details including department name and id.</li>
+                    <li><strong>Job:</strong> Stores job details including job name and id.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content">
+            <div class="col-lg-12">
+                <div class="content-section-heading">
+                    <h4 class="text-secondary mb-1">API Endpoints</h4>
+                </div>
+                <p class="lead text-white">The following API endpoints are available for interacting with the system:</p>
+                <table class="mb-5">
+                    <tr>
+                        <th>Endpoint</th>
+                        <th>Description</th>
+                        <th>Request Method</th>
+                    </tr>
+                    <tr>
+                        <td>/api/hired-employees</td>
+                        <td class="text-white">Retrieve a list of all employees or create a new employee record.</td>
+                        <td>GET, POST, HEAD, OPTIONS</td>
+                    </tr>
+                    <tr>
+                        <td>/api/hired-employees/{id}</td>
+                        <td class="text-white">Retrieve, update, or delete an employee record with the specified ID.</td>
+                        <td>GET, PUT, PATCH, DELETE, HEAD, OPTIONS</td>
+                    </tr>
+                    <tr>
+                        <td>/api/departments</td>
+                        <td class="text-white">Retrieve a list of all departments or create a new department record.</td>
+                        <td>GET, POST, HEAD, OPTIONS</td>
+                    </tr>
+                    <tr>
+                        <td>/api/departments/{id}</td>
+                        <td class="text-white">Retrieve, update, or delete a department record with the specified ID.</td>
+                        <td>GET, PUT, PATCH, DELETE, HEAD, OPTIONS</td>
+                    </tr>
+                    <tr>
+                        <td>/api/jobs</td>
+                        <td class="text-white">Retrieve a list of all jobs or create a new job record.</td>
+                        <td>GET, POST, HEAD, OPTIONS</td>
+                    </tr>
+                    <tr>
+                        <td>/api/jobs/{id}</td>
+                        <td class="text-white">Retrieve, update, or delete a jobs record with the specified ID.</td>
+                        <td>GET, PUT, PATCH, DELETE, HEAD, OPTIONS</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content">
+            <div class="col">
+                <div class="content-section-heading">
+                    <h4 class="text-secondary mb-1">Which tool was used?</h4>
+                </div>
+                <p class="lead mb-5 text-white">
+                    I used Django REST Framework inside a Django Project <a class="text-white" href="https://www.django-rest-framework.org/"
+                        target="_blank">(https://www.django-rest-framework.org/)</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content">
+            <div class="col-lg-12">
+                <div class="content-section-heading">
+                    <h4 class="text-secondary mb-1">Do you want to see the project source code on Github? <a href="https://github.com/DarianYane/employee-management-system" target="_blank"><img width="40" height="40"
+                            src="{% static 'assets/img/Github-Icon-V7.png' %}" alt="Github-Icon" /></a></h4>
+                </div>
+                <p class="lead mb-5 text-white">
+                    You can see it by clicking <a class="text-white" href="https://github.com/DarianYane/employee-management-system" target="_blank">here</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content">
+            <div class="col-lg-12">
+                <div class="content-section-heading">
+                    <h4 class="text-secondary mb-1">Conclusion</h4>
+                </div>
+                <p class="lead mb-5 text-white">
+                    The Employee Management System provides a comprehensive solution for companies to effectively manage their
+                    employee data and hiring activities. By utilizing a user-friendly web interface, intuitive functionality, and
+                    robust database storage, the system streamlines HR processes and facilitates data-driven decision-making. With
+                    its API integration and extensible architecture, the system can be easily customized and expanded to meet
+                    specific business requirements.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

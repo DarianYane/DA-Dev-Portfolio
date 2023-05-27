@@ -9,12 +9,12 @@ from django.template.loader import render_to_string
 
 
 # Create your views here.
-#Task list for the roadmap
+# Task list for the roadmap
 class Tasks_lists(ListView):
     queryset = Task.objects.all()
     context_object_name = "Tasks"
 
-#Submission of contact form
+# Submission of contact form
 def sendEmail(request):
     if request.method == "POST":
         template = render_to_string('landing/email_template.html', {
@@ -32,10 +32,14 @@ def sendEmail(request):
         email.send()
     return render(request,'landing/email_sent.html')
 
-#SQl Cleaning Data Project
+# SQl Cleaning Data Project
 def sql_cleaning_data(request):
     return render(request,'landing/zz-sql-cleaning.html')
 
-#Tableau Happiness Indicators Project
+# Tableau Happiness Indicators Project
 def happiness_indicators(request):
     return render(request,'landing/zz-happiness-indicators.html')
+
+# Real API Project
+def real_API_project(request):
+    return render(request,'landing/zz-real_API_project.html')
