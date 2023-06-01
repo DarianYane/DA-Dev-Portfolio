@@ -2885,13 +2885,13 @@ footer.footer .social-link:hover {
     filter: drop-shadow(0px 0px 30px cyan);
 }
 
-.logo-django img {
+/* .logo-django img {
   filter: drop-shadow(0px 0px 30px GreenYellow);
-}
+} */
 
-.logo-bootstrap img {
+/* .logo-bootstrap img {
   filter: drop-shadow(0px 0px 30px DodgerBlue);
-}
+} */
 
 .logo-SQL img {
   filter: drop-shadow(0px 0px 20px orange);
@@ -2902,7 +2902,15 @@ footer.footer .social-link:hover {
 }
 
 .logo-power-bi img {
-  filter: drop-shadow(0px 0px 10px gold);
+  filter: drop-shadow(0px 0px 30px gold);
+}
+
+.logo-tableau img {
+  filter: drop-shadow(0px 0px 30px white);
+}
+
+.logo-R img {
+  filter: drop-shadow(0px 0px 25px white);
 }
 
 .arrow {
