@@ -8,6 +8,7 @@ psycopg2==2.9.6
 pycairo==1.23.0
 PyPDF2==2.10.8
 sqlparse==0.4.2
+wheel==0.40.0
 whitenoise==6.2.0
 xhtml2pdf==0.2.8
 
