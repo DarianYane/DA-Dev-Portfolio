@@ -9,6 +9,10 @@ Pillow==9.3.0
 
 pycairo==1.23.0
 psycopg2==2.9.6
+#replace psycopg2==2.9.6 if it has problems
+pkgconfig==1.5.5
+psycopg2-binary==2.9.6 
+
 
 PyPDF2==2.10.8
 sqlparse==0.4.2
@@ -21,3 +25,9 @@ pandas==1.4.3
 
 #API
 djangorestframework==3.14.0
+
+# Others maybe needed
+# sudo apt install pkg-config
+# sudo apt install libcairo2-dev 
+# sudo apt install libglib2.0-dev
+# En algunos casos, el paquete libgobject2.0-dev puede ser reemplazado por libglib2.0-dev en versiones más recientes de Ubuntu.
